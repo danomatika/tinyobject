@@ -36,7 +36,7 @@ project "xmltests"
 	targetdir "../bin"
 	files { "../src/tests/**.h", "../src/tests/**.cpp" }
 
-	includedirs { "../src/xmlframework" }
+	includedirs { "../src" }
 	links { "xmlframework" }
 
 	configuration "Debug"
