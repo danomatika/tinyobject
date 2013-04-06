@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     
     // load xml file through object derived from XmlObject
     XmlProcessor processor;
-    processor.loadXmlFile("../data/test.xml");
+    processor.loadXmlFile("../../data/test.xml");
 	
     cout << "Exited cleanly" << endl;
 

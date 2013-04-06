@@ -22,6 +22,9 @@ AC_PROG_RANLIB
 # using c++ compiler and linker
 AC_LANG_CPLUSPLUS
 
+# allow non-POSIX libs
+AM_PROG_AR
+
 # check for headers
 AC_HEADER_STDC
 
