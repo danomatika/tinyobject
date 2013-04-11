@@ -494,14 +494,7 @@ void Xml::setText(TiXmlElement* xmlPtr, std::string text)
         return;
     }
 
-    TiXmlNode* textChild = xmlPtr->LastChild();
-    TiXmlText* textElement = new TiXmlText((const std::string&) text);
-    if(textChild && (textChild->ToText() != NULL)) {
-        xmlPtr->ReplaceChild(textChild, (const TiXmlNode&) textElement);
-    }
-    else {
-        xmlPtr->LinkEndChild(textElement);
-    }
+    xmlPtr->LinkEndChild(new TiXmlText(text));
 }
 
 TiXmlElement* Xml::obtainElement(TiXmlElement* xmlPtr, std::string name, int index)
