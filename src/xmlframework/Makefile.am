@@ -1,5 +1,7 @@
 # xmlframework
 
+AUTOMAKE_OPTIONS = subdir-objects
+
 # the library to build, dont install just link to execs
 noinst_LIBRARIES = libxmlframework.a
 
