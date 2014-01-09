@@ -1,9 +1,9 @@
 xmlframework
 ============
 
-Copyright (c) [Dan Wilcox]("http://danomatika.com") 2009,2010
+Copyright (c) [Dan Wilcox](http://danomatika.com) 2009,2010
 
-This is a wrapper around the [TinyXML library](http://www.grinninglizard.com/tinyxml/index.html) to add chainable object loading in classes and automatic loading/saving and saving of primitive types via reference. 
+This is a wrapper around the [TinyXML library](http://www.grinninglizard.com/tinyxml/index.html) to add chainable object loading in classes and automatic loading/saving of primitive types via reference. 
 
 See the headers in `src/xmlframework` and the example in `src/tests` for more info.
 
