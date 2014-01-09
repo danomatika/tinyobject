@@ -14,4 +14,3 @@ xmltests_CPPFLAGS = $(CXXFLAGS) -I$(top_srcdir)/src
 
 # libs to link
 xmltests_LDFLAGS =
-

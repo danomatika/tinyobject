@@ -16,4 +16,3 @@ Run the test with:
 
     cd src/tests
     ./xmltests
-
