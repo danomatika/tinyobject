@@ -6,17 +6,21 @@ obj
 
 # autotools files
 autom4te.cache
+.libs
 .deps
 Makefile
+libtool
 config.log
 config.status
 src/config.h
-src/xmlframework/stamp-h1
+src/stamp-h1
 .dirstamp
 
 # build
 *.o
+*.lo
 *.a
+*.la
 src/tests/xmltests
 
 # OSX
@@ -26,4 +30,3 @@ src/tests/xmltests
 
 # temp files
 *~
-
