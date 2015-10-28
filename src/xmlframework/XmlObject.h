@@ -4,7 +4,7 @@
 	
 	xmlframework: object based xml classes for TinyXml
   
-	Copyright (C) 2009, 2010  Dan Wilcox <danomatika@gmail.com>
+	Copyright (C) 2009, 2010 Dan Wilcox <danomatika@gmail.com>
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -17,21 +17,18 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ==============================================================================*/
-#ifndef XML_XML_OBJECT_H
-#define XML_XML_OBJECT_H
+#pragma once
 
 #include <string>
 #include <vector>
-
 #include <tinyxml2.h>
 
 namespace xml {
 
-enum XmlType
-{
+enum XmlType {
 	XML_TYPE_UNDEF = 0,
 	XML_TYPE_BOOL,
 	XML_TYPE_BYTE,
@@ -42,8 +39,7 @@ enum XmlType
 	XML_TYPE_STRING
 };
 
-class XmlObject
-{
+class XmlObject {
 	public:
 
 		/// set the xml element name, if the element is empty the element name of the parent is used
@@ -80,7 +76,7 @@ class XmlObject
 		/// add/remove an element, element names are singular
 		bool addXmlElement(std::string name, std::string* text=NULL, bool readOnly=false);
 		bool removeXmlElement(std::string name);   /// also removes attached attributes
-		void removeAllXmlElements();   /// alsa removes attached attributes
+		void removeAllXmlElements();   /// also removes attached attributes
 
 		/* ***** ATTRIBUTES ***** */
 
@@ -120,8 +116,8 @@ class XmlObject
 
 	private:
 
-		struct Attribute
-		{
+		struct Attribute {
+
 			Attribute() : type(XML_TYPE_UNDEF) {}
 
 			std::string name;
@@ -130,8 +126,7 @@ class XmlObject
 			bool bReadOnly;
 		};
 
-		struct Element
-		{
+		struct Element {
 			std::string name;
 			std::string* text;
 			bool bReadOnly;
@@ -139,29 +134,23 @@ class XmlObject
 		};
 
 		// find an element in the list by its name, returns NULL if not found
-		Element* findElement(std::string name)
-		{
+		Element* findElement(std::string name) {
 			std::vector<Element*>::iterator iter;
-			for(iter = m_elementList.begin(); iter != m_elementList.end(); ++iter)
-			{
-				if((*iter)->name == name)
-				{
+			for(iter = m_elementList.begin(); iter != m_elementList.end(); ++iter) {
+				if((*iter)->name == name) {
 					return (*iter);
 				}
 			}
-
 			return NULL;
 		}
 
-		bool m_bDocLoaded;       /// is this doc loaded?
-		std::string m_filename;  /// current filename
+		bool m_bDocLoaded; /// is this doc loaded?
+		std::string m_filename; /// current filename
 		tinyxml2::XMLDocument* m_xmlDoc; /// the xml document
 
-		std::string m_elementName;   /// name of the root element
-		std::vector<Element*> m_elementList;     /// attached elements/attributes
-		std::vector<XmlObject*> m_objectList;    /// attached xml objects to process
+		std::string m_elementName; /// name of the root element
+		std::vector<Element*> m_elementList; /// attached elements/attributes
+		std::vector<XmlObject*> m_objectList; /// attached xml objects to process
 };
 
 } // namespace
-
-#endif // XML_XML_OBJECT_H

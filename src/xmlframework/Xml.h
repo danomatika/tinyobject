@@ -4,7 +4,7 @@
 	
 	xmlframework: object based xml classes for TinyXml
   
-	Copyright (C) 2009, 2010  Dan Wilcox <danomatika@gmail.com>
+	Copyright (C) 2009, 2010 Dan Wilcox <danomatika@gmail.com>
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -17,39 +17,34 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ==============================================================================*/
-#ifndef XML_XML_H
-#define XML_XML_H
+#pragma once
 
 #include <tinyxml2.h>
-
 #include <stdint.h>
-
 #include "XmlObject.h"
 
 namespace xml {
 
-/**
-	\class  Xml
-	\brief  convenience wrapper for some of the TinyXml functions
-**/
+/// \class  Xml
+/// \brief  convenience wrapper for some of the TinyXml functions
 class Xml
 {
 	public:
 
-		/** \name Reading Member Functions **/
+		/// \section Reading Member Functions
 
 		/// attribute access by type, returns true if value found & set, false if not
 		/// does not change var if if attribute not found or wrong type
-		static bool 		getAttrBool(const tinyxml2::XMLElement* xmlPtr, std::string name, bool defaultVal=true);
-		static uint8_t 		getAttrByte(const tinyxml2::XMLElement* xmlPtr, std::string name, uint8_t defaultVal=0);	// unsigned
+		static bool         getAttrBool(const tinyxml2::XMLElement* xmlPtr, std::string name, bool defaultVal=true);
+		static uint8_t      getAttrByte(const tinyxml2::XMLElement* xmlPtr, std::string name, uint8_t defaultVal=0); // unsigned
 		static unsigned int getAttrUInt(const tinyxml2::XMLElement* xmlPtr, std::string name, unsigned int defaultVal=0);
-		static int 			getAttrInt(const tinyxml2::XMLElement* xmlPtr, std::string name, int defaultVal=0);
-		static float 		getAttrFloat(const tinyxml2::XMLElement* xmlPtr, std::string name, float defaultVal=0.0f);
-		static double 		getAttrDouble(const tinyxml2::XMLElement* xmlPtr, std::string name, double defaultVal=0.0);
-		static std::string 	getAttrString(const tinyxml2::XMLElement* xmlPtr, std::string name, std::string defaultVal="");    // converts numbers to text
+		static int          getAttrInt(const tinyxml2::XMLElement* xmlPtr, std::string name, int defaultVal=0);
+		static float        getAttrFloat(const tinyxml2::XMLElement* xmlPtr, std::string name, float defaultVal=0.0f);
+		static double       getAttrDouble(const tinyxml2::XMLElement* xmlPtr, std::string name, double defaultVal=0.0);
+		static std::string  getAttrString(const tinyxml2::XMLElement* xmlPtr, std::string name, std::string defaultVal=""); // converts numbers to text
 		
 		/// attribute access using XmlObject type enum
 		static bool getAttr(const tinyxml2::XMLElement* xmlPtr, std::string name, XmlType type, void* var);
@@ -63,7 +58,7 @@ class Xml
 		/// find child element by name and index (if in a list), returns NULL if element not found
 		static tinyxml2::XMLElement* getElement(tinyxml2::XMLElement* xmlPtr, std::string name, int index=0);
 
-		/** \name Writing Member Functions **/
+		/// \section Writing Member Functions
 
 		static void setAttrString(tinyxml2::XMLElement* xmlPtr, std::string name, std::string s);
 		static void setAttrInt(tinyxml2::XMLElement* xmlPtr, std::string name, int i);
@@ -83,12 +78,10 @@ class Xml
 		/// creates and adds to end if not found
 		static tinyxml2::XMLElement* obtainElement(tinyxml2::XMLElement* xmlPtr, std::string name, int index=0);
 
-		/** \name Utility Member Functions **/
+		/// \section Utility Member Functions
 
-		/// returns the current error as a string with line and col of error
+		/// returns the current error as a string
 		static std::string getErrorString(const tinyxml2::XMLDocument* xmlDoc);
 };
 
 } // namespace
-
-#endif // XML_XML_H
