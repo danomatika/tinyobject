@@ -23,9 +23,10 @@
 #ifndef XML_XML_OBJECT_H
 #define XML_XML_OBJECT_H
 
+#include <string>
 #include <vector>
 
-#include "tinyxml/tinyxml.h"
+#include <tinyxml2.h>
 
 namespace xml {
 
@@ -52,7 +53,7 @@ class XmlObject
 		/* ***** LOAD ***** */
 
 		/// load from an xml element, checks if the element name is correct
-		bool loadXml(TiXmlElement* e);
+		bool loadXml(tinyxml2::XMLElement* e);
 
 		/// load from an xml file, leave empty to use previous filename
 		bool loadXmlFile(std::string filename="");
@@ -60,7 +61,7 @@ class XmlObject
 		/* ***** SAVE ***** */
 
 		/// save to an xml element, checks if the element name is correct
-		bool saveXml(TiXmlElement* e);
+		bool saveXml(tinyxml2::XMLElement* e);
 
 		/// save to a new xml file
 		bool saveXmlFile(std::string filename="");
@@ -101,7 +102,7 @@ class XmlObject
 		inline void setXmlName(std::string name) {m_elementName = name;}
 
 		/// get the root element (for direct access)
-		TiXmlElement* getXmlRootElement();
+		tinyxml2::XMLElement* getXmlRootElement();
 
 	protected:
 
@@ -111,11 +112,11 @@ class XmlObject
 
 		/// callback to process xml children when loaded, returns true if element handled
 		/// param   e   root element of this object aka <getXmlName()> ...
-		virtual bool readXml(TiXmlElement* e) {return false;}
+		virtual bool readXml(tinyxml2::XMLElement* e) {return false;}
 
 		/// callback to save to xml when saved, returns true if successful
 		/// param   e   root element of this object aka <getXmlName()> ...
-		virtual bool writeXml(TiXmlElement* e) {return false;}
+		virtual bool writeXml(tinyxml2::XMLElement* e) {return false;}
 
 	private:
 
@@ -154,7 +155,7 @@ class XmlObject
 
 		bool m_bDocLoaded;       /// is this doc loaded?
 		std::string m_filename;  /// current filename
-		TiXmlDocument* m_xmlDoc; /// the xml document
+		tinyxml2::XMLDocument* m_xmlDoc; /// the xml document
 
 		std::string m_elementName;   /// name of the root element
 		std::vector<Element*> m_elementList;     /// attached elements/attributes

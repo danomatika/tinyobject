@@ -26,11 +26,13 @@
 
 #include <sstream>
 
+using namespace tinyxml2;
+
 namespace xml {
 
 /* ***** READ ***** */
 
-bool Xml::getAttrBool(const TiXmlElement* xmlPtr, std::string name, bool defaultVal)
+bool Xml::getAttrBool(const XMLElement* xmlPtr, std::string name, bool defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -43,24 +45,24 @@ bool Xml::getAttrBool(const TiXmlElement* xmlPtr, std::string name, bool default
 
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrBool(): attribute \"" << name
-					 << "\" is not of type int in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type int in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrBool(): int attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return (bool) value;
 	}
 }
 
-uint8_t Xml::getAttrByte(const TiXmlElement* xmlPtr, std::string name, uint8_t defaultVal)
+uint8_t Xml::getAttrByte(const XMLElement* xmlPtr, std::string name, uint8_t defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -73,24 +75,24 @@ uint8_t Xml::getAttrByte(const TiXmlElement* xmlPtr, std::string name, uint8_t d
 
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrBool(): attribute \"" << name
-					 << "\" is not of type int in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type int in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrBool(): int attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return (uint8_t) value;
 	}
 }
 
-unsigned int Xml::getAttrUInt(const TiXmlElement* xmlPtr, std::string name, unsigned int defaultVal)
+unsigned int Xml::getAttrUInt(const XMLElement* xmlPtr, std::string name, unsigned int defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -102,24 +104,24 @@ unsigned int Xml::getAttrUInt(const TiXmlElement* xmlPtr, std::string name, unsi
 	int iRet  = xmlPtr->QueryIntAttribute(name.c_str(), &value);
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrUInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type int in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrUInt(): int attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return (unsigned int) value;
 	}
 }
 
-int Xml::getAttrInt(const TiXmlElement* xmlPtr, std::string name, int defaultVal)
+int Xml::getAttrInt(const XMLElement* xmlPtr, std::string name, int defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -131,24 +133,24 @@ int Xml::getAttrInt(const TiXmlElement* xmlPtr, std::string name, int defaultVal
 	int iRet  = xmlPtr->QueryIntAttribute(name.c_str(), &value);
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type int in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrInt(): int attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return value;
 	}
 }
 
-float Xml::getAttrFloat(const TiXmlElement* xmlPtr, std::string name, float defaultVal)
+float Xml::getAttrFloat(const XMLElement* xmlPtr, std::string name, float defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -160,24 +162,24 @@ float Xml::getAttrFloat(const TiXmlElement* xmlPtr, std::string name, float defa
 	int iRet = xmlPtr->QueryFloatAttribute(name.c_str(), &value);
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrFloat(): attribute \"" << name
-					 << "\" is not of type float in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type float in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrFloat(): float attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return value;
 	}
 }
 
-double Xml::getAttrDouble(const TiXmlElement* xmlPtr, std::string name, double defaultVal)
+double Xml::getAttrDouble(const XMLElement* xmlPtr, std::string name, double defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -189,24 +191,24 @@ double Xml::getAttrDouble(const TiXmlElement* xmlPtr, std::string name, double d
 	int iRet = xmlPtr->QueryDoubleAttribute(name.c_str(), &value);
 	switch(iRet)
 	{
-		case TIXML_WRONG_TYPE:
+		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "Xml::getAttrDouble(): attribute \"" << name
-					 << "\" is not of type double in element \"" << xmlPtr->ValueStr()
+					 << "\" is not of type double in element \"" << xmlPtr->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
-		case TIXML_NO_ATTRIBUTE:
+		case XML_NO_ATTRIBUTE:
 //            LOG_WARN << "Xml::getAttrDouble(): double attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 			return defaultVal;
 
-		default:    // TIXML_SUCCESS:
+		default:    // XML_SUCCESS:
 			return value;
 	}
 }
 
-std::string Xml::getAttrString(const TiXmlElement* xmlPtr, std::string name, std::string defaultVal)
+std::string Xml::getAttrString(const XMLElement* xmlPtr, std::string name, std::string defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -219,7 +221,7 @@ std::string Xml::getAttrString(const TiXmlElement* xmlPtr, std::string name, std
 	if(value == NULL)
 	{
 //        LOG_WARN << "Xml::getAttrString(): string attribute \"" << name
-//                     << "\" was not found in element \"" << xmlPtr->ValueStr()
+//                     << "\" was not found in element \"" << xmlPtr->Name()
 //                     << "\"" << std::endl;
 		return defaultVal;
 	}
@@ -227,7 +229,7 @@ std::string Xml::getAttrString(const TiXmlElement* xmlPtr, std::string name, std
 	return std::string(value);
 }
 
-bool Xml::getAttr(const TiXmlElement* xmlPtr, std::string name, XmlType type, void* var)
+bool Xml::getAttr(const XMLElement* xmlPtr, std::string name, XmlType type, void* var)
 {
 	if(xmlPtr == NULL || var == NULL)
 	{
@@ -235,7 +237,7 @@ bool Xml::getAttr(const TiXmlElement* xmlPtr, std::string name, XmlType type, vo
 		return false;
 	}
 
-	int ret = TIXML_SUCCESS;
+	int ret = XML_SUCCESS;
 	switch(type)
 	{
 		case XML_TYPE_BOOL:
@@ -295,7 +297,7 @@ bool Xml::getAttr(const TiXmlElement* xmlPtr, std::string name, XmlType type, vo
 	return ret;
 }
 
-std::string Xml::getText(const TiXmlElement* xmlPtr, std::string defaultVal)
+std::string Xml::getText(const XMLElement* xmlPtr, std::string defaultVal)
 {
 	if(xmlPtr == NULL)
 	{
@@ -309,17 +311,17 @@ std::string Xml::getText(const TiXmlElement* xmlPtr, std::string defaultVal)
 	return (std::string) text;
 }
 
-std::string Xml::element2String(const TiXmlElement* xmlPtr, std::string indent)
+std::string Xml::element2String(const XMLElement* xmlPtr, std::string indent)
 {
 	if(xmlPtr == NULL)
 	{
 		return "";
 	}
 
-	const TiXmlAttribute* xmlAttr = xmlPtr->FirstAttribute();
+	const XMLAttribute* xmlAttr = xmlPtr->FirstAttribute();
 
 	std::stringstream stream;
-	stream << "Elem: " << xmlPtr->Value() << std::endl;
+	stream << "Elem: " << xmlPtr->Name() << std::endl;
 
 	// loop through attributes
 	while(xmlAttr != NULL)
@@ -331,7 +333,7 @@ std::string Xml::element2String(const TiXmlElement* xmlPtr, std::string indent)
 	return stream.str();
 }
 
-TiXmlElement* Xml::getElement(TiXmlElement* xmlPtr, std::string name, int index)
+XMLElement* Xml::getElement(XMLElement* xmlPtr, std::string name, int index)
 {
 	if(xmlPtr == NULL)
 	{
@@ -339,13 +341,19 @@ TiXmlElement* Xml::getElement(TiXmlElement* xmlPtr, std::string name, int index)
 		return NULL;
 	}
 
-	TiXmlHandle h(xmlPtr);
-	return h.ChildElement(name, index).Element();
+	XMLHandle h(xmlPtr);
+	h.FirstChildElement(name.c_str());
+	for(int i = 0; i < index; ++i) {
+		if(h.NextSiblingElement(name.c_str()).ToNode() == NULL) {
+			return NULL;
+		}
+	}
+	return h.ToElement();
 }
 
 /* ***** WRITE ***** */
 
-void Xml::setAttrString(TiXmlElement* xmlPtr, std::string name, std::string s)
+void Xml::setAttrString(XMLElement* xmlPtr, std::string name, std::string s)
 {
 	if(xmlPtr == NULL)
 	{
@@ -353,10 +361,10 @@ void Xml::setAttrString(TiXmlElement* xmlPtr, std::string name, std::string s)
 		return;
 	}
 
-	xmlPtr->SetAttribute(name, s);
+	xmlPtr->SetAttribute(name.c_str(), s.c_str());
 }
 
-void Xml::setAttrInt(TiXmlElement* xmlPtr, std::string name, int i)
+void Xml::setAttrInt(XMLElement* xmlPtr, std::string name, int i)
 {
 	if(xmlPtr == NULL)
 	{
@@ -364,10 +372,10 @@ void Xml::setAttrInt(TiXmlElement* xmlPtr, std::string name, int i)
 		return;
 	}
 
-	xmlPtr->SetAttribute(name, i);
+	xmlPtr->SetAttribute(name.c_str(), i);
 }
 
-void Xml::setAttrUInt(TiXmlElement* xmlPtr, std::string name, unsigned int i)
+void Xml::setAttrUInt(XMLElement* xmlPtr, std::string name, unsigned int i)
 {
 	if(xmlPtr == NULL)
 	{
@@ -375,10 +383,10 @@ void Xml::setAttrUInt(TiXmlElement* xmlPtr, std::string name, unsigned int i)
 		return;
 	}
 
-	xmlPtr->SetAttribute(name, (int) i);
+	xmlPtr->SetAttribute(name.c_str(), (int) i);
 }
 
-void Xml::setAttrDouble(TiXmlElement* xmlPtr, std::string name, double d)
+void Xml::setAttrDouble(XMLElement* xmlPtr, std::string name, double d)
 {
 	if(xmlPtr == NULL)
 	{
@@ -386,10 +394,10 @@ void Xml::setAttrDouble(TiXmlElement* xmlPtr, std::string name, double d)
 		return;
 	}
 
-	xmlPtr->SetDoubleAttribute(name.c_str(), d);
+	xmlPtr->SetAttribute(name.c_str(), d);
 }
 
-void Xml::setAttrFloat(TiXmlElement* xmlPtr, std::string name, float f)
+void Xml::setAttrFloat(XMLElement* xmlPtr, std::string name, float f)
 {
 	if(xmlPtr == NULL)
 	{
@@ -397,10 +405,10 @@ void Xml::setAttrFloat(TiXmlElement* xmlPtr, std::string name, float f)
 		return;
 	}
 
-	xmlPtr->SetDoubleAttribute(name.c_str(), f);
+	xmlPtr->SetAttribute(name.c_str(), f);
 }
 
-void Xml::setAttrBool(TiXmlElement* xmlPtr, std::string name, bool b)
+void Xml::setAttrBool(XMLElement* xmlPtr, std::string name, bool b)
 {
 	if(xmlPtr == NULL)
 	{
@@ -408,10 +416,10 @@ void Xml::setAttrBool(TiXmlElement* xmlPtr, std::string name, bool b)
 		return;
 	}
 
-	xmlPtr->SetAttribute(name, (int) b);
+	xmlPtr->SetAttribute(name.c_str(), (int) b);
 }
 
-void Xml::setAttrByte(TiXmlElement* xmlPtr, std::string name, uint8_t b)
+void Xml::setAttrByte(XMLElement* xmlPtr, std::string name, uint8_t b)
 {
 	if(xmlPtr == NULL)
 	{
@@ -419,10 +427,10 @@ void Xml::setAttrByte(TiXmlElement* xmlPtr, std::string name, uint8_t b)
 		return;
 	}
 
-	xmlPtr->SetAttribute(name, b);
+	xmlPtr->SetAttribute(name.c_str(), b);
 }
 
-void Xml::setAttr(TiXmlElement* xmlPtr, std::string name, XmlType type, void* var)
+void Xml::setAttr(XMLElement* xmlPtr, std::string name, XmlType type, void* var)
 {
 	if(xmlPtr == NULL || var == NULL)
 	{
@@ -486,7 +494,7 @@ void Xml::setAttr(TiXmlElement* xmlPtr, std::string name, XmlType type, void* va
 	}
 }
 
-void Xml::setText(TiXmlElement* xmlPtr, std::string text)
+void Xml::setText(XMLElement* xmlPtr, std::string text)
 {
 	if(xmlPtr == NULL)
 	{
@@ -494,16 +502,17 @@ void Xml::setText(TiXmlElement* xmlPtr, std::string text)
 		return;
 	}
 
-	TiXmlNode* textChild = xmlPtr->LastChild();
+	XMLNode* textChild = xmlPtr->LastChild();
 	if(textChild && (textChild->ToText() != NULL)) {
-		textChild->SetValue(text);
+		textChild->SetValue(text.c_str());
 	}
 	else {
-		xmlPtr->LinkEndChild(new TiXmlText(text));
+		textChild = xmlPtr->GetDocument()->NewText(text.c_str());
+		xmlPtr->LinkEndChild(textChild);
 	}
 }
 
-TiXmlElement* Xml::obtainElement(TiXmlElement* xmlPtr, std::string name, int index)
+XMLElement* Xml::obtainElement(XMLElement* xmlPtr, std::string name, int index)
 {
 	if(xmlPtr == NULL)
 	{
@@ -511,13 +520,13 @@ TiXmlElement* Xml::obtainElement(TiXmlElement* xmlPtr, std::string name, int ind
 		return NULL;
 	}
 
-	TiXmlHandle h(xmlPtr);
+	XMLHandle h(xmlPtr);
 
 	// if element doesnt exist, add it
-	TiXmlElement* child = h.ChildElement(name, index).Element();
+	XMLElement* child = getElement(xmlPtr, name, index);
 	if(child == NULL)
 	{
-		child = new TiXmlElement(name);
+		child = xmlPtr->GetDocument()->NewElement(name.c_str());
 		xmlPtr->LinkEndChild(child);
 	}
 
@@ -526,13 +535,20 @@ TiXmlElement* Xml::obtainElement(TiXmlElement* xmlPtr, std::string name, int ind
 
 /* ***** UTIL ***** */
 
-std::string Xml::getErrorString(const TiXmlDocument* xmlDoc)
+std::string Xml::getErrorString(const XMLDocument* xmlDoc)
 {
 	if(xmlDoc == NULL)
 		return "";
 
 	std::stringstream error;
-	error << "line " <<  xmlDoc->ErrorRow() << ", " << (std::string) xmlDoc->ErrorDesc();
+	if(xmlDoc->GetErrorStr1())
+	{
+		error << xmlDoc->GetErrorStr1();
+	}
+	if(xmlDoc->GetErrorStr2())
+	{
+		error << " " << xmlDoc->GetErrorStr2();
+	}
 	return error.str();
 }
 

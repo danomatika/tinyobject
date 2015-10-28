@@ -29,6 +29,8 @@
 
 #include "Xml.h"
 
+using namespace tinyxml2;
+
 #define DEBUG_XML_OBJECT
 
 namespace xml {
@@ -42,7 +44,7 @@ XmlObject::~XmlObject()
 	closeXmlFile();
 }
 
-bool XmlObject::loadXml(TiXmlElement* e)
+bool XmlObject::loadXml(tinyxml2::XMLElement* e)
 {
 	if(e == NULL)
 	{
@@ -50,10 +52,10 @@ bool XmlObject::loadXml(TiXmlElement* e)
 	}
 
 	// check if the element is correct
-	if(!m_elementName.empty() && e->ValueStr() != m_elementName)
+	if(!m_elementName.empty() && (std::string)e->Name() != m_elementName)
 	{
 		LOG_WARN << "Xml \"" << m_elementName << "\": wrong xml element name \""
-				 << e->ValueStr() << "\" for object with element name \""
+				 << e->Name() << "\" for object with element name \""
 				 << m_elementName << "\"" << std::endl;
 		return false;
 	}
@@ -62,7 +64,7 @@ bool XmlObject::loadXml(TiXmlElement* e)
 	LOG_DEBUG << "loading xml " << m_elementName << std::endl;
 	#endif
 
-	TiXmlElement* child;
+	XMLElement* child;
 
 	// load attached elements
 	for(unsigned int i = 0; i < m_elementList.size(); ++i)
@@ -74,7 +76,7 @@ bool XmlObject::loadXml(TiXmlElement* e)
 		#endif
 
 		// check if this element is the same as the root
-		if(e->ValueStr() == elem->name)
+		if((std::string)e->Name() == elem->name)
 		{
 			child = e;
 		}
@@ -121,11 +123,11 @@ bool XmlObject::loadXml(TiXmlElement* e)
 		}
 		else // exists
 		{
-			TiXmlElement* elementToLoad = NULL;
+			XMLElement* elementToLoad = NULL;
 		
 			// check the parent element
 			if((*objectIter)->getXmlName() == "" ||
-				(*objectIter)->getXmlName() == e->ValueStr())
+				(*objectIter)->getXmlName() == (std::string)e->Name())
 			{
 				// same element as parent
 				elementToLoad = e;
@@ -151,7 +153,7 @@ bool XmlObject::loadXml(TiXmlElement* e)
 			if(elementToLoad != NULL)
 			{
 				#ifdef DEBUG_XML_OBJECT
-				LOG_DEBUG << "object: " << (*objectIter)->getXmlName() << " " << e->ValueStr() << std::endl;
+				LOG_DEBUG << "object: " << (*objectIter)->getXmlName() << " " << e->Name() << std::endl;
 				#endif
 				
 				(*objectIter)->loadXml(elementToLoad);  // found element
@@ -183,20 +185,20 @@ bool XmlObject::loadXmlFile(std::string filename)
 	}
 
 	// try to load the file
-	m_xmlDoc = new TiXmlDocument;
-	if(!m_xmlDoc->LoadFile(filename.c_str(), TIXML_ENCODING_UTF8))
+	m_xmlDoc = new XMLDocument;
+	if(m_xmlDoc->LoadFile(filename.c_str()) != XML_SUCCESS)
 	{
-		LOG_ERROR << "Xml \"" << m_elementName << "\": could not load \""
-				  << filename << "\": " << Xml::getErrorString(m_xmlDoc)  << std::endl;
+		LOG_ERROR << "Xml \"" << m_elementName << "\": could not load \"" << filename
+				  << "\": " << Xml::getErrorString(m_xmlDoc) << std::endl;
 		closeXmlFile();
 		return false;
 	}
 
 	// get the root element
-	TiXmlElement* root = m_xmlDoc->RootElement();
+	XMLElement* root = m_xmlDoc->RootElement();
 
 	// check if the root is correct
-	if(root->ValueStr() != m_elementName)
+	if(!root || (std::string)root->Name() != m_elementName)
 	{
 		LOG_ERROR << "Xml \"" << m_elementName << "\": xml file \"" << filename
 				  << "\" does not have \"" << m_elementName << "\" as the root element"
@@ -212,7 +214,7 @@ bool XmlObject::loadXmlFile(std::string filename)
 	return loadXml(root);
 }
 
-bool XmlObject::saveXml(TiXmlElement* e)
+bool XmlObject::saveXml(XMLElement* e)
 {
 	if(e == NULL)
 	{
@@ -220,7 +222,7 @@ bool XmlObject::saveXml(TiXmlElement* e)
 	}
 
 	// check if the element is correct
-	if(!m_elementName.empty() && e->ValueStr() != m_elementName)
+	if(!m_elementName.empty() && (std::string)e->Name() != m_elementName)
 	{
 		LOG_WARN << "Xml \"" << m_elementName << "\": xml element value is not \""
 				 << m_elementName << "\"" << std::endl;
@@ -231,7 +233,7 @@ bool XmlObject::saveXml(TiXmlElement* e)
 	LOG_DEBUG << "saving xml " << m_elementName << std::endl;
 	#endif
 
-	TiXmlElement* child;
+	XMLElement* child;
 
 	// save attached elements
 	for(unsigned int i = 0; i < m_elementList.size(); ++i)
@@ -243,7 +245,7 @@ bool XmlObject::saveXml(TiXmlElement* e)
 		#endif
 
 		// check if this element is the same as the root
-		if(e->ValueStr() == elem->name)
+		if((std::string)e->Name() == elem->name)
 		{
 			child = e;
 		}
@@ -329,19 +331,19 @@ bool XmlObject::saveXml(TiXmlElement* e)
 
 bool XmlObject::saveXmlFile(std::string filename)
 {
-	 TiXmlElement* root;
+	 XMLElement* root;
 
 	// setup new doc if not loaded
 	if(!m_bDocLoaded)
 	{
 		// new doc
-		m_xmlDoc = new TiXmlDocument;
+		m_xmlDoc = new XMLDocument;
 
-		// add the declaration
-		m_xmlDoc->LinkEndChild(new TiXmlDeclaration("1.0", "", ""));
+		// add the default declaration: 1.0 UTF-8
+		m_xmlDoc->LinkEndChild(m_xmlDoc->NewDeclaration());
 
 		// add root element
-		root = new TiXmlElement(getXmlName());
+		root = m_xmlDoc->NewElement(getXmlName().c_str());
 		m_xmlDoc->LinkEndChild(root);
 
 		m_bDocLoaded = true;
@@ -361,7 +363,7 @@ bool XmlObject::saveXmlFile(std::string filename)
 	bool ret = saveXml(root);
 
 	// try saving
-	if(!m_xmlDoc->SaveFile(filename))
+	if(!m_xmlDoc->SaveFile(filename.c_str()))
 	{
 		LOG_ERROR << "Xml \"" << m_elementName << "\": could not save to \""
 				  << filename << "\"" << std::endl;
@@ -526,7 +528,7 @@ bool XmlObject::removeXmlAttribute(std::string name, std::string elementName)
 	return false;
 }
 
-TiXmlElement* XmlObject::getXmlRootElement()
+XMLElement* XmlObject::getXmlRootElement()
 {
 	if(m_bDocLoaded)
 		return m_xmlDoc->RootElement();

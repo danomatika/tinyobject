@@ -15,10 +15,17 @@ solution "xmlframework"
 project "xmlframework"
 	kind "StaticLib"
 	language "C++"
-	targetdir "../lib"
+	targetdir "../src/xmlframework"
 	files { "../src/xmlframework/**.h", "../src/xmlframework/**.cpp" }
 
+	configuration "linux"
+		buildoptions { "`pkg-config --cflags tinyxml2`" }
+		linkoptions { "`pkg-config --libs tinyxml2`" }
+
 	configuration "macosx"
+		-- Homebrew & MacPorts
+		includedirs { "/usr/local/include", "/opt/local/include"}
+		libdirs { "/usr/local/lib", "/opt/local/lib" }
 		buildoptions { "-fvisibility=default" }
 
 	configuration "Debug"
@@ -33,11 +40,22 @@ project "xmlframework"
 project "xmltests"
 	kind "ConsoleApp"
 	language "C++"
-	targetdir "../bin"
+	targetdir "../src/tests"
 	files { "../src/tests/**.h", "../src/tests/**.cpp" }
 
 	includedirs { "../src" }
 	links { "xmlframework" }
+
+	configuration "linux"
+		buildoptions { "`pkg-config --cflags tinyxml2`" }
+		linkoptions { "`pkg-config --libs tinyxml2`" }
+
+	configuration "macosx"
+		-- Homebrew & MacPorts
+		includedirs { "/usr/local/include", "/opt/local/include"}
+		libdirs { "/usr/local/lib", "/opt/local/lib" }
+		buildoptions { "-fvisibility=default" }
+		links { "tinyxml2" }
 
 	configuration "Debug"
 		defines { "DEBUG" }

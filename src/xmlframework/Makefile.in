@@ -135,10 +135,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(otherincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libxmlframework_la_LIBADD =
-am__dirstamp = $(am__leading_dot)dirstamp
-am_libxmlframework_la_OBJECTS = Xml.lo XmlObject.lo tinyxml/tinystr.lo \
-	tinyxml/tinyxml.lo tinyxml/tinyxmlerror.lo \
-	tinyxml/tinyxmlparser.lo
+am_libxmlframework_la_OBJECTS = Xml.lo XmlObject.lo
 libxmlframework_la_OBJECTS = $(am_libxmlframework_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -287,11 +284,16 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TINYXML2_CFLAGS = @TINYXML2_CFLAGS@
+TINYXML2_LIBS = @TINYXML2_LIBS@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -348,9 +350,6 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
-# some source files are in a subdir
-AUTOMAKE_OPTIONS = subdir-objects
-
 # the library to build
 lib_LTLIBRARIES = libxmlframework.la
 
@@ -359,22 +358,13 @@ otherincludedir = $(includedir)/$(PACKAGE)
 otherinclude_HEADERS = xmlframework.h Xml.h XmlObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h \
-                             Xml.cpp \
-                             XmlObject.cpp \
-                             tinyxml/tinystr.h \
-                             tinyxml/tinystr.cpp \
-                             tinyxml/tinyxml.h \
-                             tinyxml/tinyxml.cpp \
-                             tinyxml/tinyxmlerror.cpp \
-                             tinyxml/tinyxmlparser.cpp
-
+libxmlframework_la_SOURCES = Log.h Xml.cpp XmlObject.cpp
 
 # include paths
-AM_CPPFLAGS = $(CXXFLAGS)
+AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)
 
 # libs to link
-AM_LDFLAGS = 
+AM_LDFLAGS = $(TINYXML2_LIBS)
 all: all-am
 
 .SUFFIXES:
@@ -443,59 +433,36 @@ clean-libLTLIBRARIES:
 	  echo rm -f $${locs}; \
 	  rm -f $${locs}; \
 	}
-tinyxml/$(am__dirstamp):
-	@$(MKDIR_P) tinyxml
-	@: > tinyxml/$(am__dirstamp)
-tinyxml/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) tinyxml/$(DEPDIR)
-	@: > tinyxml/$(DEPDIR)/$(am__dirstamp)
-tinyxml/tinystr.lo: tinyxml/$(am__dirstamp) \
-	tinyxml/$(DEPDIR)/$(am__dirstamp)
-tinyxml/tinyxml.lo: tinyxml/$(am__dirstamp) \
-	tinyxml/$(DEPDIR)/$(am__dirstamp)
-tinyxml/tinyxmlerror.lo: tinyxml/$(am__dirstamp) \
-	tinyxml/$(DEPDIR)/$(am__dirstamp)
-tinyxml/tinyxmlparser.lo: tinyxml/$(am__dirstamp) \
-	tinyxml/$(DEPDIR)/$(am__dirstamp)
 
 libxmlframework.la: $(libxmlframework_la_OBJECTS) $(libxmlframework_la_DEPENDENCIES) $(EXTRA_libxmlframework_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libxmlframework_la_OBJECTS) $(libxmlframework_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f tinyxml/*.$(OBJEXT)
-	-rm -f tinyxml/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Xml.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XmlObject.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tinyxml/$(DEPDIR)/tinystr.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tinyxml/$(DEPDIR)/tinyxml.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tinyxml/$(DEPDIR)/tinyxmlerror.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@tinyxml/$(DEPDIR)/tinyxmlparser.Plo@am__quote@
 
 .cpp.o:
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
-@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
-@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
-@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .cpp.lo:
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
-@am__fastdepCXX_TRUE@	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-@am__fastdepCXX_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
@@ -505,7 +472,6 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-	-rm -rf tinyxml/.libs tinyxml/_libs
 install-otherincludeHEADERS: $(otherinclude_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(otherinclude_HEADERS)'; test -n "$(otherincludedir)" || list=; \
@@ -643,8 +609,6 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f tinyxml/$(DEPDIR)/$(am__dirstamp)
-	-rm -f tinyxml/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -655,7 +619,7 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) tinyxml/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -701,7 +665,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) tinyxml/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

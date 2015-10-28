@@ -7,33 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		006C4AD7135B001272804626 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 564F099E1F91001272804626 /* tinyxmlerror.cpp */; };
-		140032714915001272804626 /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658A56416C60001272804626 /* Xml.cpp */; };
-		17F23CB72728001272804626 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BF942A50593001272804626 /* tinyxml.cpp */; };
-		207B79D60AF6001272804626 /* XmlObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ED121E73F6001272804626 /* XmlObject.cpp */; };
-		2DC430FF6424001272804626 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CE42D345870001272804626 /* tinystr.cpp */; };
-		305A6FB70969001272804626 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67A947D04B37001272804626 /* tinyxmlparser.cpp */; };
+		619D30C71178171052B165AB /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56653DDD7B08708A1F127D45 /* Xml.cpp */; };
+		3EDA741127176530409102D9 /* XmlObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */; };
+		124519106B437F3D0C0801F6 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 604A233A6FA62DC31AD27715 /* tinystr.cpp */; };
+		76203C9C34B2270C235F39C0 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */; };
+		3E6D00BF1E807EFA5CF23887 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */; };
+		570D4479166155830C812693 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03CA55223F35001272804626 /* xmlframework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xmlframework.h; sourceTree = "<group>"; };
-		07ED121E73F6001272804626 /* XmlObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XmlObject.cpp; sourceTree = "<group>"; };
-		0BF942A50593001272804626 /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
-		112C65546F85001272804626 /* Xml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Xml.h; sourceTree = "<group>"; };
-		38311F074291001272804626 /* libxmlframework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxmlframework.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E1710C30752001272804626 /* XmlObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XmlObject.h; sourceTree = "<group>"; };
-		43181A461441001272804626 /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
-		4F1868533705001272804626 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
-		4F7679BE5D1A001272804626 /* config.h.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
-		564F099E1F91001272804626 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
-		658A56416C60001272804626 /* Xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Xml.cpp; sourceTree = "<group>"; };
-		67A947D04B37001272804626 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
-		6CE42D345870001272804626 /* tinystr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinystr.cpp; sourceTree = "<group>"; };
-		7D272AB95A68001272804626 /* tinystr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinystr.h; sourceTree = "<group>"; };
+		169C66867F7625110379010A /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
+		56653DDD7B08708A1F127D45 /* Xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Xml.cpp"; path = "Xml.cpp"; sourceTree = "<group>"; };
+		73623A755A0F1E663C113CB5 /* Xml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Xml.h"; path = "Xml.h"; sourceTree = "<group>"; };
+		2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XmlObject.cpp"; path = "XmlObject.cpp"; sourceTree = "<group>"; };
+		132F194647A54CA6382F22C5 /* XmlObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XmlObject.h"; path = "XmlObject.h"; sourceTree = "<group>"; };
+		604A233A6FA62DC31AD27715 /* tinystr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinystr.cpp"; path = "tinystr.cpp"; sourceTree = "<group>"; };
+		4D2016BF5C361A1B100D6AEF /* tinystr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinystr.h"; path = "tinystr.h"; sourceTree = "<group>"; };
+		18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxml.cpp"; path = "tinyxml.cpp"; sourceTree = "<group>"; };
+		19F66E36420E2E4B47E7386D /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinyxml.h"; path = "tinyxml.h"; sourceTree = "<group>"; };
+		0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxmlerror.cpp"; path = "tinyxmlerror.cpp"; sourceTree = "<group>"; };
+		40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxmlparser.cpp"; path = "tinyxmlparser.cpp"; sourceTree = "<group>"; };
+		309327E06A9C2B207B4E66A7 /* xmlframework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "xmlframework.h"; path = "xmlframework.h"; sourceTree = "<group>"; };
+		08AF3DBE352B515018415AE9 /* libxmlframework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxmlframework.a"; path = "libxmlframework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5A9521353D68001272804626 /* Frameworks */ = {
+		56C75F3C7A0F0CFB461D2143 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,78 +42,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AA1626C22F6001272804626 /* tinyxml */ = {
+		2E8149D61B52277376211B27 /* xmlframework */ = {
 			isa = PBXGroup;
 			children = (
-				6CE42D345870001272804626 /* tinystr.cpp */,
-				7D272AB95A68001272804626 /* tinystr.h */,
-				0BF942A50593001272804626 /* tinyxml.cpp */,
-				43181A461441001272804626 /* tinyxml.h */,
-				564F099E1F91001272804626 /* tinyxmlerror.cpp */,
-				67A947D04B37001272804626 /* tinyxmlparser.cpp */,
+				57B0697E61167A9011036B3E /* src */,
+				1BE85BC5231371802DB62F3E /* Products */,
 			);
-			path = tinyxml;
+			name = "xmlframework";
 			sourceTree = "<group>";
 		};
-		187F6B7E38BE001272804626 /* xmlframework */ = {
+		57B0697E61167A9011036B3E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				4F1868533705001272804626 /* Log.h */,
-				658A56416C60001272804626 /* Xml.cpp */,
-				112C65546F85001272804626 /* Xml.h */,
-				07ED121E73F6001272804626 /* XmlObject.cpp */,
-				3E1710C30752001272804626 /* XmlObject.h */,
-				4F7679BE5D1A001272804626 /* config.h.in */,
-				0AA1626C22F6001272804626 /* tinyxml */,
-				03CA55223F35001272804626 /* xmlframework.h */,
+				34847FB901024CC94C9D6C98 /* xmlframework */,
 			);
-			path = xmlframework;
-			sourceTree = "<group>";
-		};
-		1F1D680E288C001272804626 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				187F6B7E38BE001272804626 /* xmlframework */,
-			);
-			name = src;
+			name = "src";
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		4DBD57933162001272804626 /* xmlframework */ = {
+		34847FB901024CC94C9D6C98 /* xmlframework */ = {
 			isa = PBXGroup;
 			children = (
-				1F1D680E288C001272804626 /* src */,
-				4F152ABF1C02001272804626 /* Products */,
+				169C66867F7625110379010A /* Log.h */,
+				56653DDD7B08708A1F127D45 /* Xml.cpp */,
+				73623A755A0F1E663C113CB5 /* Xml.h */,
+				2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */,
+				132F194647A54CA6382F22C5 /* XmlObject.h */,
+				6AFE6D67283D70C4717D5E79 /* tinyxml */,
+				309327E06A9C2B207B4E66A7 /* xmlframework.h */,
 			);
-			name = xmlframework;
+			name = "xmlframework";
+			path = xmlframework;
 			sourceTree = "<group>";
 		};
-		4F152ABF1C02001272804626 /* Products */ = {
+		6AFE6D67283D70C4717D5E79 /* tinyxml */ = {
 			isa = PBXGroup;
 			children = (
-				38311F074291001272804626 /* libxmlframework.a */,
+				604A233A6FA62DC31AD27715 /* tinystr.cpp */,
+				4D2016BF5C361A1B100D6AEF /* tinystr.h */,
+				18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */,
+				19F66E36420E2E4B47E7386D /* tinyxml.h */,
+				0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */,
+				40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */,
 			);
-			name = Products;
+			name = "tinyxml";
+			path = tinyxml;
+			sourceTree = "<group>";
+		};
+		1BE85BC5231371802DB62F3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08AF3DBE352B515018415AE9 /* libxmlframework.a */,
+			);
+			name = "Products";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50572E0221BD001272804626 /* xmlframework */ = {
+		02796EF25C6060815EC652B5 /* xmlframework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05635C887CC2001272804626 /* Build configuration list for PBXNativeTarget "xmlframework" */;
+			buildConfigurationList = 4EBA19BA41D27A05187A762F /* Build configuration list for PBXNativeTarget "xmlframework" */;
 			buildPhases = (
-				28F055E01B20001272804626 /* Resources */,
-				0A8941067813001272804626 /* Sources */,
-				5A9521353D68001272804626 /* Frameworks */,
+				23FD47DD1C132898279951C3 /* Resources */,
+				792831BB71FB560D1736062E /* Sources */,
+				56C75F3C7A0F0CFB461D2143 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = xmlframework;
-			productName = xmlframework;
-			productReference = 38311F074291001272804626 /* libxmlframework.a */;
+			name = "xmlframework";
+			productName = "xmlframework";
+			productReference = 08AF3DBE352B515018415AE9 /* libxmlframework.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -125,17 +125,17 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmlframework" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 4DBD57933162001272804626 /* xmlframework */;
+			mainGroup = 2E8149D61B52277376211B27 /* xmlframework */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				50572E0221BD001272804626 /* xmlframework */,
+				02796EF25C6060815EC652B5 /* libxmlframework.a */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		28F055E01B20001272804626 /* Resources */ = {
+		23FD47DD1C132898279951C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,42 +145,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0A8941067813001272804626 /* Sources */ = {
+		792831BB71FB560D1736062E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				140032714915001272804626 /* Xml.cpp in Sources */,
-				207B79D60AF6001272804626 /* XmlObject.cpp in Sources */,
-				2DC430FF6424001272804626 /* tinystr.cpp in Sources */,
-				17F23CB72728001272804626 /* tinyxml.cpp in Sources */,
-				006C4AD7135B001272804626 /* tinyxmlerror.cpp in Sources */,
-				305A6FB70969001272804626 /* tinyxmlparser.cpp in Sources */,
+				619D30C71178171052B165AB /* Xml.cpp in Sources */,
+				3EDA741127176530409102D9 /* XmlObject.cpp in Sources */,
+				124519106B437F3D0C0801F6 /* tinystr.cpp in Sources */,
+				76203C9C34B2270C235F39C0 /* tinyxml.cpp in Sources */,
+				3E6D00BF1E807EFA5CF23887 /* tinyxmlerror.cpp in Sources */,
+				570D4479166155830C812693 /* tinyxmlparser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		26C8512A582A001272804626 /* Release */ = {
+		7DB73367463E18572A641F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
-				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OBJROOT = ../obj/Release/xmlframework;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-fvisibility=default";
-				PREBINDING = NO;
-				SYMROOT = ../lib;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../src/xmlframework;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "xmlframework";
 			};
-			name = Release;
+			name = "Debug";
 		};
-		3C2B653102BB001272804626 /* Debug */ = {
+		71DE328C46A840405340312D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../src/xmlframework;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "xmlframework";
+			};
+			name = "Release";
+		};
+		536109D642E418C34DFE6651 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -190,64 +199,83 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				OBJROOT = ../obj/Debug/xmlframework;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Debug/xmlframework";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-fvisibility=default";
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
 				PREBINDING = NO;
-				SYMROOT = ../lib;
+				SYMROOT = "../src/xmlframework";
 			};
-			name = Debug;
+			name = "Debug";
 		};
-		49EB1ADF32F8001272804626 /* Debug */ = {
+		429C228C4050455634752C13 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../lib;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = xmlframework;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Release/xmlframework";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
+				PREBINDING = NO;
+				SYMROOT = "../src/xmlframework";
 			};
-			name = Debug;
-		};
-		7B16101A4A3D001272804626 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../lib;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/lib;
-				PRODUCT_NAME = xmlframework;
-			};
-			name = Release;
+			name = "Release";
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05635C887CC2001272804626 /* Build configuration list for PBXNativeTarget "xmlframework" */ = {
+		4EBA19BA41D27A05187A762F /* Build configuration list for PBXNativeTarget "libxmlframework.a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49EB1ADF32F8001272804626 /* Debug */,
-				7B16101A4A3D001272804626 /* Release */,
+				7DB73367463E18572A641F88 /* Debug */,
+				71DE328C46A840405340312D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = "Debug";
 		};
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmlframework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3C2B653102BB001272804626 /* Debug */,
-				26C8512A582A001272804626 /* Release */,
+				536109D642E418C34DFE6651 /* Debug */,
+				429C228C4050455634752C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = "Debug";
 		};
 /* End XCConfigurationList section */
+
 	};
 	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
 }

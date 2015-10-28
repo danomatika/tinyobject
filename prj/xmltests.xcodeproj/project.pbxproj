@@ -7,116 +7,117 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16033E00759E001272804626 /* libxmlframework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B776ED6923001272804626 /* libxmlframework.a */; };
-		2B474D0913AF001272804626 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D79AD5412001272804626 /* Main.cpp */; };
+		07D6229A2E875C6E71003E3E /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2924364C4552254152922DAE /* Main.cpp */; };
+		406750EC520F77F267902837 /* libxmlframework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F250F452D5B5CE0137B74EC /* libxmlframework.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		065422693670001272804626 /* PBXContainerItemProxy */ = {
+		6C3A030C23491C654CDF45AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 365664322732001272804626 /* xmlframework.xcodeproj */;
+			containerPortal = 492B5A4378345323580C31A9 /* xmlframework.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 38311F074291001272804626;
-			remoteInfo = libxmlframework.a;
+			remoteGlobalIDString = 08AF3DBE352B515018415AE9;
+			remoteInfo = "libxmlframework.a";
 		};
-		2FC613184905001272804626 /* PBXContainerItemProxy */ = {
+		16E6113879AC3377751333BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 365664322732001272804626 /* xmlframework.xcodeproj */;
+			containerPortal = 492B5A4378345323580C31A9 /* xmlframework.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 50572E0221BD001272804626;
-			remoteInfo = libxmlframework.a;
+			remoteGlobalIDString = 02796EF25C6060815EC652B5;
+			remoteInfo = "libxmlframework.a";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		035D79AD5412001272804626 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
-		12B607726312001272804626 /* xmltests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xmltests; sourceTree = BUILT_PRODUCTS_DIR; };
-		365664322732001272804626 /* xmlframework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = xmlframework.xcodeproj; sourceTree = SOURCE_ROOT; };
+		2924364C4552254152922DAE /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "Main.cpp"; sourceTree = "<group>"; };
+		759C0249293234725978749D /* xmltests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "xmltests"; path = "xmltests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		492B5A4378345323580C31A9 /* xmlframework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xmlframework.xcodeproj"; path = "xmlframework.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		64C54C0F2970001272804626 /* Frameworks */ = {
+		269B24C3215E29B5673A16C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16033E00759E001272804626 /* libxmlframework.a in Frameworks */,
+				406750EC520F77F267902837 /* libxmlframework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00EE48B7201E001272804626 /* Products */ = {
+		5119685E264F1B8B54E66737 /* xmltests */ = {
 			isa = PBXGroup;
 			children = (
-				12B607726312001272804626 /* xmltests */,
+				4E0D772075430FBB438A3DB2 /* src */,
+				13DE6335386B1AB422627A54 /* Products */,
+				311035B9401801AC755A6F32 /* Projects */,
 			);
-			name = Products;
+			name = "xmltests";
 			sourceTree = "<group>";
 		};
-		22D964635566001272804626 /* xmltests */ = {
+		4E0D772075430FBB438A3DB2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				5AA079BB0CCD001272804626 /* src */,
-				00EE48B7201E001272804626 /* Products */,
-				3D72183F79F0001272804626 /* Projects */,
+				2E6505FF42D363F462DD3273 /* tests */,
 			);
-			name = xmltests;
+			name = "src";
+			path = ../src;
 			sourceTree = "<group>";
 		};
-		264C7FD458A6001272804626 /* tests */ = {
+		2E6505FF42D363F462DD3273 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				035D79AD5412001272804626 /* Main.cpp */,
+				2924364C4552254152922DAE /* Main.cpp */,
 			);
+			name = "tests";
 			path = tests;
 			sourceTree = "<group>";
 		};
-		35185D477C7F001272804626 /* Products */ = {
+		13DE6335386B1AB422627A54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79B776ED6923001272804626 /* libxmlframework.a */,
+				759C0249293234725978749D /* xmltests */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		311035B9401801AC755A6F32 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				492B5A4378345323580C31A9 /* xmlframework.xcodeproj */,
+			);
+			name = "Projects";
+			sourceTree = "<group>";
+		};
+		41CD0A7A03B8300E1BC54318 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F250F452D5B5CE0137B74EC /* libxmlframework.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3D72183F79F0001272804626 /* Projects */ = {
-			isa = PBXGroup;
-			children = (
-				365664322732001272804626 /* xmlframework.xcodeproj */,
-			);
-			name = Projects;
-			sourceTree = "<group>";
-		};
-		5AA079BB0CCD001272804626 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				264C7FD458A6001272804626 /* tests */,
-			);
-			name = src;
-			path = ../src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6BE127A41817001272804626 /* xmltests */ = {
+		145223B34B0D58FD76D54C88 /* xmltests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 167B1DD31051001272804626 /* Build configuration list for PBXNativeTarget "xmltests" */;
+			buildConfigurationList = 63CE6D572A12413B3B33297A /* Build configuration list for PBXNativeTarget "xmltests" */;
 			buildPhases = (
-				52E426575561001272804626 /* Resources */,
-				637A61335D68001272804626 /* Sources */,
-				64C54C0F2970001272804626 /* Frameworks */,
+				40A27A544ED455D205E53680 /* Resources */,
+				3F9C4AC22E3E111B18D21F57 /* Sources */,
+				269B24C3215E29B5673A16C0 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				06387FC1762B001272804626 /* PBXTargetDependency */,
+				467C7BB555307F730E6262A7 /* PBXTargetDependency */,
 			);
-			name = xmltests;
+			name = "xmltests";
 			productInstallPath = "$(HOME)/bin";
-			productName = xmltests;
-			productReference = 12B607726312001272804626 /* xmltests */;
+			productName = "xmltests";
+			productReference = 759C0249293234725978749D /* xmltests */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -127,33 +128,33 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmltests" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 22D964635566001272804626 /* xmltests */;
+			mainGroup = 5119685E264F1B8B54E66737 /* xmltests */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 35185D477C7F001272804626 /* Products */;
-					ProjectRef = 365664322732001272804626 /* xmlframework.xcodeproj */;
+					ProductGroup = 41CD0A7A03B8300E1BC54318 /* Products */;
+					ProjectRef = 492B5A4378345323580C31A9 /* xmlframework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				6BE127A41817001272804626 /* xmltests */,
+				145223B34B0D58FD76D54C88 /* xmltests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		79B776ED6923001272804626 /* libxmlframework.a */ = {
+		4F250F452D5B5CE0137B74EC /* libxmlframework.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libxmlframework.a;
-			remoteRef = 065422693670001272804626 /* PBXContainerItemProxy */;
+			path = "../src/xmlframework/libxmlframework.a";
+			remoteRef = 6C3A030C23491C654CDF45AB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		52E426575561001272804626 /* Resources */ = {
+		40A27A544ED455D205E53680 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -163,70 +164,54 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		637A61335D68001272804626 /* Sources */ = {
+		3F9C4AC22E3E111B18D21F57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B474D0913AF001272804626 /* Main.cpp in Sources */,
+				07D6229A2E875C6E71003E3E /* Main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
 /* Begin PBXTargetDependency section */
-		06387FC1762B001272804626 /* PBXTargetDependency */ = {
+		467C7BB555307F730E6262A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = libxmlframework.a;
-			targetProxy = 2FC613184905001272804626 /* PBXContainerItemProxy */;
+			name = "libxmlframework.a";
+			targetProxy = 16E6113879AC3377751333BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		16433E5F635A001272804626 /* Debug */ = {
+		435F4B6A2B8556CE204D32ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../bin;
+				CONFIGURATION_BUILD_DIR = ../src/tests;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = xmltests;
+				PRODUCT_NAME = "xmltests";
 			};
-			name = Debug;
+			name = "Debug";
 		};
-		23F012C222B9001272804626 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
-				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../src;
-				OBJROOT = ../obj/Release/xmltests;
-				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = NO;
-				SYMROOT = ../bin;
-			};
-			name = Release;
-		};
-		49990AA164CC001272804626 /* Release */ = {
+		706304B66FE409C43D323C14 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../bin;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../src/tests;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = xmltests;
+				PRODUCT_NAME = "xmltests";
 			};
-			name = Release;
+			name = "Release";
 		};
-		571546CF6A85001272804626 /* Debug */ = {
+		264C523A6A292E2F23BF0369 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -236,39 +221,91 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../src;
-				OBJROOT = ../obj/Debug/xmltests;
+				HEADER_SEARCH_PATHS = (
+					"../src",
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Debug/xmltests";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
+				OTHER_LDFLAGS = (
+					"-ltinyxml2",
+				);
 				PREBINDING = NO;
-				SYMROOT = ../bin;
+				SYMROOT = "../src/tests";
 			};
-			name = Debug;
+			name = "Debug";
+		};
+		4DD17E13149D5F3A62A21F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../src",
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Release/xmltests";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
+				OTHER_LDFLAGS = (
+					"-ltinyxml2",
+				);
+				PREBINDING = NO;
+				SYMROOT = "../src/tests";
+			};
+			name = "Release";
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		167B1DD31051001272804626 /* Build configuration list for PBXNativeTarget "xmltests" */ = {
+		63CE6D572A12413B3B33297A /* Build configuration list for PBXNativeTarget "xmltests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16433E5F635A001272804626 /* Debug */,
-				49990AA164CC001272804626 /* Release */,
+				435F4B6A2B8556CE204D32ED /* Debug */,
+				706304B66FE409C43D323C14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = "Debug";
 		};
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmltests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				571546CF6A85001272804626 /* Debug */,
-				23F012C222B9001272804626 /* Release */,
+				264C523A6A292E2F23BF0369 /* Debug */,
+				4DD17E13149D5F3A62A21F3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = "Debug";
 		};
 /* End XCConfigurationList section */
+
 	};
 	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
 }

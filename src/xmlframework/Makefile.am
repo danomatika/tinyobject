@@ -1,8 +1,5 @@
 # xmlframework library
 
-# some source files are in a subdir
-AUTOMAKE_OPTIONS = subdir-objects
-
 # the library to build
 lib_LTLIBRARIES = libxmlframework.la
 
@@ -11,21 +8,13 @@ otherincludedir = $(includedir)/$(PACKAGE)
 otherinclude_HEADERS = xmlframework.h Xml.h XmlObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h \
-                             Xml.cpp \
-                             XmlObject.cpp \
-                             tinyxml/tinystr.h \
-                             tinyxml/tinystr.cpp \
-                             tinyxml/tinyxml.h \
-                             tinyxml/tinyxml.cpp \
-                             tinyxml/tinyxmlerror.cpp \
-                             tinyxml/tinyxmlparser.cpp
+libxmlframework_la_SOURCES = Log.h Xml.cpp XmlObject.cpp
 
 # include paths
-AM_CPPFLAGS = $(CXXFLAGS)
+AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)
 
 # libs to link
-AM_LDFLAGS =
+AM_LDFLAGS = $(TINYXML2_LIBS)
 
 # make sure to remove include folder
 uninstall-hook:

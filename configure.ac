@@ -30,6 +30,10 @@ AC_LANG_CPLUSPLUS
 # check for headers
 AC_HEADER_STDC
 
+# check for headers & libs
+PKG_CHECK_MODULES(TINYXML2, tinyxml2, [],
+	AC_MSG_ERROR([tinyxml2 library >= 2.0.0 not found]))
+
 #########################################
 ##### Options #####
 

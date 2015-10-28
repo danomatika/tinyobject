@@ -240,11 +240,16 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TINYXML2_CFLAGS = @TINYXML2_CFLAGS@
+TINYXML2_LIBS = @TINYXML2_LIBS@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -305,10 +310,10 @@ top_srcdir = @top_srcdir@
 xmltests_SOURCES = main.cpp
 
 # include paths
-xmltests_CPPFLAGS = $(CXXFLAGS) -I$(top_srcdir)/src
+xmltests_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS) -I$(top_srcdir)/src
 
 # libs to link, set static to statically link local libtool lib
-xmltests_LDFLAGS = -static
+xmltests_LDFLAGS = $(TINYXML2_LIBS) -static
 
 # local libraries needed to build (builddir), set path to .la for libtool libs
 xmltests_LDADD = $(top_builddir)/src/xmlframework/libxmlframework.la

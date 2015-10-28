@@ -32,9 +32,9 @@ class TestObject : public XmlObject
 		TestObject() : XmlObject("object") {}
 	
 	protected:
-		bool readXml(TiXmlElement* e)
+		bool readXml(tinyxml2::XMLElement* e)
 		{
-			cout << "	" << e->ValueStr()
+			cout << e->Name()
 				 << " \"" << Xml::getAttrString(e, "name", "unknown") << "\" : "
 				 << e->GetText() << endl;
 		
@@ -51,15 +51,14 @@ class XmlProcessor : public XmlObject
 	protected:
 	
 		// derived callback, called when loading xml data for the object
-		bool readXml(TiXmlElement* e)
+		bool readXml(tinyxml2::XMLElement* e)
 		{
-			TiXmlElement* child = e->FirstChildElement();
+			tinyxml2::XMLElement* child = e->FirstChildElement();
 			while(child != NULL)
 			{
-				if(child->ValueStr() == "argtest")
+				if((string)child->Name() == "argtest")
 				{
-					cout << "argtest" << endl;
-					
+					cout << "ARGUMENT TEST" << endl;
 					bool boolValT = Xml::getAttrBool(child, "boolT", false);
 					bool boolValF = Xml::getAttrBool(child, "boolF", true);
 					uint8_t byteVal = Xml::getAttrByte(child, "byte");
@@ -67,38 +66,38 @@ class XmlProcessor : public XmlObject
 					int intVal = Xml::getAttrInt(child, "int");
 					float floatVal = Xml::getAttrFloat(child, "float");
 					double doubleVal = Xml::getAttrDouble(child, "double");
-					
-					cout << "	boolT:  " << boolValT << endl
-						 << "	boolF:  " << boolValF << endl
-						 << "	byte:   " << (int) byteVal << endl
-						 << "	uint:   " << uintVal << endl
-						 << "	int:    " << intVal << endl
-						 << "	float:  " << floatVal << endl
-						 << "	double: " << doubleVal << endl;
+					cout << "boolT:  " << boolValT << endl
+						 << "boolF:  " << boolValF << endl
+						 << "byte:   " << (int) byteVal << endl
+						 << "uint:   " << uintVal << endl
+						 << "int:    " << intVal << endl
+						 << "float:  " << floatVal << endl
+						 << "double: " << doubleVal << endl;
+					cout << "DONE" << endl << endl;
 				}
-				else if(child->ValueStr() == "elementtest")
+				else if((string)child->Name() == "elementtest")
 				{
-					cout << "elementtest" << endl;
-				
-					TiXmlElement* subchild = child->FirstChildElement();
+					cout << "ELEMENT TEST" << endl;
+					tinyxml2::XMLElement* subchild = child->FirstChildElement();
 					while(subchild != NULL)
 					{
-						cout << "	" << subchild->ValueStr() << ": \"" 
+						cout << subchild->Name() << ": \""
 							 << subchild->GetText() << "\"" << endl;
 						subchild = subchild->NextSiblingElement();
 					}
+					cout << "DONE" << endl << endl;
 				}
-				else if(child->ValueStr() == "objecttest")
+				else if((string)child->Name() == "objecttest")
 				{
-					cout << "objecttest" << endl;
-					
-					TiXmlElement* subchild = child->FirstChildElement();
+					cout << "OBJECT TEST" << endl;
+					tinyxml2::XMLElement* subchild = child->FirstChildElement();
 					while(subchild != NULL)
 					{
 						TestObject o;
 						o.loadXml(child->FirstChildElement());
 						subchild = subchild->NextSiblingElement();
 					}
+					cout << "DONE" << endl << endl;
 				}
 				
 				child = child->NextSiblingElement();
@@ -109,13 +108,11 @@ class XmlProcessor : public XmlObject
 
 int main(int argc, char *argv[])
 {
-	cout << "Starting xmlframework test" << endl;
+	cout << endl;
 	
 	// load xml file through object derived from XmlObject
 	XmlProcessor processor;
 	processor.loadXmlFile("../../data/test.xml");
-	
-	cout << "Exited cleanly" << endl;
 
 	return 0;
 }
