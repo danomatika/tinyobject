@@ -1,21 +1,16 @@
-2015-10-27 Dan Wilcox <danomatika@gmail.com>
+2014-01-09 Dan Wilcox <danomatika@gmail.com>
 
 	0.2.0
 
-	* added libtool support for building & installing static & shared libs
-	* added readme
-
-2013-04-14 Dan Wilcox <danomatika@gmail.com>
-
-	0.1.0
-
+	* fixed tinyxml src build by adding automake subdir-objects option
 	* object with empty xml name now loads from parent's element correctly
 	* fixed setText append bug when saving
 	* XmlObjects with empty names are now treated correctly as being on the same
 	  level as their parents for saving
 	* XmlObject now checks element name against parent element
 	* added gitignore and license
+	* added readme
 
-2010-04-21 Dan Wilcox <danomatika@gmail.com>
+2010-02-22 Dan Wilcox <danomatika@gmail.com>
 
-	0.1.0-alpha: initial commit
+	0.1.0: initial commit
