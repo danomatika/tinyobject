@@ -7,32 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		619D30C71178171052B165AB /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56653DDD7B08708A1F127D45 /* Xml.cpp */; };
-		3EDA741127176530409102D9 /* XmlObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */; };
-		124519106B437F3D0C0801F6 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 604A233A6FA62DC31AD27715 /* tinystr.cpp */; };
-		76203C9C34B2270C235F39C0 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */; };
-		3E6D00BF1E807EFA5CF23887 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */; };
-		570D4479166155830C812693 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */; };
+		086C7A240A273FD160B85D2F /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FC096C263E4F9F7E45099E /* Xml.cpp */; };
+		450D7F96099801F12ED75A03 /* XmlObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B6E911403034567436E98 /* XmlObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		169C66867F7625110379010A /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
-		56653DDD7B08708A1F127D45 /* Xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Xml.cpp"; path = "Xml.cpp"; sourceTree = "<group>"; };
-		73623A755A0F1E663C113CB5 /* Xml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Xml.h"; path = "Xml.h"; sourceTree = "<group>"; };
-		2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XmlObject.cpp"; path = "XmlObject.cpp"; sourceTree = "<group>"; };
-		132F194647A54CA6382F22C5 /* XmlObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XmlObject.h"; path = "XmlObject.h"; sourceTree = "<group>"; };
-		604A233A6FA62DC31AD27715 /* tinystr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinystr.cpp"; path = "tinystr.cpp"; sourceTree = "<group>"; };
-		4D2016BF5C361A1B100D6AEF /* tinystr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinystr.h"; path = "tinystr.h"; sourceTree = "<group>"; };
-		18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxml.cpp"; path = "tinyxml.cpp"; sourceTree = "<group>"; };
-		19F66E36420E2E4B47E7386D /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinyxml.h"; path = "tinyxml.h"; sourceTree = "<group>"; };
-		0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxmlerror.cpp"; path = "tinyxmlerror.cpp"; sourceTree = "<group>"; };
-		40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tinyxmlparser.cpp"; path = "tinyxmlparser.cpp"; sourceTree = "<group>"; };
-		309327E06A9C2B207B4E66A7 /* xmlframework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "xmlframework.h"; path = "xmlframework.h"; sourceTree = "<group>"; };
-		08AF3DBE352B515018415AE9 /* libxmlframework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxmlframework.a"; path = "libxmlframework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17F039C161FB40ED1FEF0C3C /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
+		65FC096C263E4F9F7E45099E /* Xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Xml.cpp"; path = "Xml.cpp"; sourceTree = "<group>"; };
+		559B7194344E76E54C7E08DD /* Xml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Xml.h"; path = "Xml.h"; sourceTree = "<group>"; };
+		6F6B6E911403034567436E98 /* XmlObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XmlObject.cpp"; path = "XmlObject.cpp"; sourceTree = "<group>"; };
+		0C9345C940552B03765F1703 /* XmlObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XmlObject.h"; path = "XmlObject.h"; sourceTree = "<group>"; };
+		5CA36DAC6B6C1B2411CF479D /* xmlframework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "xmlframework.h"; path = "xmlframework.h"; sourceTree = "<group>"; };
+		59C1279B440E2D8C749919C5 /* libxmlframework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libxmlframework.a"; path = "libxmlframework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		56C75F3C7A0F0CFB461D2143 /* Frameworks */ = {
+		4B3443C145415C217AB861DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,57 +32,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E8149D61B52277376211B27 /* xmlframework */ = {
+		58554D9A48F01D500742295B /* xmlframework */ = {
 			isa = PBXGroup;
 			children = (
-				57B0697E61167A9011036B3E /* src */,
-				1BE85BC5231371802DB62F3E /* Products */,
+				48094AFD550558575A970886 /* src */,
+				272B16221C013E496A087186 /* Products */,
 			);
 			name = "xmlframework";
 			sourceTree = "<group>";
 		};
-		57B0697E61167A9011036B3E /* src */ = {
+		48094AFD550558575A970886 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				34847FB901024CC94C9D6C98 /* xmlframework */,
+				2EE8024139C554714C8E33EB /* xmlframework */,
 			);
 			name = "src";
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		34847FB901024CC94C9D6C98 /* xmlframework */ = {
+		2EE8024139C554714C8E33EB /* xmlframework */ = {
 			isa = PBXGroup;
 			children = (
-				169C66867F7625110379010A /* Log.h */,
-				56653DDD7B08708A1F127D45 /* Xml.cpp */,
-				73623A755A0F1E663C113CB5 /* Xml.h */,
-				2BBD3B4D72BD6B412CAA7AEA /* XmlObject.cpp */,
-				132F194647A54CA6382F22C5 /* XmlObject.h */,
-				6AFE6D67283D70C4717D5E79 /* tinyxml */,
-				309327E06A9C2B207B4E66A7 /* xmlframework.h */,
+				17F039C161FB40ED1FEF0C3C /* Log.h */,
+				65FC096C263E4F9F7E45099E /* Xml.cpp */,
+				559B7194344E76E54C7E08DD /* Xml.h */,
+				6F6B6E911403034567436E98 /* XmlObject.cpp */,
+				0C9345C940552B03765F1703 /* XmlObject.h */,
+				5CA36DAC6B6C1B2411CF479D /* xmlframework.h */,
 			);
 			name = "xmlframework";
 			path = xmlframework;
 			sourceTree = "<group>";
 		};
-		6AFE6D67283D70C4717D5E79 /* tinyxml */ = {
+		272B16221C013E496A087186 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				604A233A6FA62DC31AD27715 /* tinystr.cpp */,
-				4D2016BF5C361A1B100D6AEF /* tinystr.h */,
-				18D80D0D01A04B5574CB3B78 /* tinyxml.cpp */,
-				19F66E36420E2E4B47E7386D /* tinyxml.h */,
-				0F62001F2A3D197179B846C9 /* tinyxmlerror.cpp */,
-				40ED384E23A47595494D7F17 /* tinyxmlparser.cpp */,
-			);
-			name = "tinyxml";
-			path = tinyxml;
-			sourceTree = "<group>";
-		};
-		1BE85BC5231371802DB62F3E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				08AF3DBE352B515018415AE9 /* libxmlframework.a */,
+				59C1279B440E2D8C749919C5 /* libxmlframework.a */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
@@ -100,13 +75,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		02796EF25C6060815EC652B5 /* xmlframework */ = {
+		1372561F3B385B0A03C877BD /* xmlframework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4EBA19BA41D27A05187A762F /* Build configuration list for PBXNativeTarget "xmlframework" */;
+			buildConfigurationList = 503842144AB60B9B0AD87016 /* Build configuration list for PBXNativeTarget "xmlframework" */;
 			buildPhases = (
-				23FD47DD1C132898279951C3 /* Resources */,
-				792831BB71FB560D1736062E /* Sources */,
-				56C75F3C7A0F0CFB461D2143 /* Frameworks */,
+				70901989738D34495DA92B17 /* Resources */,
+				1AC45CE23A0953187A455C37 /* Sources */,
+				4B3443C145415C217AB861DB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -114,7 +89,7 @@
 			);
 			name = "xmlframework";
 			productName = "xmlframework";
-			productReference = 08AF3DBE352B515018415AE9 /* libxmlframework.a */;
+			productReference = 59C1279B440E2D8C749919C5 /* libxmlframework.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -125,17 +100,17 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmlframework" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 2E8149D61B52277376211B27 /* xmlframework */;
+			mainGroup = 58554D9A48F01D500742295B /* xmlframework */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				02796EF25C6060815EC652B5 /* libxmlframework.a */,
+				1372561F3B385B0A03C877BD /* libxmlframework.a */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		23FD47DD1C132898279951C3 /* Resources */ = {
+		70901989738D34495DA92B17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,16 +120,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		792831BB71FB560D1736062E /* Sources */ = {
+		1AC45CE23A0953187A455C37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				619D30C71178171052B165AB /* Xml.cpp in Sources */,
-				3EDA741127176530409102D9 /* XmlObject.cpp in Sources */,
-				124519106B437F3D0C0801F6 /* tinystr.cpp in Sources */,
-				76203C9C34B2270C235F39C0 /* tinyxml.cpp in Sources */,
-				3E6D00BF1E807EFA5CF23887 /* tinyxmlerror.cpp in Sources */,
-				570D4479166155830C812693 /* tinyxmlparser.cpp in Sources */,
+				086C7A240A273FD160B85D2F /* Xml.cpp in Sources */,
+				450D7F96099801F12ED75A03 /* XmlObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +135,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7DB73367463E18572A641F88 /* Debug */ = {
+		712551E673231E393F6065F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -176,7 +147,7 @@
 			};
 			name = "Debug";
 		};
-		71DE328C46A840405340312D /* Release */ = {
+		662F55BF1F29731A42771FD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,7 +160,7 @@
 			};
 			name = "Release";
 		};
-		536109D642E418C34DFE6651 /* Debug */ = {
+		23305B926593274262CD3DBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -222,7 +193,7 @@
 			};
 			name = "Debug";
 		};
-		429C228C4050455634752C13 /* Release */ = {
+		449B2C0F25B65C170A5F13A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -256,11 +227,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4EBA19BA41D27A05187A762F /* Build configuration list for PBXNativeTarget "libxmlframework.a" */ = {
+		503842144AB60B9B0AD87016 /* Build configuration list for PBXNativeTarget "libxmlframework.a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7DB73367463E18572A641F88 /* Debug */,
-				71DE328C46A840405340312D /* Release */,
+				712551E673231E393F6065F0 /* Debug */,
+				662F55BF1F29731A42771FD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
@@ -268,8 +239,8 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmlframework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				536109D642E418C34DFE6651 /* Debug */,
-				429C228C4050455634752C13 /* Release */,
+				23305B926593274262CD3DBD /* Debug */,
+				449B2C0F25B65C170A5F13A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";

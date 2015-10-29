@@ -33,7 +33,7 @@ namespace xml {
 
 bool Xml::getAttrBool(const XMLElement* xmlPtr, std::string name, bool defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrBool(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrBool(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	int value = 0;
@@ -58,7 +58,7 @@ bool Xml::getAttrBool(const XMLElement* xmlPtr, std::string name, bool defaultVa
 
 uint8_t Xml::getAttrByte(const XMLElement* xmlPtr, std::string name, uint8_t defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrChar(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrChar(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	int value = 0;
@@ -83,7 +83,7 @@ uint8_t Xml::getAttrByte(const XMLElement* xmlPtr, std::string name, uint8_t def
 
 unsigned int Xml::getAttrUInt(const XMLElement* xmlPtr, std::string name, unsigned int defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrUInt(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrUInt(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	int value = 0;
@@ -108,7 +108,7 @@ unsigned int Xml::getAttrUInt(const XMLElement* xmlPtr, std::string name, unsign
 
 int Xml::getAttrInt(const XMLElement* xmlPtr, std::string name, int defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrInt(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrInt(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	int value = 0;
@@ -133,7 +133,7 @@ int Xml::getAttrInt(const XMLElement* xmlPtr, std::string name, int defaultVal) 
 
 float Xml::getAttrFloat(const XMLElement* xmlPtr, std::string name, float defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrFloat(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrFloat(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	float value = 0;
@@ -158,7 +158,7 @@ float Xml::getAttrFloat(const XMLElement* xmlPtr, std::string name, float defaul
 
 double Xml::getAttrDouble(const XMLElement* xmlPtr, std::string name, double defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrDouble(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrDouble(): element is NULL" << std::endl;
 		return defaultVal;
 	}
 	double value = 0;
@@ -183,7 +183,7 @@ double Xml::getAttrDouble(const XMLElement* xmlPtr, std::string name, double def
 
 std::string Xml::getAttrString(const XMLElement* xmlPtr, std::string name, std::string defaultVal) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getAttrString(): element is are NULL" << std::endl;
+		LOG_WARN << "Xml::getAttrString(): element is are NULL" << std::endl;
 		return defaultVal;
 	}
 	// try to grab value, will be NULL if attr does not exist
@@ -199,7 +199,7 @@ std::string Xml::getAttrString(const XMLElement* xmlPtr, std::string name, std::
 
 bool Xml::getAttr(const XMLElement* xmlPtr, std::string name, XmlType type, void* var) {
 	if(xmlPtr == NULL || var == NULL) {
-		LOG_ERROR << "Xml::getAttr(): element and/or variable are NULL" << std::endl;
+		LOG_WARN << "Xml::getAttr(): element and/or variable are NULL" << std::endl;
 		return false;
 	}
 	int ret = XML_SUCCESS;
@@ -280,7 +280,7 @@ std::string Xml::element2String(const XMLElement* xmlPtr, std::string indent) {
 
 XMLElement* Xml::getElement(XMLElement* xmlPtr, std::string name, int index) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::getElement(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::getElement(): element is NULL" << std::endl;
 		return NULL;
 	}
 	XMLHandle h(xmlPtr);
@@ -297,7 +297,7 @@ XMLElement* Xml::getElement(XMLElement* xmlPtr, std::string name, int index) {
 
 void Xml::setAttrString(XMLElement* xmlPtr, std::string name, std::string s) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrString(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrString(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), s.c_str());
@@ -305,7 +305,7 @@ void Xml::setAttrString(XMLElement* xmlPtr, std::string name, std::string s) {
 
 void Xml::setAttrInt(XMLElement* xmlPtr, std::string name, int i) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrInt(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrInt(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), i);
@@ -313,7 +313,7 @@ void Xml::setAttrInt(XMLElement* xmlPtr, std::string name, int i) {
 
 void Xml::setAttrUInt(XMLElement* xmlPtr, std::string name, unsigned int i) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrUInt(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrUInt(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), (int) i);
@@ -321,7 +321,7 @@ void Xml::setAttrUInt(XMLElement* xmlPtr, std::string name, unsigned int i) {
 
 void Xml::setAttrDouble(XMLElement* xmlPtr, std::string name, double d) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrDouble(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrDouble(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), d);
@@ -329,7 +329,7 @@ void Xml::setAttrDouble(XMLElement* xmlPtr, std::string name, double d) {
 
 void Xml::setAttrFloat(XMLElement* xmlPtr, std::string name, float f) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrFloat(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrFloat(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), f);
@@ -337,7 +337,7 @@ void Xml::setAttrFloat(XMLElement* xmlPtr, std::string name, float f) {
 
 void Xml::setAttrBool(XMLElement* xmlPtr, std::string name, bool b) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrBool(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrBool(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), (int) b);
@@ -345,7 +345,7 @@ void Xml::setAttrBool(XMLElement* xmlPtr, std::string name, bool b) {
 
 void Xml::setAttrByte(XMLElement* xmlPtr, std::string name, uint8_t b) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setAttrChar(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setAttrChar(): element is NULL" << std::endl;
 		return;
 	}
 	xmlPtr->SetAttribute(name.c_str(), b);
@@ -353,7 +353,7 @@ void Xml::setAttrByte(XMLElement* xmlPtr, std::string name, uint8_t b) {
 
 void Xml::setAttr(XMLElement* xmlPtr, std::string name, XmlType type, void* var) {
 	if(xmlPtr == NULL || var == NULL) {
-		LOG_ERROR << "Xml::setAttr(): element and/or variable are NULL" << std::endl;
+		LOG_WARN << "Xml::setAttr(): element and/or variable are NULL" << std::endl;
 		return;
 	}
 	switch(type) {
@@ -406,7 +406,7 @@ void Xml::setAttr(XMLElement* xmlPtr, std::string name, XmlType type, void* var)
 
 void Xml::setText(XMLElement* xmlPtr, std::string text) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::setText(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::setText(): element is NULL" << std::endl;
 		return;
 	}
 	XMLNode* textChild = xmlPtr->LastChild();
@@ -421,7 +421,7 @@ void Xml::setText(XMLElement* xmlPtr, std::string text) {
 
 XMLElement* Xml::obtainElement(XMLElement* xmlPtr, std::string name, int index) {
 	if(xmlPtr == NULL) {
-		LOG_ERROR << "Xml::addExistingElement(): element is NULL" << std::endl;
+		LOG_WARN << "Xml::addExistingElement(): element is NULL" << std::endl;
 		return NULL;
 	}
 	XMLHandle h(xmlPtr);

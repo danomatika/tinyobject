@@ -125,7 +125,7 @@ bool XmlObject::loadXml(tinyxml2::XMLElement* e) {
 					elementMap.insert(make_pair((*objectIter)->getXmlName(), 0));
 					iter = elementMap.find((*objectIter)->getXmlName());
 				}
-				else }
+				else {
 					iter->second++; // found another
 				}
 
@@ -345,7 +345,7 @@ void XmlObject::closeXmlFile() {
 
 void XmlObject::addXmlObject(XmlObject* object) {
 	if(object == NULL) {
-		LOG_ERROR << "Xml: Cannot add NULL object" << std::endl;
+		LOG_WARN << "Xml: Cannot add NULL object" << std::endl;
 		return;
 	}
 	m_objectList.push_back(object);
@@ -353,7 +353,7 @@ void XmlObject::addXmlObject(XmlObject* object) {
 
 void XmlObject::removeXmlObject(XmlObject* object) {
 	if(object == NULL) {
-		LOG_ERROR << "Xml: Cannot remove NULL object" << std::endl;
+		LOG_WARN << "Xml: Cannot remove NULL object" << std::endl;
 		return;
 	}
 	std::vector<XmlObject*>::iterator iter;
@@ -365,7 +365,7 @@ void XmlObject::removeXmlObject(XmlObject* object) {
 
 bool XmlObject::addXmlElement(std::string name, std::string* text, bool readOnly) {
 	if(name == "") {
-		LOG_ERROR << "Xml \"" << m_elementName << "\": cannot add element \"" << name
+		LOG_WARN << "Xml \"" << m_elementName << "\": cannot add element \"" << name
 		          << "\", name is empty" << std::endl;
 		return false;
 	}
@@ -417,13 +417,13 @@ void XmlObject::removeAllXmlElements() {
 
 bool XmlObject::addXmlAttribute(std::string name, std::string elementName, XmlType type, void* var, bool readOnly) {
 	if(name == "" || elementName == "") {
-		LOG_ERROR << "Xml \"" << m_elementName << "\": cannot add attribute \"" << name
+		LOG_WARN << "Xml \"" << m_elementName << "\": cannot add attribute \"" << name
 		          << "\" to element \"" << elementName << "\", name and/or element name are empty"
 		          << std::endl;
 		return false;
 	}
 	if(var == NULL) {
-		LOG_ERROR << "Xml \"" << m_elementName << "\": attribute \"" << name
+		LOG_WARN << "Xml \"" << m_elementName << "\": attribute \"" << name
 		          << "\" variable is NULL" << std::endl;
 		return false;
 	}

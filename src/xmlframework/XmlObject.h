@@ -40,6 +40,7 @@ enum XmlType {
 };
 
 class XmlObject {
+
 	public:
 
 		/// set the xml element name, if the element is empty the element name of the parent is used
