@@ -24,9 +24,20 @@
 
 #include <tinyxml2.h>
 #include <stdint.h>
-#include "XMLObject.h"
+#include <string>
 
 namespace tinyxml2 {
+
+/// element text or attribute value type
+enum XMLType {
+	XML_TYPE_UNDEF = 0,
+	XML_TYPE_BOOL,
+	XML_TYPE_INT,
+	XML_TYPE_UINT,
+	XML_TYPE_FLOAT,
+	XML_TYPE_DOUBLE,
+	XML_TYPE_STRING
+};
 
 /// \class  XML
 /// \brief  convenience wrapper for some of the TinyXml-2 functions
@@ -39,9 +50,8 @@ class XML {
 		/// attribute access by type, returns true if value found & set, false if not
 		/// does not change var if if attribute not found or wrong type
 		static bool getAttrBool(const XMLElement* element, std::string name, bool defaultVal=true);
-		static uint8_t getAttrByte(const XMLElement* element, std::string name, uint8_t defaultVal=0); // unsigned
-		static unsigned int getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal=0);
 		static int getAttrInt(const XMLElement* element, std::string name, int defaultVal=0);
+		static unsigned int getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal=0);
 		static float getAttrFloat(const XMLElement* element, std::string name, float defaultVal=0.0f);
 		static double getAttrDouble(const XMLElement* element, std::string name, double defaultVal=0.0);
 		static std::string getAttrString(const XMLElement* element, std::string name, std::string defaultVal="");
@@ -66,7 +76,6 @@ class XML {
 		static void setAttrDouble(XMLElement* element, std::string name, double d);
 		static void setAttrFloat(XMLElement* element, std::string name, float f);
 		static void setAttrBool(XMLElement* element, std::string name, bool b);
-		static void setAttrByte(XMLElement* element, std::string name, uint8_t b);
 
 		/// set attribute using XMLObject type enum
 		static void setAttr(XMLElement* element, std::string name, XMLType type, void* var);

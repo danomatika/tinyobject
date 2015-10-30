@@ -60,18 +60,16 @@ class XMLProcessor : public XMLObject {
 					bool boolVal0 = XML::getAttrBool(child, "bool0", true);
 					bool boolValT = XML::getAttrBool(child, "boolT", false);
 					bool boolValF = XML::getAttrBool(child, "boolF", true);
-					uint8_t byteVal = XML::getAttrByte(child, "byte");
-					unsigned int uintVal = XML::getAttrUInt(child, "uint");
 					int intVal = XML::getAttrInt(child, "int");
+					unsigned int uintVal = XML::getAttrUInt(child, "uint");
 					float floatVal = XML::getAttrFloat(child, "float");
 					double doubleVal = XML::getAttrDouble(child, "double");
 					cout << "bool 1: " << boolVal1 << endl
 					     << "bool 0: " << boolVal0 << endl
 					     << "bool true:  " << boolValT << endl
 						 << "bool false: " << boolValF << endl
-					     << "byte:   " << (int) byteVal << endl
+					     << "int:    " << intVal << endl
 						 << "uint:   " << uintVal << endl
-						 << "int:    " << intVal << endl
 						 << "float:  " << floatVal << endl
 						 << "double: " << doubleVal << endl;
 					cout << "DONE" << endl << endl;

@@ -22,23 +22,10 @@
 ==============================================================================*/
 #pragma once
 
-#include <string>
+#include "XML.h"
 #include <vector>
-#include <tinyxml2.h>
 
 namespace tinyxml2 {
-
-/// element text or attribute value type
-enum XMLType {
-	XML_TYPE_UNDEF = 0,
-	XML_TYPE_BOOL,
-	XML_TYPE_BYTE,
-	XML_TYPE_INT,
-	XML_TYPE_UINT,
-	XML_TYPE_FLOAT,
-	XML_TYPE_DOUBLE,
-	XML_TYPE_STRING
-};
 
 /// \class XMLObject
 /// \brief an xml object baseclass to split up xml processing per class

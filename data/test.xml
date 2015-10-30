@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <xmltest author="Dan">
-	<argtest bool1="1" bool0="0" boolT="true" boolF="false" byte="255" uint="30" int="-100" float="89.3939" double="-129.232"/>
+	<argtest bool1="1" bool0="0" boolT="true" boolF="false" int="-100" uint="30" float="89.3939" double="-129.232"/>
 	<elementtest>
 		<element>This is element 1</element>
 		<element>This is element 2</element>
