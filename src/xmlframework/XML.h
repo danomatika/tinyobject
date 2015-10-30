@@ -44,8 +44,6 @@ class XML {
 		static int getAttrInt(const XMLElement* element, std::string name, int defaultVal=0);
 		static float getAttrFloat(const XMLElement* element, std::string name, float defaultVal=0.0f);
 		static double getAttrDouble(const XMLElement* element, std::string name, double defaultVal=0.0);
-	
-		// converts numbers to text
 		static std::string getAttrString(const XMLElement* element, std::string name, std::string defaultVal="");
 		
 		/// attribute access using XMLObject type enum

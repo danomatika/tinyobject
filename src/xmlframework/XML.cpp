@@ -34,12 +34,12 @@ bool XML::getAttrBool(const XMLElement* element, std::string name, bool defaultV
 		LOG_WARN << "XML::getAttrBool(): element is NULL" << std::endl;
 		return defaultVal;
 	}
-	int value = 0;
-	int iRet = element->QueryIntAttribute(name.c_str(), &value);
+	bool value = false;
+	int iRet = element->QueryBoolAttribute(name.c_str(), &value);
 	switch(iRet) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrBool(): attribute \"" << name
-					 << "\" is not of type int in element \"" << element->Name()
+					 << "\" is not of type bool in element \"" << element->Name()
 					 << "\"" << std::endl;
 			return defaultVal;
 
@@ -338,7 +338,7 @@ void XML::setAttrBool(XMLElement* element, std::string name, bool b) {
 		LOG_WARN << "XML::setAttrBool(): element is NULL" << std::endl;
 		return;
 	}
-	element->SetAttribute(name.c_str(), (int) b);
+	element->SetAttribute(name.c_str(), (b ? "true" : "false"));
 }
 
 void XML::setAttrByte(XMLElement* element, std::string name, uint8_t b) {
