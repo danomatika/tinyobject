@@ -5,10 +5,10 @@ lib_LTLIBRARIES = libxmlframework.la
 
 # lib headers to install
 otherincludedir = $(includedir)/$(PACKAGE)
-otherinclude_HEADERS = xmlframework.h Xml.h XmlObject.h
+otherinclude_HEADERS = xmlframework.h XML.h XMLObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h Xml.cpp XmlObject.cpp
+libxmlframework_la_SOURCES = Log.h XML.cpp XMLObject.cpp
 
 # include paths
 AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)

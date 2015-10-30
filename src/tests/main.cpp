@@ -24,45 +24,45 @@
 #include <iostream>
 
 using namespace std;
-using namespace xml;
+using namespace tinyxml2;
 
-class TestObject : public XmlObject {
+class TestObject : public XMLObject {
 
 	public:
 
-		TestObject() : XmlObject("object") {}
+		TestObject() : XMLObject("object") {}
 	
 	protected:
-		bool readXml(tinyxml2::XMLElement* e) {
+		bool readXML(tinyxml2::XMLElement* e) {
 			cout << e->Name()
-				 << " \"" << Xml::getAttrString(e, "name", "unknown") << "\" : "
+				 << " \"" << XML::getAttrString(e, "name", "unknown") << "\" : "
 				 << e->GetText() << endl;
 			return true;
 		}
 };
 
-class XmlProcessor : public XmlObject {
+class XMLProcessor : public XMLObject {
 
 	public:
 		
 		// set the object's element name
-		XmlProcessor() : XmlObject("xmltest") {}
+		XMLProcessor() : XMLObject("xmltest") {}
 		
 	protected:
 	
 		// derived callback, called when loading xml data for the object
-		bool readXml(tinyxml2::XMLElement* e) {
+		bool readXML(tinyxml2::XMLElement* e) {
 			tinyxml2::XMLElement* child = e->FirstChildElement();
 			while(child != NULL) {
 				if((string)child->Name() == "argtest") {
 					cout << "ARGUMENT TEST" << endl;
-					bool boolValT = Xml::getAttrBool(child, "boolT", false);
-					bool boolValF = Xml::getAttrBool(child, "boolF", true);
-					uint8_t byteVal = Xml::getAttrByte(child, "byte");
-					unsigned int uintVal = Xml::getAttrUInt(child, "uint");
-					int intVal = Xml::getAttrInt(child, "int");
-					float floatVal = Xml::getAttrFloat(child, "float");
-					double doubleVal = Xml::getAttrDouble(child, "double");
+					bool boolValT = XML::getAttrBool(child, "boolT", false);
+					bool boolValF = XML::getAttrBool(child, "boolF", true);
+					uint8_t byteVal = XML::getAttrByte(child, "byte");
+					unsigned int uintVal = XML::getAttrUInt(child, "uint");
+					int intVal = XML::getAttrInt(child, "int");
+					float floatVal = XML::getAttrFloat(child, "float");
+					double doubleVal = XML::getAttrDouble(child, "double");
 					cout << "boolT:  " << boolValT << endl
 						 << "boolF:  " << boolValF << endl
 						 << "byte:   " << (int) byteVal << endl
@@ -87,7 +87,7 @@ class XmlProcessor : public XmlObject {
 					tinyxml2::XMLElement* subchild = child->FirstChildElement();
 					while(subchild != NULL) {
 						TestObject o;
-						o.loadXml(child->FirstChildElement());
+						o.loadXML(child->FirstChildElement());
 						subchild = subchild->NextSiblingElement();
 					}
 					cout << "DONE" << endl << endl;
@@ -101,9 +101,9 @@ class XmlProcessor : public XmlObject {
 int main(int argc, char *argv[]) {
 	cout << endl;
 	
-	// load xml file through XmlProcessor derived from XmlObject
-	XmlProcessor processor;
-	processor.loadXmlFile("../../data/test.xml");
+	// load xml file through XMLProcessor derived from XMLObject
+	XMLProcessor processor;
+	processor.loadXMLFile("../../data/test.xml");
 
 	return 0;
 }

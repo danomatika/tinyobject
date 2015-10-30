@@ -135,7 +135,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(otherincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libxmlframework_la_LIBADD =
-am_libxmlframework_la_OBJECTS = Xml.lo XmlObject.lo
+am_libxmlframework_la_OBJECTS = XML.lo XMLObject.lo
 libxmlframework_la_OBJECTS = $(am_libxmlframework_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -355,10 +355,10 @@ lib_LTLIBRARIES = libxmlframework.la
 
 # lib headers to install
 otherincludedir = $(includedir)/$(PACKAGE)
-otherinclude_HEADERS = xmlframework.h Xml.h XmlObject.h
+otherinclude_HEADERS = xmlframework.h XML.h XMLObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h Xml.cpp XmlObject.cpp
+libxmlframework_la_SOURCES = Log.h XML.cpp XMLObject.cpp
 
 # include paths
 AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)
@@ -443,8 +443,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Xml.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XmlObject.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XML.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XMLObject.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

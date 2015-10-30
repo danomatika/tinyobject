@@ -2,7 +2,7 @@
 
 	xmlframework.h
 	
-	xmlframework: object based xml classes for TinyXml
+	xmlframework: object based xml classes for TinyXml-2
   
 	Copyright (C) 2009, 2010 Dan Wilcox <danomatika@gmail.com>
 
@@ -22,5 +22,5 @@
 ==============================================================================*/
 #pragma once
 
-#include "Xml.h"
-#include "XmlObject.h"
+#include "XML.h"
+#include "XMLObject.h"
