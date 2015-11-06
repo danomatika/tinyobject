@@ -35,7 +35,7 @@ XMLObject::XMLObject(std::string elementName) :
 	m_docLoaded(false), m_elementName(elementName) {}
 
 XMLObject::~XMLObject() {
-	removeAllXMLElements();
+	unsubscribeAllXMLElements();
 	closeXMLFile();
 }
 
@@ -71,15 +71,14 @@ bool XMLObject::loadXML(XMLElement* e) {
 			child = e;
 		}
 		else { // try to find a child with the same element name
-			child = XML::getElement(e, elem->name);
+			child = XML::getChild(e, elem->name);
 		}
 
 		if(child != NULL) {
 
 			// load the elements text
-			if(elem->text != NULL) {
-				elem->text->clear();
-				elem->text->append(XML::getText(child));
+			if(elem->var != NULL) {
+				XML::getText(child, elem->type, elem->var);
 			}
 
 			// load the attached attributes
@@ -128,7 +127,7 @@ bool XMLObject::loadXML(XMLElement* e) {
 				}
 
 				// try to find an element with same name as the object by index (if multiples)
-				elementToLoad = XML::getElement(e, (*objectIter)->getXMLName(), iter->second);
+				elementToLoad = XML::getChild(e, (*objectIter)->getXMLName(), iter->second);
 			}
 				
 			// load the element
@@ -165,7 +164,8 @@ bool XMLObject::loadXMLFile(std::string filename) {
 
 	// try to load the file
 	m_xmlDoc = new XMLDocument;
-	if(m_xmlDoc->LoadFile(filename.c_str()) != XML_SUCCESS) {
+	int ret = m_xmlDoc->LoadFile(filename.c_str());
+	if(ret != XML_SUCCESS) {
 		LOG_ERROR << "XML \"" << m_elementName << "\": could not load \"" << filename
 		          << "\": " << XML::getErrorString(m_xmlDoc) << std::endl;
 		closeXMLFile();
@@ -227,8 +227,8 @@ bool XMLObject::saveXML(XMLElement* e) {
 		}
 
 		// set the element's text if any
-		if(elem->text != NULL) {
-			XML::setText(child, *elem->text);
+		if(elem->var != NULL && !elem->readOnly) {
+			XML::setText(child, elem->type, elem->var);
 		}
 
 		// save the element's attached attributes
@@ -326,10 +326,10 @@ bool XMLObject::saveXMLFile(std::string filename) {
 	bool ret = saveXML(root);
 
 	// try saving
-	if(!m_xmlDoc->SaveFile(filename.c_str())) {
+	if(m_xmlDoc->SaveFile(filename.c_str()) != XML_SUCCESS) {
 		LOG_ERROR << "XML \"" << m_elementName << "\": could not save to \""
 		          << filename << "\"" << std::endl;
-		ret = false;
+		return false;
 	}
 	return ret;
 }
@@ -361,16 +361,13 @@ void XMLObject::removeXMLObject(XMLObject* object) {
 	}
 }
 
-bool XMLObject::addXMLElement(std::string name, std::string* text, bool readOnly) {
+bool XMLObject::subscribeXMLElement(std::string name, XMLType type, void *var, bool readOnly) {
 	if(name == "") {
-		LOG_WARN << "XML \"" << m_elementName << "\": cannot add element \"" << name
-		          << "\", name is empty" << std::endl;
-		return false;
+		name = m_elementName;
 	}
 
-	_Element* element;
-
 	// bail if element already exists
+	_Element* element;
 	if((element = findElement(name)) != NULL) {
 		LOG_WARN << "XML \"" << m_elementName << "\": cannot add element \"" << name
 		         << "\", element already exists" << std::endl;
@@ -380,14 +377,15 @@ bool XMLObject::addXMLElement(std::string name, std::string* text, bool readOnly
 	// add
 	element = new _Element;
 	element->name = name;
-	element->text = text;
+	element->type = type;
+	element->var = var;
 	element->readOnly = readOnly;
 	m_elementList.push_back(element);
 
 	return true;
 }
 
-bool XMLObject::removeXMLElement(std::string name) {
+bool XMLObject::unsubscribeXMLElement(std::string name) {
 	std::vector<_Element*>::iterator iter;
 	for(iter = m_elementList.begin(); iter != m_elementList.end(); ++iter) {
 		if((*iter)->name == name) {
@@ -401,7 +399,7 @@ bool XMLObject::removeXMLElement(std::string name) {
 	return false;
 }
 
-void XMLObject::removeAllXMLElements() {
+void XMLObject::unsubscribeAllXMLElements() {
 	for(unsigned int i = 0; i < m_elementList.size(); ++i) {
 		_Element* e = m_elementList.at(i);
 		for(unsigned int j = 0; j < e->attributeList.size(); ++j) {
@@ -413,8 +411,8 @@ void XMLObject::removeAllXMLElements() {
 	m_elementList.clear();
 }
 
-bool XMLObject::addXMLAttribute(std::string name, std::string elementName, XMLType type, void* var, bool readOnly) {
-	if(name == "" || elementName == "") {
+bool XMLObject::subscribeXMLAttribute(std::string name, std::string elementName, XMLType type, void* var, bool readOnly) {
+	if(name == "") {// || elementName == "") {
 		LOG_WARN << "XML \"" << m_elementName << "\": cannot add attribute \"" << name
 		          << "\" to element \"" << elementName << "\", name and/or element name are empty"
 		          << std::endl;
@@ -425,11 +423,16 @@ bool XMLObject::addXMLAttribute(std::string name, std::string elementName, XMLTy
 		          << "\" variable is NULL" << std::endl;
 		return false;
 	}
+	
+	// if empty, use object element name itself
+	if(elementName == "") {
+		elementName = m_elementName;
+	}
 
 	// check if the requested element exists, if not add it
 	_Element* e = findElement(elementName);
 	if(e == NULL) {
-		addXMLElement(elementName);
+		subscribeXMLElement(elementName, XML_TYPE_UNDEF, NULL, readOnly);
 		e = m_elementList.back();
 	}
 
@@ -444,7 +447,7 @@ bool XMLObject::addXMLAttribute(std::string name, std::string elementName, XMLTy
 	return true;
 }
 
-bool XMLObject::removeXMLAttribute(std::string name, std::string elementName) {
+bool XMLObject::unsubscribeXMLAttribute(std::string name, std::string elementName) {
 	_Element* e = findElement(elementName);
 	if(e == NULL) {
 		return false;

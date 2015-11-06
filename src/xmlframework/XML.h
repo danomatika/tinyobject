@@ -39,36 +39,49 @@ enum XMLType {
 	XML_TYPE_STRING
 };
 
-/// \class  XML
-/// \brief  convenience wrapper for some of the TinyXml-2 functions
+/// \class XML
+/// \brief convenience wrappers for reading & writing element values & attributes
 class XML {
 
 	public:
 
-		/// \section Reading Member Functions
+		/// \section Read
 
-		/// attribute access by type, returns true if value found & set, false if not
-		/// does not change var if if attribute not found or wrong type
-		static bool getAttrBool(const XMLElement* element, std::string name, bool defaultVal=true);
+		/// element attribute access by type
+		/// returns value on success or defaultVal if attribute not found or wrong type
+		static bool getAttrBool(const XMLElement* element, std::string name, bool defaultVal=false);
 		static int getAttrInt(const XMLElement* element, std::string name, int defaultVal=0);
 		static unsigned int getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal=0);
 		static float getAttrFloat(const XMLElement* element, std::string name, float defaultVal=0.0f);
 		static double getAttrDouble(const XMLElement* element, std::string name, double defaultVal=0.0);
 		static std::string getAttrString(const XMLElement* element, std::string name, std::string defaultVal="");
 		
-		/// attribute access using XMLObject type enum
+		/// element attribute access using type enum, returns true on success
 		static bool getAttr(const XMLElement* element, std::string name, XMLType type, void* var);
 
-		/// return the element text as a string
-		static std::string getText(const XMLElement* element, std::string defaultVal="");
+		/// element text access by type,
+		/// returns value on success or defaultVal if wrong type
+		static bool getTextBool(const XMLElement* element, bool defaultVal=false);
+		static int getTextInt(const XMLElement* element, int defaultVal=0);
+		static unsigned int getTextUInt(const XMLElement* element, unsigned int defaultVal=0);
+		static float getTextFloat(const XMLElement* element, float defaultVal=0.0f);
+		static double getTextDouble(const XMLElement* element, double defaultVal=0.0);
+		static std::string getTextString(const XMLElement* element, std::string defaultVal="");
 
+		/// element text access using type enum
+		static bool getText(const XMLElement* element, XMLType type, void* var);
+	
 		/// return element and attributes as a string, does not descend to children
-		static std::string element2String(const XMLElement* element, std::string indent);
+		static std::string elementToString(const XMLElement* element, std::string indent);
 
 		/// find child element by name and index (if in a list), returns NULL if element not found
-		static XMLElement* getElement(XMLElement* element, std::string name, int index=0);
+		static XMLElement* getChild(XMLElement* element, std::string name, int index=0);
+	
+		/// get the number of child elements with the given name,
+		/// if name is empty "", returns total number of child elements
+		static unsigned int getNumChildren(XMLElement* element, std::string name="");
 
-		/// \section Writing Member Functions
+		/// \section Write
 
 		static void setAttrString(XMLElement* element, std::string name, std::string s);
 		static void setAttrInt(XMLElement* element, std::string name, int i);
@@ -81,13 +94,24 @@ class XML {
 		static void setAttr(XMLElement* element, std::string name, XMLType type, void* var);
 
 		/// set the element text
-		static void setText(XMLElement* element, std::string text);
+		static void setTextBool(XMLElement* element, bool b);
+		static void setTextInt(XMLElement* element, int i);
+		static void setTextUInt(XMLElement* element, unsigned int i);
+		static void setTextFloat(XMLElement* element, float f);
+		static void setTextDouble(XMLElement* element, double d);
+		static void setTextString(XMLElement* element, std::string s);
+
+		/// set the element text using type enum
+		static void setText(XMLElement* element, XMLType type, void* var);
 
 		/// finds child element at specific index in a list of same elements (0 for first),
 		/// creates and adds to end if not found
 		static XMLElement* obtainElement(XMLElement* element, std::string name, int index=0);
 
-		/// \section Utility Member Functions
+		/// adds a comment as a child of the given element
+		static void addComment(XMLElement* element, std::string comment);
+
+		/// \section Util
 
 		/// returns the current error as a string
 		static std::string getErrorString(const XMLDocument* xmlDoc);

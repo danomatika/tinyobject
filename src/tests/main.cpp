@@ -26,27 +26,86 @@
 using namespace std;
 using namespace tinyxml2;
 
-class TestObject : public XMLObject {
+// an xml object subclass
+class Object : public XMLObject {
 
 	public:
 
-		TestObject() : XMLObject("object") {}
+		Object() : XMLObject("object") {}
 	
 	protected:
+	
+		// read all values within callback
 		bool readXML(tinyxml2::XMLElement* e) {
-			cout << e->Name()
-				 << " \"" << XML::getAttrString(e, "name", "unknown") << "\" : "
-				 << e->GetText() << endl;
+			name = XML::getAttrString(e, "name");
+			foo = XML::getTextString(XML::getChild(e, "foo"));
+			bar = XML::getTextFloat(XML::getChild(e, "bar"));
+			cout << endl;
+			cout << "OBJECT: " << name << endl
+			     << "    foo: " << foo << endl
+				 << "    bar: " << bar << endl << endl;
 			return true;
 		}
+	
+		string name;
+		string foo;
+		float bar;
 };
 
-class XMLProcessor : public XMLObject {
+// an xml object subclass to be nested within the first
+class SubObject : public XMLObject {
+
+	public:
+
+		// subscribe variable references in constructor, values will be filled
+		// automatically when the XML data is loaded
+		SubObject() : XMLObject("subobject") {
+		
+			// subscribe to load attribute data, empty element name "" to
+			// load from root element name of this object: "subobject"
+			subscribeXMLAttribute("name", "", XML_TYPE_STRING, &name);
+			
+			// subscribe to load element text data
+			subscribeXMLElement("baz", XML_TYPE_FLOAT, &baz);
+			subscribeXMLElement("ka", XML_TYPE_STRING, &ka);
+		}
+	
+	protected:
+	
+		// print values in callback
+		bool readXML(tinyxml2::XMLElement* e) {
+			cout << endl;
+			cout << "SUBOBJECT: " << name << endl
+			     << "    baz: " << baz << endl
+				 << "    ka: " << ka << endl;
+			return true;
+		}
+	
+		string name;
+		float baz;
+		string ka;
+};
+
+//
+class Processor : public XMLObject {
 
 	public:
 		
-		// set the object's element name
-		XMLProcessor() : XMLObject("xmltest") {}
+		// set the object's element name, in this case our root element name
+		Processor() : XMLObject("xmltest") {
+			
+			Object *object = new Object;
+			SubObject *subobject = new SubObject;
+			
+			// next subobject inside object
+			object->addXMLObject(subobject);
+			
+			// nest object inside this class
+			addXMLObject(object);
+			
+			// both objects will be called with the element of the same name
+			// automatically
+		}
 		
 	protected:
 	
@@ -56,43 +115,38 @@ class XMLProcessor : public XMLObject {
 			while(child != NULL) {
 				if((string)child->Name() == "argtest") {
 					cout << "ARGUMENT TEST" << endl;
-					bool boolVal1 = XML::getAttrBool(child, "bool1", false);
-					bool boolVal0 = XML::getAttrBool(child, "bool0", true);
-					bool boolValT = XML::getAttrBool(child, "boolT", false);
-					bool boolValF = XML::getAttrBool(child, "boolF", true);
-					int intVal = XML::getAttrInt(child, "int");
-					unsigned int uintVal = XML::getAttrUInt(child, "uint");
-					float floatVal = XML::getAttrFloat(child, "float");
-					double doubleVal = XML::getAttrDouble(child, "double");
-					cout << "bool 1: " << boolVal1 << endl
-					     << "bool 0: " << boolVal0 << endl
-					     << "bool true:  " << boolValT << endl
-						 << "bool false: " << boolValF << endl
-					     << "int:    " << intVal << endl
-						 << "uint:   " << uintVal << endl
-						 << "float:  " << floatVal << endl
-						 << "double: " << doubleVal << endl;
+					cout << "bool 1: " << XML::getAttrBool(child, "bool1", false) << endl
+					     << "bool 0: " << XML::getAttrBool(child, "bool0", true) << endl
+					     << "bool true:  " << XML::getAttrBool(child, "boolT", false) << endl
+						 << "bool false: " << XML::getAttrBool(child, "boolF", true) << endl
+					     << "int:    " << XML::getAttrInt(child, "int") << endl
+						 << "uint:   " << XML::getAttrUInt(child, "uint") << endl
+						 << "float:  " << XML::getAttrFloat(child, "float") << endl
+						 << "double: " << XML::getAttrDouble(child, "double") << endl
+						 << "string: " << XML::getAttrString(child, "string") << endl;
 					cout << "DONE" << endl << endl;
 				}
 				else if((string)child->Name() == "elementtest") {
-					cout << "ELEMENT TEST" << endl;
-					tinyxml2::XMLElement* subchild = child->FirstChildElement();
-					while(subchild != NULL) {
-						cout << subchild->Name() << ": \""
-							 << subchild->GetText() << "\"" << endl;
-						subchild = subchild->NextSiblingElement();
-					}
+					cout << "ELEMENT TEST: " << XML::getNumChildren(child) << endl;
+					cout << "bool 1: " << XML::getTextBool(XML::getChild(child, "bool1"), false) << endl
+					     << "bool 0: " << XML::getTextBool(XML::getChild(child, "bool0"), true) << endl
+					     << "bool true:  " << XML::getTextBool(XML::getChild(child, "boolT"), false) << endl
+						 << "bool false: " << XML::getTextBool(XML::getChild(child, "boolF"), true) << endl
+					     << "int:    " << XML::getTextInt(XML::getChild(child, "int")) << endl
+						 << "uint:   " << XML::getTextUInt(XML::getChild(child,  "uint")) << endl
+						 << "float:  " << XML::getTextFloat(XML::getChild(child, "float")) << endl
+						 << "double: " << XML::getTextDouble(XML::getChild(child, "double")) << endl
+						 << "string: " << XML::getTextString(XML::getChild(child, "string")) << endl;
 					cout << "DONE" << endl << endl;
 				}
 				else if((string)child->Name() == "objecttest") {
-					cout << "OBJECT TEST" << endl;
+					// load object class manually
 					tinyxml2::XMLElement* subchild = child->FirstChildElement();
 					while(subchild != NULL) {
-						TestObject o;
-						o.loadXML(child->FirstChildElement());
+						Object o;
+						o.loadXML(child->FirstChildElement()); // prints here when the class readXML function called
 						subchild = subchild->NextSiblingElement();
 					}
-					cout << "DONE" << endl << endl;
 				}
 				child = child->NextSiblingElement();
 			}
@@ -101,10 +155,9 @@ class XMLProcessor : public XMLObject {
 };
 
 int main(int argc, char *argv[]) {
-	cout << endl;
 	
-	// load xml file through XMLProcessor derived from XMLObject
-	XMLProcessor processor;
+	// load xml file through Processor derived from XMLObject
+	Processor processor;
 	processor.loadXMLFile("../../data/test.xml");
 
 	return 0;

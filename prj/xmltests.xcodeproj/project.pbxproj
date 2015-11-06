@@ -7,93 +7,93 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32395DB8770D37621DE21426 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 72D645F5744B1E9625113C17 /* main.cpp */; };
-		58BC5D856C1215FC08D644E2 /* libxmlframework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953209A6055162630DC76B6 /* libxmlframework.a */; };
+		1DED591246E90E593252466E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F0654B465F0D6107EF7D6D /* main.cpp */; };
+		67F851CA3CA72B463A0F69FF /* libxmlframework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BD3BAC2304141907C462E5 /* libxmlframework.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		22815E6F6065194D35557FE8 /* PBXContainerItemProxy */ = {
+		03F70023369E6A3A32881BB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2A541DA215CA223616CE6D7F /* xmlframework.xcodeproj */;
+			containerPortal = 761F09A5369E713039B67580 /* xmlframework.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 59C1279B440E2D8C749919C5;
+			remoteGlobalIDString = 603801821F9E4556197A40B6;
 			remoteInfo = "libxmlframework.a";
 		};
-		678C47BD763B48DD3B9F47A8 /* PBXContainerItemProxy */ = {
+		3F4A22215CF41F3A509B2BC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2A541DA215CA223616CE6D7F /* xmlframework.xcodeproj */;
+			containerPortal = 761F09A5369E713039B67580 /* xmlframework.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 1372561F3B385B0A03C877BD;
+			remoteGlobalIDString = 71DD25A854906E44695E55BE;
 			remoteInfo = "libxmlframework.a";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		72D645F5744B1E9625113C17 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "main.cpp"; sourceTree = "<group>"; };
-		4F6A6676610A76BB1128727E /* xmltests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "xmltests"; path = "xmltests"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A541DA215CA223616CE6D7F /* xmlframework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xmlframework.xcodeproj"; path = "xmlframework.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		50F0654B465F0D6107EF7D6D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "main.cpp"; sourceTree = "<group>"; };
+		4201672141BB7F9C74C55617 /* xmltests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "xmltests"; path = "xmltests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761F09A5369E713039B67580 /* xmlframework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "xmlframework.xcodeproj"; path = "xmlframework.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6AFB0A0D681C20661E9E1B55 /* Frameworks */ = {
+		3B4B6985398627AC2DE2596E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58BC5D856C1215FC08D644E2 /* libxmlframework.a in Frameworks */,
+				67F851CA3CA72B463A0F69FF /* libxmlframework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F5645604E777A2755F9534D /* xmltests */ = {
+		7A597572128704D356BE128B /* xmltests */ = {
 			isa = PBXGroup;
 			children = (
-				18956CB42E103949758303AC /* src */,
-				5DE7754524FA252C097D7CFB /* Products */,
-				63403FF24A7C32A32A675E85 /* Projects */,
+				15607348163B187568A07B15 /* src */,
+				05D96D0720873C267B7F636E /* Products */,
+				519D549E6B3F1B417E5E6F04 /* Projects */,
 			);
 			name = "xmltests";
 			sourceTree = "<group>";
 		};
-		18956CB42E103949758303AC /* src */ = {
+		15607348163B187568A07B15 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				4379793A55A61EE0055A76E5 /* tests */,
+				434B1772635846BA69C72CC1 /* tests */,
 			);
 			name = "src";
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		4379793A55A61EE0055A76E5 /* tests */ = {
+		434B1772635846BA69C72CC1 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				72D645F5744B1E9625113C17 /* main.cpp */,
+				50F0654B465F0D6107EF7D6D /* main.cpp */,
 			);
 			name = "tests";
 			path = tests;
 			sourceTree = "<group>";
 		};
-		5DE7754524FA252C097D7CFB /* Products */ = {
+		05D96D0720873C267B7F636E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F6A6676610A76BB1128727E /* xmltests */,
+				4201672141BB7F9C74C55617 /* xmltests */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
 		};
-		63403FF24A7C32A32A675E85 /* Projects */ = {
+		519D549E6B3F1B417E5E6F04 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				2A541DA215CA223616CE6D7F /* xmlframework.xcodeproj */,
+				761F09A5369E713039B67580 /* xmlframework.xcodeproj */,
 			);
 			name = "Projects";
 			sourceTree = "<group>";
 		};
-		7F65438B5E7452F62BA230D1 /* Products */ = {
+		6F034B6A1CC75A3E20697E1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3953209A6055162630DC76B6 /* libxmlframework.a */,
+				53BD3BAC2304141907C462E5 /* libxmlframework.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,23 +101,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A1346E307353B5C39E10D03 /* xmltests */ = {
+		3CC006C3229B20E357384281 /* xmltests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6AFF2391372C5A4251FF7704 /* Build configuration list for PBXNativeTarget "xmltests" */;
+			buildConfigurationList = 6BD65E0751D9324F150B20A1 /* Build configuration list for PBXNativeTarget "xmltests" */;
 			buildPhases = (
-				5408771D344E1E110F534088 /* Resources */,
-				3BB8549E0F074E3B3A143218 /* Sources */,
-				6AFB0A0D681C20661E9E1B55 /* Frameworks */,
+				4679598363711A3739050347 /* Resources */,
+				4DE77B3A2CBF2F9D2B981158 /* Sources */,
+				3B4B6985398627AC2DE2596E /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				274B4E8716CB72BC48807448 /* PBXTargetDependency */,
+				50CF576E06567ADE1B23295E /* PBXTargetDependency */,
 			);
 			name = "xmltests";
 			productInstallPath = "$(HOME)/bin";
 			productName = "xmltests";
-			productReference = 4F6A6676610A76BB1128727E /* xmltests */;
+			productReference = 4201672141BB7F9C74C55617 /* xmltests */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -128,33 +128,33 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmltests" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 5F5645604E777A2755F9534D /* xmltests */;
+			mainGroup = 7A597572128704D356BE128B /* xmltests */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7F65438B5E7452F62BA230D1 /* Products */;
-					ProjectRef = 2A541DA215CA223616CE6D7F /* xmlframework.xcodeproj */;
+					ProductGroup = 6F034B6A1CC75A3E20697E1C /* Products */;
+					ProjectRef = 761F09A5369E713039B67580 /* xmlframework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				3A1346E307353B5C39E10D03 /* xmltests */,
+				3CC006C3229B20E357384281 /* xmltests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3953209A6055162630DC76B6 /* libxmlframework.a */ = {
+		53BD3BAC2304141907C462E5 /* libxmlframework.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "../src/xmlframework/libxmlframework.a";
-			remoteRef = 22815E6F6065194D35557FE8 /* PBXContainerItemProxy */;
+			remoteRef = 03F70023369E6A3A32881BB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5408771D344E1E110F534088 /* Resources */ = {
+		4679598363711A3739050347 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,11 +164,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3BB8549E0F074E3B3A143218 /* Sources */ = {
+		4DE77B3A2CBF2F9D2B981158 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32395DB8770D37621DE21426 /* main.cpp in Sources */,
+				1DED591246E90E593252466E /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,15 +178,15 @@
 /* End PBXVariantGroup section */
 
 /* Begin PBXTargetDependency section */
-		274B4E8716CB72BC48807448 /* PBXTargetDependency */ = {
+		50CF576E06567ADE1B23295E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "libxmlframework.a";
-			targetProxy = 678C47BD763B48DD3B9F47A8 /* PBXContainerItemProxy */;
+			targetProxy = 3F4A22215CF41F3A509B2BC3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13575B7436202D1812587C10 /* Debug */ = {
+		40F34A49392D55480E394049 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -198,7 +198,7 @@
 			};
 			name = "Debug";
 		};
-		65DF2EDD4BF63D1748BD14B3 /* Release */ = {
+		4B2663524AB571906144752A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -211,7 +211,7 @@
 			};
 			name = "Release";
 		};
-		209B4B0C3FDF5FFC466864F6 /* Debug */ = {
+		376610661C2177EA2874170A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -248,7 +248,7 @@
 			};
 			name = "Debug";
 		};
-		12A8569648C05FC526B217ED /* Release */ = {
+		2276752307833DEA525B0367 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -286,11 +286,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6AFF2391372C5A4251FF7704 /* Build configuration list for PBXNativeTarget "xmltests" */ = {
+		6BD65E0751D9324F150B20A1 /* Build configuration list for PBXNativeTarget "xmltests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13575B7436202D1812587C10 /* Debug */,
-				65DF2EDD4BF63D1748BD14B3 /* Release */,
+				40F34A49392D55480E394049 /* Debug */,
+				4B2663524AB571906144752A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
@@ -298,8 +298,8 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "xmltests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				209B4B0C3FDF5FFC466864F6 /* Debug */,
-				12A8569648C05FC526B217ED /* Release */,
+				376610661C2177EA2874170A /* Debug */,
+				2276752307833DEA525B0367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";

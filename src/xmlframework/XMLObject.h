@@ -75,22 +75,24 @@ class XMLObject {
 		/// \section Elements
 
 		/// add an element at the current level, element names are singular
-		bool addXMLElement(std::string name, std::string* text=NULL, bool readOnly=false);
+		bool subscribeXMLElement(std::string name, XMLType type, void *var, bool readOnly=false);
 	
 		/// remove an element at the current level, also removes attached attributes
-		bool removeXMLElement(std::string name);
+		bool unsubscribeXMLElement(std::string name);
 	
 		/// remove all currently
-		void removeAllXMLElements();   //< also removes attached attributes
+		void unsubscribeAllXMLElements();   //< also removes subscribed attributes
 
 		/// \section Attributes
-
-		/// add/remove an attribute, element names are singular
+		
+		/// subscribe to automatically load an attribute, element names are singular
 		/// if element does not exist, it will be created
 		/// if it exists, attribute will be attached to it
 		/// if element name is the same as the object name, the attribute will be added to the root tag
-		bool addXMLAttribute(std::string name, std::string elementName, XMLType type, void* var, bool readOnly=false);
-		bool removeXMLAttribute(std::string name, std::string elementName);
+		bool subscribeXMLAttribute(std::string name, std::string elementName, XMLType type, void *var, bool readOnly=false);
+	
+		/// unsubscribe from automatically loading an attribute
+		bool unsubscribeXMLAttribute(std::string name, std::string elementName);
 
 		/// \section Util
 
@@ -122,21 +124,22 @@ class XMLObject {
 
 	private:
 
-		/// registered attribute to load
+		/// subscribed attribute to load
 		struct _Attribute {
-			_Attribute() : type(XML_TYPE_UNDEF) {}
-			std::string name;
-			XMLType type;
-			void* var;
-			bool readOnly;
+			//_Attribute() : type(XML_TYPE_UNDEF) {}
+			std::string name; //< attribute name
+			XMLType type; //< attribute type
+			void* var; //< pointer to subscribed variable
+			bool readOnly; //< should this value be written when saving?
 		};
 
-		/// registered element to load
+		/// subscribed element to load
 		struct _Element {
-			std::string name;
-			std::string* text;
-			bool readOnly;
-			std::vector<_Attribute*> attributeList;
+			std::string name; //< element name
+			XMLType type; //< element text type
+			void *var; //< pointer to subscribed variable
+			bool readOnly; //< should this value be written when saving?
+			std::vector<_Attribute*> attributeList; //< subscribed attributes
 		};
 
 		/// find an element in the list by its name, returns NULL if not found

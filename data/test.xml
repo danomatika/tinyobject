@@ -1,12 +1,39 @@
 <?xml version="1.0" ?>
 <xmltest author="Dan">
-	<argtest bool1="1" bool0="0" boolT="true" boolF="false" int="-100" uint="30" float="89.3939" double="-129.232"/>
+	<!-- elment attribute data -->
+	<argtest bool1="1" bool0="0" boolT="true" boolF="false" int="-100" uint="30" float="89.3939" double="-129.232" string="hello"/>
+	<!-- element text data -->
 	<elementtest>
-		<element>This is element 1</element>
-		<element>This is element 2</element>
+		<bool1>1</bool1>
+		<bool0>0</bool0>
+		<boolT>true</boolT>
+		<boolF>false</boolF>
+		<int>-100</int>
+		<uint>30</uint>
+		<float>89.3939</float>
+		<double>-129.232</double>
+		<string>hello</string>
 	</elementtest>
+	<!-- nested object data, loaded first automatically -->
+	<object name="object">
+		<foo>hello world</foo>
+		<bar>123.456</bar>
+		<subobject name="subobject">
+			<baz>987.654</baz>
+			<ka>the answer is 42</ka>	
+		</subobject>
+	</object>
+	<!-- objects to load manually -->
 	<objecttest>
-		<object name="object1">This is object 1</object>
-		<object name="object2">This is object 2</object>
+		<object name="einstein">
+			<foo>E = MC^2</foo>
+			<bar>3.14159</bar>
+		</object>
+	</objecttest>
+	<objecttest>
+		<object name="curie">
+			<foo>radium for breakfast</foo>
+			<bar>555.6667</bar>
+		</object>
 	</objecttest>
 </xmltest>
