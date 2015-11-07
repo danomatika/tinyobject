@@ -30,3 +30,4 @@ src/tests/xmltests
 
 # temp files
 *~
+src/tests/testsave.xml

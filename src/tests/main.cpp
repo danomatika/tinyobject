@@ -47,6 +47,21 @@ class Object : public XMLObject {
 			return true;
 		}
 	
+		// write all values within callback
+		bool writeXML(tinyxml2::XMLElement *e) {
+			XML::setAttrString(e, "name", name);
+			
+			XMLElement *child = e->GetDocument()->NewElement("foo");
+			XML::setTextString(child, foo);
+			e->InsertEndChild(child);
+			
+			child = e->GetDocument()->NewElement("bar");
+			XML::setTextFloat(child, bar);
+			e->InsertEndChild(child);
+			
+			return true;
+		}
+	
 		string name;
 		string foo;
 		float bar;
@@ -159,6 +174,8 @@ int main(int argc, char *argv[]) {
 	// load xml file through Processor derived from XMLObject
 	Processor processor;
 	processor.loadXMLFile("../../data/test.xml");
+	processor.closeXMLFile();
+	processor.saveXMLFile("./testsave.xml");
 
 	return 0;
 }

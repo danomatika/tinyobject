@@ -557,50 +557,41 @@ void XML::setText(XMLElement* element, XMLType type, void* var) {
 		LOG_WARN << "XML::setText(): element is NULL" << std::endl;
 		return;
 	}
-	XMLNode* textChild = element->LastChild();
-//	if(textChild && (textChild->ToText() != NULL)) {
-//		textChild->SetValue(text.c_str());
-//	}
-//	else {
-	if(!textChild) {
-		textChild = element->GetDocument()->NewText("");
-		element->LinkEndChild(textChild);
-	}
 	
 	switch(type) {
 		case XML_TYPE_BOOL: {
 			bool* b = (bool*) var;
-			setTextBool(textChild->ToElement(), *b);
+			setTextBool(element, *b);
 			break;
 		}
 
 		case XML_TYPE_INT: {
 			int* i = (int*) var;
-			setTextInt(textChild->ToElement(), *i);
+			setTextInt(element, *i);
 			break;
 		}
 
 		case XML_TYPE_UINT: {
 			unsigned int* ui = (unsigned int*) var;
-			setTextUInt(textChild->ToElement(), *ui);
+			setTextUInt(element, *ui);
 			break;
 		}
 
 		case XML_TYPE_FLOAT: {
 			float* f = (float*) var;
-			setTextFloat(textChild->ToElement(), *f);
+			setTextFloat(element, *f);
 			break;
 		}
 
 		case XML_TYPE_DOUBLE: {
 			double* d = (double*) var;
-			setTextDouble(textChild->ToElement(), *d);
+			setTextDouble(element, *d);
 			break;
 		}
 
 		case XML_TYPE_STRING: {
 			std::string* s = (std::string*) var;
-			setTextString(textChild->ToElement(), *s);
+			setTextString(element, *s);
 			break;
 		}
 
