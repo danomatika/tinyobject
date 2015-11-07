@@ -49,7 +49,7 @@ class XMLObject {
 		/// \section Load
 
 		/// load from an xml element, checks if the element name is correct
-		bool loadXML(XMLElement* e);
+		bool loadXML(XMLElement *e);
 
 		/// load from an xml file, leave empty to use previous filename
 		/// if already loaded/set
@@ -58,7 +58,7 @@ class XMLObject {
 		/// \section Save
 
 		/// save to an xml element, checks if the element name is correct
-		bool saveXML(XMLElement* e);
+		bool saveXML(XMLElement *e);
 
 		/// save to a new xml file
 		bool saveXMLFile(std::string filename="");
@@ -71,8 +71,8 @@ class XMLObject {
 		/// attach/remove an XmlObject to this one,
 		/// attached object readXML & writeXML functions are called when this
 		/// object is loaded or saved
-		void addXMLObject(XMLObject* object);
-		void removeXMLObject(XMLObject* object);
+		void addXMLObject(XMLObject *object);
+		void removeXMLObject(XMLObject *object);
 
 		/// \section Elements
 
@@ -118,11 +118,11 @@ class XMLObject {
 
 		/// callback to process xml children when loaded, returns true if element handled
 		/// param e is the root element of this object aka <getXmlName()> ...
-		virtual bool readXML(XMLElement* e) {return false;}
+		virtual bool readXML(XMLElement *e) {return false;}
 
 		/// callback to save to xml when saved, returns true if successful
 		/// param e is the root element of this object aka <getXmlName()> ...
-		virtual bool writeXML(XMLElement* e) {return false;}
+		virtual bool writeXML(XMLElement *e) {return false;}
 
 	private:
 
@@ -131,7 +131,7 @@ class XMLObject {
 			//_Attribute() : type(XML_TYPE_UNDEF) {}
 			std::string name; //< attribute name
 			XMLType type; //< attribute type
-			void* var; //< pointer to subscribed variable
+			void *var; //< pointer to subscribed variable
 			bool readOnly; //< should this value be written when saving?
 		};
 	
@@ -157,7 +157,7 @@ class XMLObject {
 
 		bool m_docLoaded; //< is the doc loaded?
 		std::string m_filename; //< current filename
-		XMLDocument* m_xmlDoc; //< the xml document
+		XMLDocument *m_xmlDoc; //< the xml document
 
 		std::string m_elementName; //< name of the root element
 		std::vector<_Element*> m_elementList; //< attached elements/attributes

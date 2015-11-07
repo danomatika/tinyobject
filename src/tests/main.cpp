@@ -36,7 +36,7 @@ class Object : public XMLObject {
 	protected:
 	
 		// read all values within callback
-		bool readXML(tinyxml2::XMLElement* e) {
+		bool readXML(tinyxml2::XMLElement *e) {
 			name = XML::getAttrString(e, "name");
 			foo = XML::getTextString(XML::getChild(e, "foo"));
 			bar = XML::getTextFloat(XML::getChild(e, "bar"));
@@ -88,7 +88,7 @@ class SubObject : public XMLObject {
 	protected:
 	
 		// print values in callback
-		bool readXML(tinyxml2::XMLElement* e) {
+		bool readXML(tinyxml2::XMLElement *e) {
 			cout << endl;
 			cout << "SUBOBJECT: " << name << endl
 			     << "    baz: " << baz << endl
@@ -125,8 +125,8 @@ class Processor : public XMLObject {
 	protected:
 	
 		// derived callback, called when loading xml data for the object
-		bool readXML(tinyxml2::XMLElement* e) {
-			tinyxml2::XMLElement* child = e->FirstChildElement();
+		bool readXML(tinyxml2::XMLElement *e) {
+			tinyxml2::XMLElement *child = e->FirstChildElement();
 			while(child != NULL) {
 				if((string)child->Name() == "argtest") {
 					cout << "ARGUMENT TEST" << endl;
@@ -156,7 +156,7 @@ class Processor : public XMLObject {
 				}
 				else if((string)child->Name() == "objecttest") {
 					// load object class manually
-					tinyxml2::XMLElement* subchild = child->FirstChildElement();
+					tinyxml2::XMLElement *subchild = child->FirstChildElement();
 					while(subchild != NULL) {
 						Object o;
 						o.loadXML(child->FirstChildElement()); // prints here when the class readXML function called
