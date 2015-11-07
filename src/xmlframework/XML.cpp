@@ -29,169 +29,6 @@ namespace tinyxml2 {
 
 // READ
 
-bool XML::getAttrBool(const XMLElement* element, std::string name, bool defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrBool(): element is NULL" << std::endl;
-		return defaultVal;
-	}
-	bool value = false;
-	int ret = element->QueryBoolAttribute(name.c_str(), &value);
-	switch(ret) {
-		case XML_WRONG_ATTRIBUTE_TYPE:
-			LOG_WARN << "XML::getAttrBool(): attribute \"" << name
-					 << "\" is not of type bool in element \"" << element->Name()
-					 << "\"" << std::endl;
-			return defaultVal;
-		case XML_NO_ATTRIBUTE:
-			return defaultVal;
-		default: // XML_SUCCESS
-			return (bool) value;
-	}
-}
-
-int XML::getAttrInt(const XMLElement* element, std::string name, int defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrInt(): element is NULL" << std::endl;
-		return defaultVal;
-	}
-	int value = 0;
-	int ret  = element->QueryIntAttribute(name.c_str(), &value);
-	switch(ret) {
-		case XML_WRONG_ATTRIBUTE_TYPE:
-			LOG_WARN << "XML::getAttrInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << element->Name()
-					 << "\"" << std::endl;
-			return defaultVal;
-		case XML_NO_ATTRIBUTE:
-			return defaultVal;
-		default: // XML_SUCCESS
-			return value;
-	}
-}
-
-unsigned int XML::getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrUInt(): element is NULL" << std::endl;
-		return defaultVal;
-	}
-	int value = 0;
-	int ret  = element->QueryIntAttribute(name.c_str(), &value);
-	switch(ret) {
-		case XML_WRONG_ATTRIBUTE_TYPE:
-			LOG_WARN << "XML::getAttrUInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << element->Name()
-					 << "\"" << std::endl;
-			return defaultVal;
-		case XML_NO_ATTRIBUTE:
-			return defaultVal;
-		default: // XML_SUCCESS
-			return (unsigned int) value;
-	}
-}
-
-float XML::getAttrFloat(const XMLElement* element, std::string name, float defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrFloat(): element is NULL" << std::endl;
-		return defaultVal;
-	}
-	float value = 0;
-	int ret = element->QueryFloatAttribute(name.c_str(), &value);
-	switch(ret) {
-		case XML_WRONG_ATTRIBUTE_TYPE:
-			LOG_WARN << "XML::getAttrFloat(): attribute \"" << name
-					 << "\" is not of type float in element \"" << element->Name()
-					 << "\"" << std::endl;
-			return defaultVal;
-		case XML_NO_ATTRIBUTE:
-			return defaultVal;
-		default: // XML_SUCCESS
-			return value;
-	}
-}
-
-double XML::getAttrDouble(const XMLElement* element, std::string name, double defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrDouble(): element is NULL" << std::endl;
-		return defaultVal;
-	}
-	double value = 0;
-	int ret = element->QueryDoubleAttribute(name.c_str(), &value);
-	switch(ret) {
-		case XML_WRONG_ATTRIBUTE_TYPE:
-			LOG_WARN << "XML::getAttrDouble(): attribute \"" << name
-					 << "\" is not of type double in element \"" << element->Name()
-					 << "\"" << std::endl;
-			return defaultVal;
-		case XML_NO_ATTRIBUTE:
-			return defaultVal;
-		default: // XML_SUCCESS
-			return value;
-	}
-}
-
-std::string XML::getAttrString(const XMLElement* element, std::string name, std::string defaultVal) {
-	if(element == NULL) {
-		LOG_WARN << "XML::getAttrString(): element is are NULL" << std::endl;
-		return defaultVal;
-	}
-	// try to grab value, will be NULL if attr does not exist
-	const char* value = element->Attribute(name.c_str());
-	if(value == NULL) {
-		return defaultVal;
-	}
-	return std::string(value);
-}
-
-bool XML::getAttr(const XMLElement* element, std::string name, XMLType type, void* var) {
-	if(element == NULL || var == NULL) {
-		LOG_WARN << "XML::getAttr(): element and/or variable are NULL" << std::endl;
-		return false;
-	}
-	int ret = XML_SUCCESS;
-	switch(type) {
-		case XML_TYPE_BOOL: {
-			bool* pVar = (bool*) var;
-			(*pVar) = getAttrBool(element, name);
-			break;
-		}
-		
-		case XML_TYPE_INT: {
-			int* pVar = (int*) var;
-			(*pVar) = getAttrInt(element, name);
-			break;
-		}
-		
-		case XML_TYPE_UINT: {
-			unsigned int* pVar = (unsigned int*) var;
-			(*pVar) = getAttrUInt(element, name);
-			break;
-		}
-
-		case XML_TYPE_FLOAT: {
-			float* pVar = (float*) var;
-			(*pVar) = getAttrFloat(element, name);
-			break;
-		}
-
-		case XML_TYPE_DOUBLE: {
-			double* pVar = (double*) var;
-			(*pVar) = getAttrDouble(element, name);
-			break;
-		}
-
-		case XML_TYPE_STRING: {
-			std::string* pVar = (std::string*) var;
-			pVar->clear();
-			pVar->append(getAttrString(element, name));
-			break;
-		}
-		
-		default:
-			break;
-	}
-	return ret;
-}
-
 bool XML::getTextBool(const XMLElement* element, bool defaultVal) {
 	if(element == NULL) {
 		LOG_WARN << "XML::getTextBool(): element is NULL" << std::endl;
@@ -355,6 +192,169 @@ bool XML::getText(const XMLElement* element, XMLType type, void* var) {
 	return ret;
 }
 
+bool XML::getAttrBool(const XMLElement* element, std::string name, bool defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrBool(): element is NULL" << std::endl;
+		return defaultVal;
+	}
+	bool value = false;
+	int ret = element->QueryBoolAttribute(name.c_str(), &value);
+	switch(ret) {
+		case XML_WRONG_ATTRIBUTE_TYPE:
+			LOG_WARN << "XML::getAttrBool(): attribute \"" << name
+					 << "\" is not of type bool in element \"" << element->Name()
+					 << "\"" << std::endl;
+			return defaultVal;
+		case XML_NO_ATTRIBUTE:
+			return defaultVal;
+		default: // XML_SUCCESS
+			return (bool) value;
+	}
+}
+
+int XML::getAttrInt(const XMLElement* element, std::string name, int defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrInt(): element is NULL" << std::endl;
+		return defaultVal;
+	}
+	int value = 0;
+	int ret  = element->QueryIntAttribute(name.c_str(), &value);
+	switch(ret) {
+		case XML_WRONG_ATTRIBUTE_TYPE:
+			LOG_WARN << "XML::getAttrInt(): attribute \"" << name
+					 << "\" is not of type int in element \"" << element->Name()
+					 << "\"" << std::endl;
+			return defaultVal;
+		case XML_NO_ATTRIBUTE:
+			return defaultVal;
+		default: // XML_SUCCESS
+			return value;
+	}
+}
+
+unsigned int XML::getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrUInt(): element is NULL" << std::endl;
+		return defaultVal;
+	}
+	int value = 0;
+	int ret  = element->QueryIntAttribute(name.c_str(), &value);
+	switch(ret) {
+		case XML_WRONG_ATTRIBUTE_TYPE:
+			LOG_WARN << "XML::getAttrUInt(): attribute \"" << name
+					 << "\" is not of type int in element \"" << element->Name()
+					 << "\"" << std::endl;
+			return defaultVal;
+		case XML_NO_ATTRIBUTE:
+			return defaultVal;
+		default: // XML_SUCCESS
+			return (unsigned int) value;
+	}
+}
+
+float XML::getAttrFloat(const XMLElement* element, std::string name, float defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrFloat(): element is NULL" << std::endl;
+		return defaultVal;
+	}
+	float value = 0;
+	int ret = element->QueryFloatAttribute(name.c_str(), &value);
+	switch(ret) {
+		case XML_WRONG_ATTRIBUTE_TYPE:
+			LOG_WARN << "XML::getAttrFloat(): attribute \"" << name
+					 << "\" is not of type float in element \"" << element->Name()
+					 << "\"" << std::endl;
+			return defaultVal;
+		case XML_NO_ATTRIBUTE:
+			return defaultVal;
+		default: // XML_SUCCESS
+			return value;
+	}
+}
+
+double XML::getAttrDouble(const XMLElement* element, std::string name, double defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrDouble(): element is NULL" << std::endl;
+		return defaultVal;
+	}
+	double value = 0;
+	int ret = element->QueryDoubleAttribute(name.c_str(), &value);
+	switch(ret) {
+		case XML_WRONG_ATTRIBUTE_TYPE:
+			LOG_WARN << "XML::getAttrDouble(): attribute \"" << name
+					 << "\" is not of type double in element \"" << element->Name()
+					 << "\"" << std::endl;
+			return defaultVal;
+		case XML_NO_ATTRIBUTE:
+			return defaultVal;
+		default: // XML_SUCCESS
+			return value;
+	}
+}
+
+std::string XML::getAttrString(const XMLElement* element, std::string name, std::string defaultVal) {
+	if(element == NULL) {
+		LOG_WARN << "XML::getAttrString(): element is are NULL" << std::endl;
+		return defaultVal;
+	}
+	// try to grab value, will be NULL if attr does not exist
+	const char* value = element->Attribute(name.c_str());
+	if(value == NULL) {
+		return defaultVal;
+	}
+	return std::string(value);
+}
+
+bool XML::getAttr(const XMLElement* element, std::string name, XMLType type, void* var) {
+	if(element == NULL || var == NULL) {
+		LOG_WARN << "XML::getAttr(): element and/or variable are NULL" << std::endl;
+		return false;
+	}
+	int ret = XML_SUCCESS;
+	switch(type) {
+		case XML_TYPE_BOOL: {
+			bool* pVar = (bool*) var;
+			(*pVar) = getAttrBool(element, name);
+			break;
+		}
+		
+		case XML_TYPE_INT: {
+			int* pVar = (int*) var;
+			(*pVar) = getAttrInt(element, name);
+			break;
+		}
+		
+		case XML_TYPE_UINT: {
+			unsigned int* pVar = (unsigned int*) var;
+			(*pVar) = getAttrUInt(element, name);
+			break;
+		}
+
+		case XML_TYPE_FLOAT: {
+			float* pVar = (float*) var;
+			(*pVar) = getAttrFloat(element, name);
+			break;
+		}
+
+		case XML_TYPE_DOUBLE: {
+			double* pVar = (double*) var;
+			(*pVar) = getAttrDouble(element, name);
+			break;
+		}
+
+		case XML_TYPE_STRING: {
+			std::string* pVar = (std::string*) var;
+			pVar->clear();
+			pVar->append(getAttrString(element, name));
+			break;
+		}
+		
+		default:
+			break;
+	}
+	return ret;
+}
+
 std::string XML::elementToString(const XMLElement* element, std::string indent) {
 	if(element == NULL) {
 		return "";
@@ -408,101 +408,6 @@ unsigned int XML::getNumChildren(XMLElement* element, std::string name) {
 }
 
 // WRITE
-
-void XML::setAttrString(XMLElement* element, std::string name, std::string s) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrString(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), s.c_str());
-}
-
-void XML::setAttrInt(XMLElement* element, std::string name, int i) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrInt(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), i);
-}
-
-void XML::setAttrUInt(XMLElement* element, std::string name, unsigned int i) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrUInt(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), (int) i);
-}
-
-void XML::setAttrDouble(XMLElement* element, std::string name, double d) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrDouble(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), d);
-}
-
-void XML::setAttrFloat(XMLElement* element, std::string name, float f) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrFloat(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), f);
-}
-
-void XML::setAttrBool(XMLElement* element, std::string name, bool b) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrBool(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), (b ? "true" : "false"));
-}
-
-void XML::setAttr(XMLElement* element, std::string name, XMLType type, void* var) {
-	if(element == NULL || var == NULL) {
-		LOG_WARN << "XML::setAttr(): element and/or variable are NULL" << std::endl;
-		return;
-	}
-	switch(type) {
-		case XML_TYPE_BOOL: {
-			bool* b = (bool*) var;
-			setAttrBool(element, name, *b);
-			break;
-		}
-
-		case XML_TYPE_INT: {
-			int* i = (int*) var;
-			setAttrInt(element, name, *i);
-			break;
-		}
-
-		case XML_TYPE_UINT: {
-			unsigned int* ui = (unsigned int*) var;
-			setAttrUInt(element, name, *ui);
-			break;
-		}
-
-		case XML_TYPE_FLOAT: {
-			float* f = (float*) var;
-			setAttrFloat(element, name, *f);
-			break;
-		}
-
-		case XML_TYPE_DOUBLE: {
-			double* d = (double*) var;
-			setAttrDouble(element, name, *d);
-			break;
-		}
-
-		case XML_TYPE_STRING: {
-			std::string* s = (std::string*) var;
-			setAttrString(element, name, *s);
-			break;
-		}
-
-		default:
-			break;
-	}
-}
 
 void XML::setTextBool(XMLElement* element, bool b) {
 	if(element == NULL) {
@@ -592,6 +497,101 @@ void XML::setText(XMLElement* element, XMLType type, void* var) {
 		case XML_TYPE_STRING: {
 			std::string* s = (std::string*) var;
 			setTextString(element, *s);
+			break;
+		}
+
+		default:
+			break;
+	}
+}
+
+void XML::setAttrString(XMLElement* element, std::string name, std::string s) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrString(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), s.c_str());
+}
+
+void XML::setAttrInt(XMLElement* element, std::string name, int i) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrInt(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), i);
+}
+
+void XML::setAttrUInt(XMLElement* element, std::string name, unsigned int i) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrUInt(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), (int) i);
+}
+
+void XML::setAttrDouble(XMLElement* element, std::string name, double d) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrDouble(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), d);
+}
+
+void XML::setAttrFloat(XMLElement* element, std::string name, float f) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrFloat(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), f);
+}
+
+void XML::setAttrBool(XMLElement* element, std::string name, bool b) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrBool(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), (b ? "true" : "false"));
+}
+
+void XML::setAttr(XMLElement* element, std::string name, XMLType type, void* var) {
+	if(element == NULL || var == NULL) {
+		LOG_WARN << "XML::setAttr(): element and/or variable are NULL" << std::endl;
+		return;
+	}
+	switch(type) {
+		case XML_TYPE_BOOL: {
+			bool* b = (bool*) var;
+			setAttrBool(element, name, *b);
+			break;
+		}
+
+		case XML_TYPE_INT: {
+			int* i = (int*) var;
+			setAttrInt(element, name, *i);
+			break;
+		}
+
+		case XML_TYPE_UINT: {
+			unsigned int* ui = (unsigned int*) var;
+			setAttrUInt(element, name, *ui);
+			break;
+		}
+
+		case XML_TYPE_FLOAT: {
+			float* f = (float*) var;
+			setAttrFloat(element, name, *f);
+			break;
+		}
+
+		case XML_TYPE_DOUBLE: {
+			double* d = (double*) var;
+			setAttrDouble(element, name, *d);
+			break;
+		}
+
+		case XML_TYPE_STRING: {
+			std::string* s = (std::string*) var;
+			setAttrString(element, name, *s);
 			break;
 		}
 

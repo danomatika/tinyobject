@@ -68,7 +68,9 @@ class XMLObject {
 
 		/// \section Objects
 
-		/// attach/remove an XmlObject to this one
+		/// attach/remove an XmlObject to this one,
+		/// attached object readXML & writeXML functions are called when this
+		/// object is loaded or saved
 		void addXMLObject(XMLObject* object);
 		void removeXMLObject(XMLObject* object);
 
@@ -132,7 +134,7 @@ class XMLObject {
 			void* var; //< pointer to subscribed variable
 			bool readOnly; //< should this value be written when saving?
 		};
-
+	
 		/// subscribed element to load
 		struct _Element {
 			std::string name; //< element name

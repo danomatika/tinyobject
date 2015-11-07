@@ -47,18 +47,6 @@ class XML {
 
 		/// \section Read
 
-		/// element attribute access by type
-		/// returns value on success or defaultVal if attribute not found or wrong type
-		static bool getAttrBool(const XMLElement* element, std::string name, bool defaultVal=false);
-		static int getAttrInt(const XMLElement* element, std::string name, int defaultVal=0);
-		static unsigned int getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal=0);
-		static float getAttrFloat(const XMLElement* element, std::string name, float defaultVal=0.0f);
-		static double getAttrDouble(const XMLElement* element, std::string name, double defaultVal=0.0);
-		static std::string getAttrString(const XMLElement* element, std::string name, std::string defaultVal="");
-		
-		/// element attribute access using type enum, returns true on success
-		static bool getAttr(const XMLElement* element, std::string name, XMLType type, void* var);
-
 		/// element text access by type,
 		/// returns value on success or defaultVal if wrong type
 		static bool getTextBool(const XMLElement* element, bool defaultVal=false);
@@ -70,6 +58,18 @@ class XML {
 
 		/// element text access using type enum
 		static bool getText(const XMLElement* element, XMLType type, void* var);
+	
+		/// element attribute access by type
+		/// returns value on success or defaultVal if attribute not found or wrong type
+		static bool getAttrBool(const XMLElement* element, std::string name, bool defaultVal=false);
+		static int getAttrInt(const XMLElement* element, std::string name, int defaultVal=0);
+		static unsigned int getAttrUInt(const XMLElement* element, std::string name, unsigned int defaultVal=0);
+		static float getAttrFloat(const XMLElement* element, std::string name, float defaultVal=0.0f);
+		static double getAttrDouble(const XMLElement* element, std::string name, double defaultVal=0.0);
+		static std::string getAttrString(const XMLElement* element, std::string name, std::string defaultVal="");
+		
+		/// element attribute access using type enum, returns true on success
+		static bool getAttr(const XMLElement* element, std::string name, XMLType type, void* var);
 	
 		/// return element and attributes as a string, does not descend to children
 		static std::string elementToString(const XMLElement* element, std::string indent);
@@ -83,16 +83,6 @@ class XML {
 
 		/// \section Write
 
-		static void setAttrString(XMLElement* element, std::string name, std::string s);
-		static void setAttrInt(XMLElement* element, std::string name, int i);
-		static void setAttrUInt(XMLElement* element, std::string name, unsigned int i);
-		static void setAttrDouble(XMLElement* element, std::string name, double d);
-		static void setAttrFloat(XMLElement* element, std::string name, float f);
-		static void setAttrBool(XMLElement* element, std::string name, bool b);
-
-		/// set attribute using XMLObject type enum
-		static void setAttr(XMLElement* element, std::string name, XMLType type, void* var);
-
 		/// set the element text
 		static void setTextBool(XMLElement* element, bool b);
 		static void setTextInt(XMLElement* element, int i);
@@ -103,6 +93,17 @@ class XML {
 
 		/// set the element text using type enum
 		static void setText(XMLElement* element, XMLType type, void* var);
+
+		/// set element attributes by type
+		static void setAttrString(XMLElement* element, std::string name, std::string s);
+		static void setAttrInt(XMLElement* element, std::string name, int i);
+		static void setAttrUInt(XMLElement* element, std::string name, unsigned int i);
+		static void setAttrDouble(XMLElement* element, std::string name, double d);
+		static void setAttrFloat(XMLElement* element, std::string name, float f);
+		static void setAttrBool(XMLElement* element, std::string name, bool b);
+
+		/// set attribute using XMLObject type enum
+		static void setAttr(XMLElement* element, std::string name, XMLType type, void* var);
 
 		/// finds child element at specific index in a list of same elements (0 for first),
 		/// creates and adds to end if not found
