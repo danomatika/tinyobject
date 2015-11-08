@@ -420,7 +420,7 @@ bool XMLObject::subscribeXMLAttribute(std::string name, std::string elementName,
 	}
 	if(var == NULL) {
 		LOG_WARN << "XML \"" << m_elementName << "\": attribute \"" << name
-		          << "\" variable is NULL" << std::endl;
+		         << "\" variable is NULL" << std::endl;
 		return false;
 	}
 	

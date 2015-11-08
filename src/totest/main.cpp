@@ -47,7 +47,7 @@ class Object : public XMLObject {
 			cout << endl;
 			cout << "OBJECT: " << name << endl
 			     << "    foo: " << foo << endl
-				 << "    bar: " << bar << endl << endl;
+			     << "    bar: " << bar << endl << endl;
 			return true;
 		}
 	
@@ -89,7 +89,7 @@ class SubObject : public XMLObject {
 			cout << endl;
 			cout << "SUBOBJECT: " << name << endl
 			     << "    baz: " << baz << endl
-				 << "    ka: " << ka << endl;
+			     << "    ka: " << ka << endl;
 			return true;
 		}
 	
@@ -130,12 +130,12 @@ class Processor : public XMLObject {
 					cout << "bool 1: " << XML::getAttrBool(child, "bool1", false) << endl
 					     << "bool 0: " << XML::getAttrBool(child, "bool0", true) << endl
 					     << "bool true:  " << XML::getAttrBool(child, "boolT", false) << endl
-						 << "bool false: " << XML::getAttrBool(child, "boolF", true) << endl
+					     << "bool false: " << XML::getAttrBool(child, "boolF", true) << endl
 					     << "int:    " << XML::getAttrInt(child, "int") << endl
-						 << "uint:   " << XML::getAttrUInt(child, "uint") << endl
-						 << "float:  " << XML::getAttrFloat(child, "float") << endl
-						 << "double: " << XML::getAttrDouble(child, "double") << endl
-						 << "string: " << XML::getAttrString(child, "string") << endl;
+					     << "uint:   " << XML::getAttrUInt(child, "uint") << endl
+					     << "float:  " << XML::getAttrFloat(child, "float") << endl
+					     << "double: " << XML::getAttrDouble(child, "double") << endl
+					     << "string: " << XML::getAttrString(child, "string") << endl;
 					cout << "DONE" << endl << endl;
 				}
 				else if((string)child->Name() == "elementtest") {
@@ -143,12 +143,12 @@ class Processor : public XMLObject {
 					cout << "bool 1: " << XML::getTextBool(XML::getChild(child, "bool1"), false) << endl
 					     << "bool 0: " << XML::getTextBool(XML::getChild(child, "bool0"), true) << endl
 					     << "bool true:  " << XML::getTextBool(XML::getChild(child, "boolT"), false) << endl
-						 << "bool false: " << XML::getTextBool(XML::getChild(child, "boolF"), true) << endl
+					     << "bool false: " << XML::getTextBool(XML::getChild(child, "boolF"), true) << endl
 					     << "int:    " << XML::getTextInt(XML::getChild(child, "int")) << endl
-						 << "uint:   " << XML::getTextUInt(XML::getChild(child,  "uint")) << endl
-						 << "float:  " << XML::getTextFloat(XML::getChild(child, "float")) << endl
-						 << "double: " << XML::getTextDouble(XML::getChild(child, "double")) << endl
-						 << "string: " << XML::getTextString(XML::getChild(child, "string")) << endl;
+					     << "uint:   " << XML::getTextUInt(XML::getChild(child,  "uint")) << endl
+					     << "float:  " << XML::getTextFloat(XML::getChild(child, "float")) << endl
+					     << "double: " << XML::getTextDouble(XML::getChild(child, "double")) << endl
+					     << "string: " << XML::getTextString(XML::getChild(child, "string")) << endl;
 					cout << "DONE" << endl << endl;
 				}
 				else if((string)child->Name() == "objecttest") {
@@ -177,7 +177,7 @@ int main(int argc, char *argv[]) {
 	// copies of the same elements to the tree)
 	processor.closeXMLFile();
 	
-	// save object data automatically (everything else woudl need to
+	// save object data automatically (everything else would need to
 	// be done manually
 	processor.saveXMLFile("./testsave.xml");
 

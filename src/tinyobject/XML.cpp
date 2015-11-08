@@ -40,7 +40,7 @@ bool XML::getTextBool(const XMLElement *element, bool defaultVal) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getTextBool(): text value is not of type "
 			         << " bool in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -60,7 +60,7 @@ int XML::getTextInt(const XMLElement *element, int defaultVal) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getTextInt(): text value is not of type "
 			         << " int in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -80,7 +80,7 @@ unsigned int XML::getTextUInt(const XMLElement *element, unsigned int defaultVal
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getTextUInt(): text value is not of type "
 			         << " uint in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -100,7 +100,7 @@ float XML::getTextFloat(const XMLElement *element, float defaultVal) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getTextFloat(): text value is not of type "
 			         << " double in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -120,7 +120,7 @@ double XML::getTextDouble(const XMLElement *element, double defaultVal) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getTextDouble(): text value is not of type "
 			         << " double in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -202,8 +202,8 @@ bool XML::getAttrBool(const XMLElement *element, std::string name, bool defaultV
 	switch(ret) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrBool(): attribute \"" << name
-					 << "\" is not of type bool in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\" is not of type bool in element \"" << element->Name()
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -222,8 +222,8 @@ int XML::getAttrInt(const XMLElement *element, std::string name, int defaultVal)
 	switch(ret) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\" is not of type int in element \"" << element->Name()
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -242,8 +242,8 @@ unsigned int XML::getAttrUInt(const XMLElement *element, std::string name, unsig
 	switch(ret) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrUInt(): attribute \"" << name
-					 << "\" is not of type int in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\" is not of type int in element \"" << element->Name()
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -262,8 +262,8 @@ float XML::getAttrFloat(const XMLElement *element, std::string name, float defau
 	switch(ret) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrFloat(): attribute \"" << name
-					 << "\" is not of type float in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\" is not of type float in element \"" << element->Name()
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
@@ -282,8 +282,8 @@ double XML::getAttrDouble(const XMLElement *element, std::string name, double de
 	switch(ret) {
 		case XML_WRONG_ATTRIBUTE_TYPE:
 			LOG_WARN << "XML::getAttrDouble(): attribute \"" << name
-					 << "\" is not of type double in element \"" << element->Name()
-					 << "\"" << std::endl;
+			         << "\" is not of type double in element \"" << element->Name()
+			         << "\"" << std::endl;
 			return defaultVal;
 		case XML_NO_ATTRIBUTE:
 			return defaultVal;
