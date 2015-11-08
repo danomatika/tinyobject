@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# xmlframework library
+# tinyobject library
 
 
 VPATH = @srcdir@
@@ -91,7 +91,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-subdir = src/xmlframework
+subdir = src/tinyobject
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
@@ -134,9 +134,9 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(otherincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libxmlframework_la_LIBADD =
-am_libxmlframework_la_OBJECTS = XML.lo XMLObject.lo
-libxmlframework_la_OBJECTS = $(am_libxmlframework_la_OBJECTS)
+libtinyobject_la_LIBADD =
+am_libtinyobject_la_OBJECTS = XML.lo XMLObject.lo
+libtinyobject_la_OBJECTS = $(am_libtinyobject_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -193,8 +193,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libxmlframework_la_SOURCES)
-DIST_SOURCES = $(libxmlframework_la_SOURCES)
+SOURCES = $(libtinyobject_la_SOURCES)
+DIST_SOURCES = $(libtinyobject_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -351,14 +351,14 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # the library to build
-lib_LTLIBRARIES = libxmlframework.la
+lib_LTLIBRARIES = libtinyobject.la
 
 # lib headers to install
 otherincludedir = $(includedir)/$(PACKAGE)
-otherinclude_HEADERS = xmlframework.h XML.h XMLObject.h
+otherinclude_HEADERS = tinyobject.h XML.h XMLObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h XML.cpp XMLObject.cpp
+libtinyobject_la_SOURCES = Log.h XML.cpp XMLObject.cpp
 
 # include paths
 AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)
@@ -378,9 +378,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/xmlframework/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/tinyobject/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/xmlframework/Makefile
+	  $(AUTOMAKE) --foreign src/tinyobject/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -434,8 +434,8 @@ clean-libLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-libxmlframework.la: $(libxmlframework_la_OBJECTS) $(libxmlframework_la_DEPENDENCIES) $(EXTRA_libxmlframework_la_DEPENDENCIES) 
-	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libxmlframework_la_OBJECTS) $(libxmlframework_la_LIBADD) $(LIBS)
+libtinyobject.la: $(libtinyobject_la_OBJECTS) $(libtinyobject_la_DEPENDENCIES) $(EXTRA_libtinyobject_la_DEPENDENCIES) 
+	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libtinyobject_la_OBJECTS) $(libtinyobject_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

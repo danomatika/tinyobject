@@ -1,14 +1,14 @@
-# xmlframework library
+# tinyobject library
 
 # the library to build
-lib_LTLIBRARIES = libxmlframework.la
+lib_LTLIBRARIES = libtinyobject.la
 
 # lib headers to install
 otherincludedir = $(includedir)/$(PACKAGE)
-otherinclude_HEADERS = xmlframework.h XML.h XMLObject.h
+otherinclude_HEADERS = tinyobject.h XML.h XMLObject.h
 
 # libs sources, headers here because we dont want to install them
-libxmlframework_la_SOURCES = Log.h XML.cpp XMLObject.cpp
+libtinyobject_la_SOURCES = Log.h XML.cpp XMLObject.cpp
 
 # include paths
 AM_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS)

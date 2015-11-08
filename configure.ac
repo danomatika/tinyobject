@@ -1,8 +1,8 @@
 #########################################
 ##### Prelude #####
 
-AC_INIT([xmlframework], [0.2.0], [danomatika@gmail.com])
-AC_CONFIG_SRCDIR([src/xmlframework/xmlframework.h])
+AC_INIT([tinyobject], [0.3.0], [danomatika@gmail.com])
+AC_CONFIG_SRCDIR([src/tinyobject/tinyobject.h])
 AC_CONFIG_AUX_DIR([config])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
@@ -69,8 +69,8 @@ AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
-	src/xmlframework/Makefile
-	src/tests/Makefile
+	src/tinyobject/Makefile
+	src/totest/Makefile
 ])
 AC_OUTPUT
 

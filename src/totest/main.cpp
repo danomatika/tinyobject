@@ -2,7 +2,7 @@
 
 	main.cpp
 	
-	xmltests: tests for xmlframework
+	totest: tests for tinyobject
   
 	Copyright (C) 2009, 2010 Dan Wilcox <danomatika@gmail.com>
 
@@ -20,11 +20,15 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ==============================================================================*/
-#include <xmlframework/xmlframework.h>
+#include <tinyobject/tinyobject.h>
 #include <iostream>
 
 using namespace std;
 using namespace tinyxml2;
+
+// useful references:
+//   * https://shilohjames.wordpress.com/2014/04/27/tinyxml2-tutorial
+//   * http://www.grinninglizard.com/tinyxml2docs/index.html
 
 // an xml object subclass
 class Object : public XMLObject {
@@ -167,7 +171,14 @@ int main(int argc, char *argv[]) {
 	// load xml file through Processor derived from XMLObject
 	Processor processor;
 	processor.loadXMLFile("../../data/test.xml");
+	
+	// close current XML document tree, comment this to save changes along with
+	// everything else (key is to use XML::obtainChild so as not to add extra
+	// copies of the same elements to the tree)
 	processor.closeXMLFile();
+	
+	// save object data automatically (everything else woudl need to
+	// be done manually
 	processor.saveXMLFile("./testsave.xml");
 
 	return 0;

@@ -7,16 +7,16 @@ example: http://opende.svn.sourceforge.net/viewvc/opende/trunk/build/premake4.lu
 http://bitbucket.org/anders/lightweight/src/tip/premake4.lua
 
 ]]
-solution "xmlframework"
+solution "tinyobject"
 	configurations { "Debug", "Release" }
 	objdir "../obj"
  
--- oscframework library
-project "xmlframework"
+-- tinyobject library
+project "tinyobject"
 	kind "StaticLib"
 	language "C++"
-	targetdir "../src/xmlframework"
-	files { "../src/xmlframework/**.h", "../src/xmlframework/**.cpp" }
+	targetdir "../src/tinyobject"
+	files { "../src/tinyobject/**.h", "../src/tinyobject/**.cpp" }
 
 	configuration "linux"
 		buildoptions { "`pkg-config --cflags tinyxml2`" }
@@ -37,14 +37,14 @@ project "xmlframework"
 		flags { "Optimize" } 
 
 -- test executable
-project "xmltests"
+project "totest"
 	kind "ConsoleApp"
 	language "C++"
-	targetdir "../src/tests"
-	files { "../src/tests/**.h", "../src/tests/**.cpp" }
+	targetdir "../src/totest"
+	files { "../src/totest/**.h", "../src/totest/**.cpp" }
 
 	includedirs { "../src" }
-	links { "xmlframework" }
+	links { "tinyobject" }
 
 	configuration "linux"
 		buildoptions { "`pkg-config --cflags tinyxml2`" }

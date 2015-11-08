@@ -1,0 +1,252 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55893ECB159710E4786B3E61 /* XML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07BA72D26C88793854756EB7 /* XML.cpp */; };
+		1FBB326B15B546301A8B4DA5 /* XMLObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B677B047BBE12431EAF1744 /* XMLObject.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7A65390C6B6B686E269D468F /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
+		07BA72D26C88793854756EB7 /* XML.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XML.cpp"; path = "XML.cpp"; sourceTree = "<group>"; };
+		6EEA4D57194661067D1378DA /* XML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XML.h"; path = "XML.h"; sourceTree = "<group>"; };
+		5B677B047BBE12431EAF1744 /* XMLObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XMLObject.cpp"; path = "XMLObject.cpp"; sourceTree = "<group>"; };
+		2D7105471C5F252130095783 /* XMLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XMLObject.h"; path = "XMLObject.h"; sourceTree = "<group>"; };
+		5B8C5E506D8C419735747B62 /* tinyobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinyobject.h"; path = "tinyobject.h"; sourceTree = "<group>"; };
+		714C57E51E225DD4355D73B3 /* libtinyobject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libtinyobject.a"; path = "libtinyobject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		346C21F23F746DBB2488142A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7E465F656DBE73C144E4148C /* tinyobject */ = {
+			isa = PBXGroup;
+			children = (
+				755F702864027B3C46CD7493 /* src */,
+				1BF50F9708410A520E8D72C3 /* Products */,
+			);
+			name = "tinyobject";
+			sourceTree = "<group>";
+		};
+		755F702864027B3C46CD7493 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0D7252B109533B3E1A55429D /* tinyobject */,
+			);
+			name = "src";
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		0D7252B109533B3E1A55429D /* tinyobject */ = {
+			isa = PBXGroup;
+			children = (
+				7A65390C6B6B686E269D468F /* Log.h */,
+				07BA72D26C88793854756EB7 /* XML.cpp */,
+				6EEA4D57194661067D1378DA /* XML.h */,
+				5B677B047BBE12431EAF1744 /* XMLObject.cpp */,
+				2D7105471C5F252130095783 /* XMLObject.h */,
+				5B8C5E506D8C419735747B62 /* tinyobject.h */,
+			);
+			name = "tinyobject";
+			path = tinyobject;
+			sourceTree = "<group>";
+		};
+		1BF50F9708410A520E8D72C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				714C57E51E225DD4355D73B3 /* libtinyobject.a */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		082A0CDF126533FC7A4E3F63 /* tinyobject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 771E69217ACD56AD1AAA1BD5 /* Build configuration list for PBXNativeTarget "tinyobject" */;
+			buildPhases = (
+				787557CD651E3283706F1110 /* Resources */,
+				6EB87A2115EF15071F672A31 /* Sources */,
+				346C21F23F746DBB2488142A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tinyobject";
+			productName = "tinyobject";
+			productReference = 714C57E51E225DD4355D73B3 /* libtinyobject.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "tinyobject" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 7E465F656DBE73C144E4148C /* tinyobject */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				082A0CDF126533FC7A4E3F63 /* libtinyobject.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		787557CD651E3283706F1110 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6EB87A2115EF15071F672A31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55893ECB159710E4786B3E61 /* XML.cpp in Sources */,
+				1FBB326B15B546301A8B4DA5 /* XMLObject.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28D7788C61504DA1107B3AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../src/tinyobject;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "tinyobject";
+			};
+			name = "Debug";
+		};
+		4C6238EC2AC6309E7C4674BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../src/tinyobject;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "tinyobject";
+			};
+			name = "Release";
+		};
+		413E7BC0090F52FC51C8230B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Debug/tinyobject";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
+				PREBINDING = NO;
+				SYMROOT = "../src/tinyobject";
+			};
+			name = "Debug";
+		};
+		514B1B2728670DF437411B38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include",
+					"/opt/local/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib",
+					"/opt/local/lib",
+				);
+				OBJROOT = "../obj/Release/tinyobject";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-fvisibility=default",
+				);
+				PREBINDING = NO;
+				SYMROOT = "../src/tinyobject";
+			};
+			name = "Release";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		771E69217ACD56AD1AAA1BD5 /* Build configuration list for PBXNativeTarget "libtinyobject.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28D7788C61504DA1107B3AD8 /* Debug */,
+				4C6238EC2AC6309E7C4674BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "tinyobject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				413E7BC0090F52FC51C8230B /* Debug */,
+				514B1B2728670DF437411B38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

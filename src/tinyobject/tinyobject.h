@@ -1,8 +1,8 @@
 /*==============================================================================
 
-	xmlframework.h
+	tinyobject.h
 	
-	xmlframework: object based xml classes for TinyXml-2
+	tinyobject: object-based xml classes for TinyXml-2
   
 	Copyright (C) 2009, 2010 Dan Wilcox <danomatika@gmail.com>
 

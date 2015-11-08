@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# xmlframework test program
+# tinyobject test program
 
 VPATH = @srcdir@
 am__is_gnu_make = { \
@@ -90,8 +90,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = xmltests$(EXEEXT)
-subdir = src/tests
+noinst_PROGRAMS = totest$(EXEEXT)
+subdir = src/totest
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
@@ -105,17 +105,16 @@ CONFIG_HEADER = $(top_builddir)/src/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_xmltests_OBJECTS = xmltests-main.$(OBJEXT)
-xmltests_OBJECTS = $(am_xmltests_OBJECTS)
-xmltests_DEPENDENCIES =  \
-	$(top_builddir)/src/xmlframework/libxmlframework.la
+am_totest_OBJECTS = totest-main.$(OBJEXT)
+totest_OBJECTS = $(am_totest_OBJECTS)
+totest_DEPENDENCIES = $(top_builddir)/src/tinyobject/libtinyobject.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-xmltests_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+totest_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
-	$(CXXFLAGS) $(xmltests_LDFLAGS) $(LDFLAGS) -o $@
+	$(CXXFLAGS) $(totest_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -150,8 +149,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(xmltests_SOURCES)
-DIST_SOURCES = $(xmltests_SOURCES)
+SOURCES = $(totest_SOURCES)
+DIST_SOURCES = $(totest_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -307,16 +306,16 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # bin sources, headers here because we dont want to install them
-xmltests_SOURCES = main.cpp
+totest_SOURCES = main.cpp
 
 # include paths
-xmltests_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS) -I$(top_srcdir)/src
+totest_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS) -I$(top_srcdir)/src
 
 # libs to link, set static to statically link local libtool lib
-xmltests_LDFLAGS = $(TINYXML2_LIBS) -static
+totest_LDFLAGS = $(TINYXML2_LIBS) -static
 
 # local libraries needed to build (builddir), set path to .la for libtool libs
-xmltests_LDADD = $(top_builddir)/src/xmlframework/libxmlframework.la
+totest_LDADD = $(top_builddir)/src/tinyobject/libtinyobject.la
 all: all-am
 
 .SUFFIXES:
@@ -330,9 +329,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/tests/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/totest/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/tests/Makefile
+	  $(AUTOMAKE) --foreign src/totest/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -360,9 +359,9 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-xmltests$(EXEEXT): $(xmltests_OBJECTS) $(xmltests_DEPENDENCIES) $(EXTRA_xmltests_DEPENDENCIES) 
-	@rm -f xmltests$(EXEEXT)
-	$(AM_V_CXXLD)$(xmltests_LINK) $(xmltests_OBJECTS) $(xmltests_LDADD) $(LIBS)
+totest$(EXEEXT): $(totest_OBJECTS) $(totest_DEPENDENCIES) $(EXTRA_totest_DEPENDENCIES) 
+	@rm -f totest$(EXEEXT)
+	$(AM_V_CXXLD)$(totest_LINK) $(totest_OBJECTS) $(totest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -370,7 +369,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xmltests-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/totest-main.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -393,19 +392,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
-xmltests-main.o: main.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(xmltests_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xmltests-main.o -MD -MP -MF $(DEPDIR)/xmltests-main.Tpo -c -o xmltests-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xmltests-main.Tpo $(DEPDIR)/xmltests-main.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cpp' object='xmltests-main.o' libtool=no @AMDEPBACKSLASH@
+totest-main.o: main.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(totest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT totest-main.o -MD -MP -MF $(DEPDIR)/totest-main.Tpo -c -o totest-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/totest-main.Tpo $(DEPDIR)/totest-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cpp' object='totest-main.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(xmltests_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xmltests-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(totest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o totest-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
 
-xmltests-main.obj: main.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(xmltests_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xmltests-main.obj -MD -MP -MF $(DEPDIR)/xmltests-main.Tpo -c -o xmltests-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xmltests-main.Tpo $(DEPDIR)/xmltests-main.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cpp' object='xmltests-main.obj' libtool=no @AMDEPBACKSLASH@
+totest-main.obj: main.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(totest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT totest-main.obj -MD -MP -MF $(DEPDIR)/totest-main.Tpo -c -o totest-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/totest-main.Tpo $(DEPDIR)/totest-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cpp' object='totest-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(xmltests_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xmltests-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(totest_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o totest-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

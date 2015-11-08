@@ -21,7 +21,7 @@ src/stamp-h1
 *.lo
 *.a
 *.la
-src/tests/xmltests
+src/totest/totest
 
 # OSX
 .DS_Store
@@ -30,4 +30,4 @@ src/tests/xmltests
 
 # temp files
 *~
-src/tests/testsave.xml
+src/totest/testsave.xml
