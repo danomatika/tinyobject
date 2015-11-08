@@ -104,10 +104,14 @@ class XML {
 
 		/// set attribute using XMLObject type enum
 		static void setAttr(XMLElement *element, std::string name, XMLType type, void *var);
-
+	
+		/// adds a child element at a specific index in a list of same elements (0 for first),
+		/// adds to end if index is invalid
+		static XMLElement* addChild(XMLElement *element, std::string name, int index=0);
+	
 		/// finds child element at specific index in a list of same elements (0 for first),
 		/// creates and adds to end if not found
-		static XMLElement* obtainElement(XMLElement *element, std::string name, int index=0);
+		static XMLElement* obtainChild(XMLElement *element, std::string name, int index=0);
 
 		/// adds a comment as a child of the given element
 		static void addComment(XMLElement *element, std::string comment);

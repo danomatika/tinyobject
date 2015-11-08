@@ -600,15 +600,31 @@ void XML::setAttr(XMLElement *element, std::string name, XMLType type, void *var
 	}
 }
 
-XMLElement* XML::obtainElement(XMLElement *element, std::string name, int index) {
+XMLElement* XML::addChild(XMLElement *element, std::string name, int index) {
 	if(element == NULL) {
-		LOG_WARN << "XML::obtainElement(): element is NULL" << std::endl;
+		LOG_WARN << "XML::addChild(): element is NULL" << std::endl;
+		return NULL;
+	}
+	XMLElement *child = element->GetDocument()->NewElement(name.c_str());
+	XMLElement *sibling = getChild(element, name, index-1);
+	if(sibling) {
+		element->InsertAfterChild(sibling, child);
+	}
+	else {
+		element->InsertEndChild(child);
+	}
+	return child;
+}
+
+XMLElement* XML::obtainChild(XMLElement *element, std::string name, int index) {
+	if(element == NULL) {
+		LOG_WARN << "XML::obtainChild(): element is NULL" << std::endl;
 		return NULL;
 	}
 	XMLElement *child = getChild(element, name, index);
 	if(child == NULL) { // if element doesnt exist, add it
 		child = element->GetDocument()->NewElement(name.c_str());
-		element->LinkEndChild(child);
+		element->InsertEndChild(child);
 	}
 	return child;
 }
@@ -620,7 +636,7 @@ void XML::addComment(XMLElement *element, std::string comment) {
 	}
 	XMLComment *child = element->GetDocument()->NewComment(comment.c_str());
 	if(element == NULL) {
-		element->LinkEndChild(child);
+		element->InsertEndChild(child);
 	}
 }
 

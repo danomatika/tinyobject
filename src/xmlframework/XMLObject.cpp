@@ -27,7 +27,7 @@
 #include "Log.h"
 #include "Xml.h"
 
-#define DEBUG_XML_OBJECT
+//#define DEBUG_XML_OBJECT
 
 namespace tinyxml2 {
 
@@ -223,7 +223,7 @@ bool XMLObject::saveXML(XMLElement *e) {
 		}
 		else {
 			// find element, add if it dosen't exit
-			child = XML::obtainElement(e, elem->name);
+			child = XML::obtainChild(e, elem->name);
 		}
 
 		// set the element's text if any
@@ -278,7 +278,7 @@ bool XMLObject::saveXML(XMLElement *e) {
 				#endif
 
 				// find an element with same name at a specific index, add if it dosen't exist
-				child = XML::obtainElement(e, (*objectIter)->getXMLName(), iter->second);
+				child = XML::obtainChild(e, (*objectIter)->getXMLName(), iter->second);
 			}
 			else {
 				// stay on same element
@@ -305,11 +305,11 @@ bool XMLObject::saveXMLFile(std::string filename) {
 		m_xmlDoc = new XMLDocument;
 
 		// add the default declaration: 1.0 UTF-8
-		m_xmlDoc->LinkEndChild(m_xmlDoc->NewDeclaration());
+		m_xmlDoc->InsertEndChild(m_xmlDoc->NewDeclaration());
 
 		// add root element
 		root = m_xmlDoc->NewElement(getXMLName().c_str());
-		m_xmlDoc->LinkEndChild(root);
+		m_xmlDoc->InsertEndChild(root);
 
 		m_docLoaded = true;
 	}
