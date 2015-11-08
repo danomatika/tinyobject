@@ -1,7 +1,7 @@
 tinyobject
 ==========
 
-object base class an convenience static class for TinyXML-2 
+object base class and convenience static class for TinyXML-2 
 
 Copyright (c) [Dan Wilcox](http://danomatika.com) 2009, 2015
 
@@ -13,7 +13,7 @@ This is a wrapper around the [TinyXML-2 library](http://www.grinninglizard.com/t
 Documentation
 -------------
 
-See the headers in `src/tinyobject` and the example in `src/totest` for more info.
+See the headers in `src/tinyobject` and the [example](https://github.com/danomatika/tinyobject/blob/master/src/totest/main.cpp) in `src/totest` for more info.
 
 Building & Installing
 ---------------------
@@ -26,7 +26,6 @@ This is an automake project, so build the lib & test with:
 
     ./configure
 	make
-
 
 Run the test program with:
 
