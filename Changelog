@@ -1,3 +1,24 @@
+2015-11-08 Dan Wilcox <danomatika@gmail.com>
+
+	0.3.0: tinyobject
+
+	* renamed library to tinyobject
+	* updated to tinyxml2 external lib, removed included tinyxml sources
+	* added libtool support for building & installing static & shared libs
+	* configure & makefiles updated to build on Linux
+	* now using tinyxml2 namespace, renamed classes with XML* to match tinyxml conventions
+	* XML: null checks log as warnings now, not errors
+	* XML: get bool attribute now works with true/false value strings
+	* XML: added element text get/set w/ variable types and addComment
+	* XML: getElement() is now getChild() & obtainElement() now obtainChild()
+	* XML: added getNumChildren() & addChild()
+	* XMLObject: add/remove now subscribe/unsubscribe
+	* XMLObject: added ability to subscribe to element text with different variable type
+	* XMLObject: subscribing to an attribute with an empty variable name now uses the object's root element name
+	* removed XML_TYPE_BYTE, use UINT instead; moved types enum to XML.h
+	* renamed test program to lptest
+	
+
 2014-01-09 Dan Wilcox <danomatika@gmail.com>
 
 	0.2.0
