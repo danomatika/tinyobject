@@ -369,39 +369,50 @@ std::string XML::elementToString(const XMLElement *element, std::string indent) 
 	return stream.str();
 }
 
-XMLElement* XML::getChild(XMLElement *element, std::string name, int index) {
+XMLElement* XML::getChild(XMLElement *element, std::string path, int index) {
 	if(element == NULL) {
 		LOG_WARN << "XML::getChild(): element is NULL" << std::endl;
 		return NULL;
 	}
-	XMLElement *e = element->FirstChildElement(name.c_str());
-	for(int i = 0; i < index; ++i) {
-		e = element->NextSiblingElement(name.c_str());
+	XMLElement *e = element;
+	std::vector<PathNode> nodes = parsePath(path);
+	if(nodes.size() < 1) {
+		return e;
+	}
+	for(int n = 0; n < nodes.size(); ++n) {
+		PathNode &node = nodes[n];
+		e = e->FirstChildElement(node.name.c_str());
 		if(e == NULL) {
 			return NULL;
+		}
+		for(int i = 0; i < node.index; ++i) {
+			e = e->NextSiblingElement(node.name.c_str());
+			if(e == NULL) {
+				return NULL;
+			}
 		}
 	}
 	return e;
 }
 
-unsigned int XML::getNumChildren(XMLElement *element, std::string name) {
+unsigned int XML::getNumChildren(XMLElement *element, std::string path, std::string name) {
 	if(element == NULL) {
 		LOG_WARN << "XML::getNumChildren(): element is NULL" << std::endl;
 		return 0;
 	}
 	unsigned int num = 0;
+	XMLElement *child = getChild(element, path);
+	XMLElement *e = child->FirstChildElement();
 	if(name == "") { // total num
-		XMLElement *e = element->FirstChildElement();
 		while(e != NULL) {
 			num++;
 			e = e->NextSiblingElement();
 		}
 	}
 	else { // only those with a given name
-		XMLElement *e = element->FirstChildElement(name.c_str());
 		while(e != NULL) {
 			num++;
-			e = e->NextSiblingElement(name.c_str());
+			e = e->NextSiblingElement(path.c_str());
 		}
 	}
 	return num;
@@ -600,31 +611,65 @@ void XML::setAttr(XMLElement *element, std::string name, XMLType type, void *var
 	}
 }
 
-XMLElement* XML::addChild(XMLElement *element, std::string name, int index) {
+XMLElement* XML::addChild(XMLElement *element, std::string path, int index) {
 	if(element == NULL) {
 		LOG_WARN << "XML::addChild(): element is NULL" << std::endl;
 		return NULL;
 	}
-	XMLElement *child = element->GetDocument()->NewElement(name.c_str());
-	XMLElement *sibling = getChild(element, name, index-1);
-	if(sibling) {
-		element->InsertAfterChild(sibling, child);
+	XMLElement *child = element;
+	std::vector<PathNode> nodes = parsePath(path);
+	if(nodes.size() < 1) {
+		return NULL;
 	}
-	else {
-		element->InsertEndChild(child);
+	for(int n = 0; n < nodes.size(); ++n) {
+		PathNode &node = nodes[n];
+		if(n < nodes.size()-1) { // preceeding nodes
+			child = XML::obtainChild(child, node.name, node.index);
+		}
+		else { // last node
+			XMLElement *e = element->GetDocument()->NewElement(node.name.c_str());
+			XMLElement *sibling = obtainChild(child, node.name, (index > node.index ? index-1 : node.index-1));
+			if(sibling) { // last node exists/was created, so insert before
+				child->InsertAfterChild(sibling, e);
+			}
+			else {
+				child->InsertEndChild(e);
+			}
+			child = e;
+		}
 	}
 	return child;
 }
 
-XMLElement* XML::obtainChild(XMLElement *element, std::string name, int index) {
+XMLElement* XML::obtainChild(XMLElement *element, std::string path, int index) {
 	if(element == NULL) {
 		LOG_WARN << "XML::obtainChild(): element is NULL" << std::endl;
 		return NULL;
 	}
-	XMLElement *child = getChild(element, name, index);
-	if(child == NULL) { // if element doesnt exist, add it
-		child = element->GetDocument()->NewElement(name.c_str());
-		element->InsertEndChild(child);
+	XMLElement *child = element;
+	std::vector<PathNode> nodes = parsePath(path);
+	if(nodes.size() < 1) {
+		return NULL;
+	}
+	for(int n = 0; n < nodes.size(); ++n) {
+		PathNode &node = nodes[n];
+		XMLElement *e = child->FirstChildElement(node.name.c_str());
+		if(e == NULL) {
+			e = element->GetDocument()->NewElement(node.name.c_str());
+			child->InsertEndChild(e);
+		}
+		int num = node.index;
+		if(n == nodes.size()-1) {
+			num = (index > node.index) ? index : node.index;
+		}
+		for(int i = 0; i < num; ++i) {
+			e = e->NextSiblingElement(node.name.c_str());
+			if(e == NULL) {
+				e = element->GetDocument()->NewElement(node.name.c_str());
+				child->InsertEndChild(e);
+			}
+		}
+		child = e;
 	}
 	return child;
 }
@@ -635,8 +680,18 @@ void XML::addComment(XMLElement *element, std::string comment) {
 		return;
 	}
 	XMLComment *child = element->GetDocument()->NewComment(comment.c_str());
+	element->InsertEndChild(child);
+}
+
+void XML::addCommentTo(XMLElement *element, std::string comment, std::string path, int index) {
 	if(element == NULL) {
-		element->InsertEndChild(child);
+		LOG_WARN << "XML::addCommentTo(): element is NULL" << std::endl;
+		return;
+	}
+	XMLElement *e = obtainChild(element, path, index);
+	if(e != NULL) {
+		XMLComment *child = element->GetDocument()->NewComment(comment.c_str());
+		e->InsertEndChild(child);
 	}
 }
 
@@ -657,6 +712,40 @@ std::string XML::getErrorString(const XMLDocument *xmlDoc) {
 		error << " " << xmlDoc->GetErrorStr2();
 	}
 	return error.str();
+}
+
+// numeric check via stringstream:
+// http://stackoverflow.com/questions/4917265/can-i-tell-if-a-stdstring-represents-a-number-using-stringstream
+std::vector<XML::PathNode> XML::parsePath(std::string path) {
+	std::vector<XML::PathNode> nodes;
+	XML::PathNode node;
+	std::istringstream line(path);
+	std::string token;
+	while(std::getline(line, token, '/')) {
+		std::stringstream numeric(token);
+		int index = 0;
+		if(numeric >> index) { // numeric index
+			if(node.name == "") {
+				LOG_ERROR << "XML::parsePath(): found index " << token
+				          << " before element name in path: " << path << std::endl;
+				return std::vector<XML::PathNode>(); // empty
+			}
+			node.index = index;
+			nodes.push_back(node);
+			node.clear();
+		}
+		else { // element name
+			if(node.name != "") { // push previous
+				nodes.push_back(node);
+				node.clear();
+			}
+			node.name = token;
+		}
+	}
+	if(node.name != "") { // push anything left over
+		nodes.push_back(node);
+	}
+	return nodes;
 }
 
 } // namespace

@@ -77,6 +77,8 @@ class XMLObject {
 		/// \section Elements
 
 		/// add an element at the current level, element names are singular
+		/// name can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test"
 		bool subscribeXMLElement(std::string name, XMLType type, void *var, bool readOnly=false);
 	
 		/// remove an element at the current level, also removes attached attributes
@@ -91,6 +93,8 @@ class XMLObject {
 		/// if element does not exist, it will be created
 		/// if it exists, attribute will be attached to it
 		/// if element name is the same as the object name, the attribute will be added to the root tag
+		/// element name can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test"
 		bool subscribeXMLAttribute(std::string name, std::string elementName, XMLType type, void *var, bool readOnly=false);
 	
 		/// unsubscribe from automatically loading an attribute

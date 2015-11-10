@@ -30,4 +30,5 @@ src/totest/totest
 
 # temp files
 *~
+src/totest/testupdate.xml
 src/totest/testsave.xml

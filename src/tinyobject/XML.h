@@ -25,6 +25,7 @@
 #include <tinyxml2.h>
 #include <stdint.h>
 #include <string>
+#include <vector>
 
 namespace tinyxml2 {
 
@@ -74,12 +75,16 @@ class XML {
 		/// return element and attributes as a string, does not descend to children
 		static std::string elementToString(const XMLElement *element, std::string indent);
 
-		/// find child element by name and index (if in a list), returns NULL if element not found
-		static XMLElement* getChild(XMLElement *element, std::string name, int index=0);
+		/// find child element by path and index (if in a list), returns NULL if element not found
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "/sub/element/test" or "/sub/1/element/2/test"
+		static XMLElement* getChild(XMLElement *element, std::string path, int index=0);
 	
 		/// get the number of child elements with the given name,
 		/// if name is empty "", returns total number of child elements
-		static unsigned int getNumChildren(XMLElement *element, std::string name="");
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		static unsigned int getNumChildren(XMLElement *element, std::string path="", std::string name="");
 
 		/// \section Write
 
@@ -107,19 +112,54 @@ class XML {
 	
 		/// adds a child element at a specific index in a list of same elements (0 for first),
 		/// adds to end if index is invalid
-		static XMLElement* addChild(XMLElement *element, std::string name, int index=0);
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		static XMLElement* addChild(XMLElement *element, std::string path, int index=0);
 	
 		/// finds child element at specific index in a list of same elements (0 for first),
 		/// creates and adds to end if not found
-		static XMLElement* obtainChild(XMLElement *element, std::string name, int index=0);
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		static XMLElement* obtainChild(XMLElement *element, std::string path, int index=0);
 
 		/// adds a comment as a child of the given element
 		static void addComment(XMLElement *element, std::string comment);
+	
+		/// add comment as a child of the given element chosen by name
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		static void addCommentTo(XMLElement *element, std::string comment, std::string path, int index=0);
 
 		/// \section Util
 
 		/// returns the current error as a string
 		static std::string getErrorString(const XMLDocument *xmlDoc);
+	
+		/// path node struct for parsing a given path string aka
+		/// "foo/bar/baz", "foo/1/bar/2/baz/3", etc
+		struct PathNode {
+			
+			std::string name = ""; //< element name
+			int index = 0; //< index if in a list, 0 for first element
+			
+			/// reset values
+			void clear() {
+				name = "";
+				index = 0;
+			}
+		};
+	
+		/// parses a given string as sets of element names and indices
+		/// separated by forward slashes /
+		///
+		/// ie. "foo/bar/baz" -> "foo", "bar", "baz
+		///     "foo/1/bar/2/baz/3" -> "foo" 1, "bar" 2, "baz" 3
+		///
+		/// an index before an element name string results in an error:
+		///    "1/foo/bar" -> error
+		///
+		/// used internally as a "poor man's XPath"
+		static std::vector<PathNode> parsePath(std::string path);
 };
 
 } // namespace

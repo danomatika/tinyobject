@@ -20,20 +20,42 @@
 		<bar>123.456</bar>
 		<subobject name="subobject">
 			<baz>987.654</baz>
-			<ka>the answer is 42</ka>	
+			<ka>the answer is 42</ka>
+			<subelement>
+				<test>
+					<text>take my wife ... please</text>
+					<number>-1000</number>
+				</test>
+			</subelement>
 		</subobject>
+		<subelement>
+			<test>
+				<text>test test 1 2 3</text>
+				<number>9988.776</number>
+			</test>
+		</subelement>
 	</object>
 	<!-- objects to load manually -->
 	<objecttest>
 		<object name="einstein">
 			<foo>E = MC^2</foo>
 			<bar>3.14159</bar>
+			<subelement>
+				<test>
+					<text>5 4 3 2 1</text>
+					<number>88.3</number>
+				</test>
+			</subelement>
 		</object>
-	</objecttest>
-	<objecttest>
 		<object name="curie">
 			<foo>radium for breakfast</foo>
 			<bar>555.6667</bar>
+			<subelement>
+				<test>
+					<text>egalite</text>
+					<number>444.33</number>
+				</test>
+			</subelement>
 		</object>
 	</objecttest>
 </xmltest>

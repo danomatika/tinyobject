@@ -44,10 +44,14 @@ class Object : public XMLObject {
 			name = XML::getAttrString(e, "name");
 			foo = XML::getTextString(XML::getChild(e, "foo"));
 			bar = XML::getTextFloat(XML::getChild(e, "bar"));
-			cout << endl;
+			text = XML::getTextString(XML::getChild(e, "subelement/test/text"));
+			number = XML::getTextFloat(XML::getChild(e, "subelement/test/number"));
 			cout << "OBJECT: " << name << endl
 			     << "    foo: " << foo << endl
-			     << "    bar: " << bar << endl << endl;
+			     << "    bar: " << bar << endl
+				 << "    num test subelements: " << XML::getNumChildren(e, "subelement/test") << endl
+			     << "    subelement/test/text: " << text << endl
+			     << "    subelement/test/number: " << number << endl;
 			return true;
 		}
 	
@@ -62,6 +66,9 @@ class Object : public XMLObject {
 		string name;
 		string foo;
 		float bar;
+	
+		string text;
+		float number;
 };
 
 // an xml object subclass to be nested within the first
@@ -80,22 +87,37 @@ class SubObject : public XMLObject {
 			// subscribe to load element text data
 			subscribeXMLElement("baz", XML_TYPE_FLOAT, &baz);
 			subscribeXMLElement("ka", XML_TYPE_STRING, &ka);
+			
+			// subscribe to nested elements
+			subscribeXMLElement("subelement/test/text", XML_TYPE_STRING, &text);
+			subscribeXMLElement("subelement/test/number", XML_TYPE_FLOAT, &number);
 		}
 	
 	protected:
 	
 		// print values in callback
 		bool readXML(XMLElement *e) {
-			cout << endl;
 			cout << "SUBOBJECT: " << name << endl
 			     << "    baz: " << baz << endl
-			     << "    ka: " << ka << endl;
+			     << "    ka: " << ka << endl
+				 << "    num test subelements: " << XML::getNumChildren(e, "subelement/test") << endl
+			     << "    subelement/test/text: " << text << endl
+			     << "    subelement/test/number: " << number << endl;
+			
+			// change values
+			baz = 666;
+			ka = "Ramses II";
+			text = "I am Oxymandias";
+			number = 3;
 			return true;
 		}
 	
 		string name;
 		float baz;
 		string ka;
+	
+		string text;
+		float number;
 };
 
 //
@@ -123,62 +145,112 @@ class Processor : public XMLObject {
 	
 		// derived callback, called when loading xml data for the object
 		bool readXML(XMLElement *e) {
-			XMLElement *child = e->FirstChildElement();
-			while(child != NULL) {
-				if((string)child->Name() == "argtest") {
-					cout << "ARGUMENT TEST" << endl;
-					cout << "bool 1: " << XML::getAttrBool(child, "bool1", false) << endl
-					     << "bool 0: " << XML::getAttrBool(child, "bool0", true) << endl
-					     << "bool true:  " << XML::getAttrBool(child, "boolT", false) << endl
-					     << "bool false: " << XML::getAttrBool(child, "boolF", true) << endl
-					     << "int:    " << XML::getAttrInt(child, "int") << endl
-					     << "uint:   " << XML::getAttrUInt(child, "uint") << endl
-					     << "float:  " << XML::getAttrFloat(child, "float") << endl
-					     << "double: " << XML::getAttrDouble(child, "double") << endl
-					     << "string: " << XML::getAttrString(child, "string") << endl;
-					cout << "DONE" << endl << endl;
-				}
-				else if((string)child->Name() == "elementtest") {
-					cout << "ELEMENT TEST: " << XML::getNumChildren(child) << endl;
-					cout << "bool 1: " << XML::getTextBool(XML::getChild(child, "bool1"), false) << endl
-					     << "bool 0: " << XML::getTextBool(XML::getChild(child, "bool0"), true) << endl
-					     << "bool true:  " << XML::getTextBool(XML::getChild(child, "boolT"), false) << endl
-					     << "bool false: " << XML::getTextBool(XML::getChild(child, "boolF"), true) << endl
-					     << "int:    " << XML::getTextInt(XML::getChild(child, "int")) << endl
-					     << "uint:   " << XML::getTextUInt(XML::getChild(child,  "uint")) << endl
-					     << "float:  " << XML::getTextFloat(XML::getChild(child, "float")) << endl
-					     << "double: " << XML::getTextDouble(XML::getChild(child, "double")) << endl
-					     << "string: " << XML::getTextString(XML::getChild(child, "string")) << endl;
-					cout << "DONE" << endl << endl;
-				}
-				else if((string)child->Name() == "objecttest") {
-					// load object class manually
-					XMLElement *subchild = child->FirstChildElement();
-					while(subchild != NULL) {
-						Object o;
-						o.loadXML(child->FirstChildElement()); // prints here when the class readXML function called
-						subchild = subchild->NextSiblingElement();
-					}
-				}
-				child = child->NextSiblingElement();
+			cout << endl;
+			XMLElement *child = XML::getChild(e, "argtest");
+			if(child) {
+				cout << "ARGUMENT TEST" << endl;
+				cout << "bool 1: " << XML::getAttrBool(child, "bool1", false) << endl
+					 << "bool 0: " << XML::getAttrBool(child, "bool0", true) << endl
+					 << "bool true:  " << XML::getAttrBool(child, "boolT", false) << endl
+					 << "bool false: " << XML::getAttrBool(child, "boolF", true) << endl
+					 << "int:    " << XML::getAttrInt(child, "int") << endl
+					 << "uint:   " << XML::getAttrUInt(child, "uint") << endl
+					 << "float:  " << XML::getAttrFloat(child, "float") << endl
+					 << "double: " << XML::getAttrDouble(child, "double") << endl
+					 << "string: " << XML::getAttrString(child, "string") << endl;
+				cout << "DONE" << endl << endl;
 			}
+			child = XML::getChild(e, "elementtest");
+			if(child) {
+				cout << "ELEMENT TEST: " << XML::getNumChildren(child) << endl;
+				cout << "bool 1: " << XML::getTextBool(XML::getChild(child, "bool1"), false) << endl
+					 << "bool 0: " << XML::getTextBool(XML::getChild(child, "bool0"), true) << endl
+					 << "bool true:  " << XML::getTextBool(XML::getChild(child, "boolT"), false) << endl
+					 << "bool false: " << XML::getTextBool(XML::getChild(child, "boolF"), true) << endl
+					 << "int:    " << XML::getTextInt(XML::getChild(child, "int")) << endl
+					 << "uint:   " << XML::getTextUInt(XML::getChild(child,  "uint")) << endl
+					 << "float:  " << XML::getTextFloat(XML::getChild(child, "float")) << endl
+					 << "double: " << XML::getTextDouble(XML::getChild(child, "double")) << endl
+					 << "string: " << XML::getTextString(XML::getChild(child, "string")) << endl;
+				cout << "DONE" << endl << endl;
+			}
+			child = XML::getChild(e, "objecttest");
+			if(child) {
+				cout << "OBJECT TEST: " << XML::getNumChildren(child) << endl;
+				// load object class manually
+				XMLElement *subchild = child->FirstChildElement();
+				while(subchild != NULL) {
+					Object o;
+					o.loadXML(subchild); // prints here when the class readXML function called
+					subchild = subchild->NextSiblingElement();
+				}
+				cout << "DONE" << endl << endl;
+			}
+			return true;
+		}
+	
+		// derived callback, called when saving xml data from the object
+		bool writeXML(XMLElement *e) {
+			
+			// comments
+			XML::addComment(e, "this is a comment");
+			XML::addComment(e, "\n\t\tthis is a multiline comment\n\t");
+			XML::addCommentTo(e, "this is a deeper comment", "foo/bar/1");
+			
+			// write nested element text
+			XML::setTextString(XML::obtainChild(e, "foo/bar/baz"), "hello again");
+			
+			// write nested element & indices text
+			XML::setTextString(XML::obtainChild(e, "foo/0/bar/1/baz", 2), "guten morgen");
+			
+			// add an extra child at the given position, creates empty elements to fill
+			XML::setTextFloat(XML::addChild(e, "foo/bar/baz", 2), 4561.23);
+			
 			return true;
 		}
 };
 
 int main(int argc, char *argv[]) {
+	cout << endl;
+	
+	cout << "PATH PARSING TEST" << endl;
+	
+	// element names
+	cout << "foo/bar/baz" << endl;
+	vector<XML::PathNode> nodes = XML::parsePath("foo/bar/baz");
+	for(int i = 0; i < nodes.size(); ++i) {
+		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
+	}
+	
+	// element names and indices
+	cout << "foo/1/bar/2/baz/3" << endl;
+	nodes = XML::parsePath("foo/1/bar/2/baz/3");
+	for(int i = 0; i < nodes.size(); ++i) {
+		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
+	}
+	
+	// should throw error since index comes before element name
+	cout << "1/foo/bar" << endl;
+	nodes = XML::parsePath("1/foo/bar");
+	for(int i = 0; i < nodes.size(); ++i) {
+		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
+	}
+	cout << "DONE" << endl << endl;
 	
 	// load xml file through Processor derived from XMLObject
 	Processor processor;
 	processor.loadXMLFile("../../data/test.xml");
 	
-	// close current XML document tree, comment this to save changes along with
-	// everything else (key is to use XML::obtainChild so as not to add extra
-	// copies of the same elements to the tree)
+	// save the current document, calls all objects automatically which
+	// implement saveXML() and update values (key is to use XML::obtainChild
+	// so as not to add extra copies of the same elements to the tree)
+	processor.saveXMLFile("./testupdate.xml");
+	
+	// close current XML document tree
 	processor.closeXMLFile();
 	
-	// save object data automatically (everything else would need to
-	// be done manually
+	// save Object & Subobject data only since they implement saveXML() and were
+	// added as children of Processor
 	processor.saveXMLFile("./testsave.xml");
 
 	return 0;
