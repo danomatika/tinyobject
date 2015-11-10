@@ -462,6 +462,13 @@ bool XMLObject::unsubscribeXMLAttribute(std::string name, std::string elementNam
 	         << name << "\", not found" << std::endl;
 	return false;
 }
+bool XMLObject::isXMLDocumentLoaded() {
+	return m_docLoaded;
+}
+
+XMLDocument* XMLObject::getXMLDocument() {
+	return m_xmlDoc;
+}
 
 XMLElement* XMLObject::getXMLRootElement() {
 	if(m_docLoaded) {

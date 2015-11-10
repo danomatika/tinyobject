@@ -146,6 +146,8 @@ class Processor : public XMLObject {
 		// derived callback, called when loading xml data for the object
 		bool readXML(XMLElement *e) {
 			cout << endl;
+			cout << "ROOT: " << getXMLRootElement()->Name() << endl;
+			cout << endl;
 			XMLElement *child = XML::getChild(e, "argtest");
 			if(child) {
 				cout << "ARGUMENT TEST" << endl;

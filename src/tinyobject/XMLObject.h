@@ -109,8 +109,19 @@ class XMLObject {
 		/// get/set this objects xml element name
 		inline std::string& getXMLName() {return m_elementName;}
 		inline void setXMLName(std::string name) {m_elementName = name;}
-
-		/// get the root element (for direct access)
+	
+		/// is the XML document for this object currently loaded
+		/// returns true if this object is currently loaded or saving
+		bool isXMLDocumentLoaded();
+	
+		/// get the currently loaded xml document when this object is loading/saving
+		/// returns NULL if the document has not been initialized or the object has a parent
+		/// object doing the loading/saving
+		XMLDocument* getXMLDocument();
+	
+		/// get the root element of the currently loaded XML document
+		/// returns NULL if the document has not been initialized or the object has a parent
+		/// object doing the loading/saving
 		XMLElement* getXMLRootElement();
 
 	protected:
