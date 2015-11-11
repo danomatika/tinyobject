@@ -1,3 +1,18 @@
+2015-11-10 Dan Wilcox <danomatika@gmail.com>
+
+	0.4.0
+
+	* XMLObject: added local element data access convenience functions
+	* XMLObject: added initXML() so objects can be used without implementing readXML/writeXML
+	* XMLObject: added access to underlying XML document and loaded bool
+	* XMLObject: added getXMLElement()
+	* XMLObject: getXMLDocument() & getXMLRootElement() now work within nested objects
+	* XML: added element path parsing with indices
+	* XML: removed unneeded addCommentTo()
+	* XML: fixed bug that returned NULL elements when providing an empty path string
+	* XML: updated warn/error messages
+	* updated totest to test update & saving to xml files
+
 2015-11-08 Dan Wilcox <danomatika@gmail.com>
 
 	0.3.0: tinyobject
