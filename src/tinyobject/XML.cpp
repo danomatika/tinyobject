@@ -376,9 +376,6 @@ XMLElement* XML::getChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *e = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	if(nodes.size() < 1) {
-		return e;
-	}
 	for(int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		e = e->FirstChildElement(node.name.c_str());
@@ -516,12 +513,12 @@ void XML::setText(XMLElement *element, XMLType type, void *var) {
 	}
 }
 
-void XML::setAttrString(XMLElement *element, std::string name, std::string s) {
+void XML::setAttrBool(XMLElement *element, std::string name, bool b) {
 	if(element == NULL) {
-		LOG_WARN << "XML::setAttrString(): element is NULL" << std::endl;
+		LOG_WARN << "XML::setAttrBool(): element is NULL" << std::endl;
 		return;
 	}
-	element->SetAttribute(name.c_str(), s.c_str());
+	element->SetAttribute(name.c_str(), (b ? "true" : "false"));
 }
 
 void XML::setAttrInt(XMLElement *element, std::string name, int i) {
@@ -540,14 +537,6 @@ void XML::setAttrUInt(XMLElement *element, std::string name, unsigned int i) {
 	element->SetAttribute(name.c_str(), (int) i);
 }
 
-void XML::setAttrDouble(XMLElement *element, std::string name, double d) {
-	if(element == NULL) {
-		LOG_WARN << "XML::setAttrDouble(): element is NULL" << std::endl;
-		return;
-	}
-	element->SetAttribute(name.c_str(), d);
-}
-
 void XML::setAttrFloat(XMLElement *element, std::string name, float f) {
 	if(element == NULL) {
 		LOG_WARN << "XML::setAttrFloat(): element is NULL" << std::endl;
@@ -556,12 +545,20 @@ void XML::setAttrFloat(XMLElement *element, std::string name, float f) {
 	element->SetAttribute(name.c_str(), f);
 }
 
-void XML::setAttrBool(XMLElement *element, std::string name, bool b) {
+void XML::setAttrDouble(XMLElement *element, std::string name, double d) {
 	if(element == NULL) {
-		LOG_WARN << "XML::setAttrBool(): element is NULL" << std::endl;
+		LOG_WARN << "XML::setAttrDouble(): element is NULL" << std::endl;
 		return;
 	}
-	element->SetAttribute(name.c_str(), (b ? "true" : "false"));
+	element->SetAttribute(name.c_str(), d);
+}
+
+void XML::setAttrString(XMLElement *element, std::string name, std::string s) {
+	if(element == NULL) {
+		LOG_WARN << "XML::setAttrString(): element is NULL" << std::endl;
+		return;
+	}
+	element->SetAttribute(name.c_str(), s.c_str());
 }
 
 void XML::setAttr(XMLElement *element, std::string name, XMLType type, void *var) {
@@ -618,9 +615,6 @@ XMLElement* XML::addChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *child = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	if(nodes.size() < 1) {
-		return NULL;
-	}
 	for(int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		if(n < nodes.size()-1) { // preceeding nodes
@@ -648,9 +642,6 @@ XMLElement* XML::obtainChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *child = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	if(nodes.size() < 1) {
-		return NULL;
-	}
 	for(int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		XMLElement *e = child->FirstChildElement(node.name.c_str());
@@ -681,18 +672,6 @@ void XML::addComment(XMLElement *element, std::string comment) {
 	}
 	XMLComment *child = element->GetDocument()->NewComment(comment.c_str());
 	element->InsertEndChild(child);
-}
-
-void XML::addCommentTo(XMLElement *element, std::string comment, std::string path, int index) {
-	if(element == NULL) {
-		LOG_WARN << "XML::addCommentTo(): element is NULL" << std::endl;
-		return;
-	}
-	XMLElement *e = obtainChild(element, path, index);
-	if(e != NULL) {
-		XMLComment *child = element->GetDocument()->NewComment(comment.c_str());
-		e->InsertEndChild(child);
-	}
 }
 
 // UTIL

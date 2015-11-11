@@ -32,12 +32,31 @@
 namespace tinyxml2 {
 
 XMLObject::XMLObject(std::string elementName) :
-	m_docLoaded(false), m_elementName(elementName) {}
+	m_docLoaded(false), m_xmlDoc(NULL), m_element(NULL), m_elementName(elementName) {}
 
 XMLObject::~XMLObject() {
 	unsubscribeAllXMLElements();
 	closeXMLFile();
 }
+
+void XMLObject::initXML() {
+	if(m_docLoaded) {
+		closeXMLFile();
+	}
+	m_xmlDoc = new XMLDocument;
+
+	// add the default declaration: 1.0 UTF-8
+	m_xmlDoc->InsertEndChild(m_xmlDoc->NewDeclaration());
+
+	// add root element
+	XMLElement *root = m_xmlDoc->NewElement(getXMLName().c_str());
+	m_xmlDoc->InsertEndChild(root);
+	m_element = root;
+
+	m_docLoaded = true;
+}
+
+// LOAD
 
 bool XMLObject::loadXML(XMLElement *e) {
 	if(e == NULL) {
@@ -51,6 +70,7 @@ bool XMLObject::loadXML(XMLElement *e) {
 		         << m_elementName << "\"" << std::endl;
 		return false;
 	}
+	m_element = e;
 
 	#ifdef DEBUG_XML_OBJECT
 		LOG_DEBUG << "loading xml " << m_elementName << std::endl;
@@ -191,6 +211,8 @@ bool XMLObject::loadXMLFile(std::string filename) {
 	return loadXML(root);
 }
 
+// SAVE
+
 bool XMLObject::saveXML(XMLElement *e) {
 	if(e == NULL) {
 		return false;
@@ -202,6 +224,7 @@ bool XMLObject::saveXML(XMLElement *e) {
 		         << m_elementName << "\"" << std::endl;
 		return false;
 	}
+	m_element = e;
 
 	#ifdef DEBUG_XML_OBJECT
 		LOG_DEBUG << "saving xml " << m_elementName << std::endl;
@@ -300,22 +323,9 @@ bool XMLObject::saveXMLFile(std::string filename) {
 
 	// setup new doc if not loaded
 	if(!m_docLoaded) {
-
-		// new doc
-		m_xmlDoc = new XMLDocument;
-
-		// add the default declaration: 1.0 UTF-8
-		m_xmlDoc->InsertEndChild(m_xmlDoc->NewDeclaration());
-
-		// add root element
-		root = m_xmlDoc->NewElement(getXMLName().c_str());
-		m_xmlDoc->InsertEndChild(root);
-
-		m_docLoaded = true;
+		initXML();
 	}
-	else { // already loaded
-		root = m_xmlDoc->RootElement();
-	}
+	root = m_xmlDoc->RootElement();
 
 	// use the current filename?
 	if(filename == "") {
@@ -337,9 +347,13 @@ bool XMLObject::saveXMLFile(std::string filename) {
 void XMLObject::closeXMLFile() {
 	if(m_docLoaded) {
 		delete m_xmlDoc;
+		m_xmlDoc = NULL;
+		m_element = NULL;
 	}
 	m_docLoaded = false;
 }
+
+// OBJECTS
 
 void XMLObject::addXMLObject(XMLObject *object) {
 	if(object == NULL) {
@@ -360,6 +374,8 @@ void XMLObject::removeXMLObject(XMLObject *object) {
 		m_objectList.erase(iter);
 	}
 }
+
+// ELEMENTS
 
 bool XMLObject::subscribeXMLElement(std::string name, XMLType type, void *var, bool readOnly) {
 	if(name == "") {
@@ -410,6 +426,8 @@ void XMLObject::unsubscribeAllXMLElements() {
 	}
 	m_elementList.clear();
 }
+
+// ATTRIBUTES
 
 bool XMLObject::subscribeXMLAttribute(std::string name, std::string elementName, XMLType type, void *var, bool readOnly) {
 	if(name == "") {// || elementName == "") {
@@ -462,6 +480,127 @@ bool XMLObject::unsubscribeXMLAttribute(std::string name, std::string elementNam
 	         << name << "\", not found" << std::endl;
 	return false;
 }
+
+// DATA ACCESS
+
+bool XMLObject::getXMLTextBool(std::string path, bool defaultVal) {
+	return XML::getTextBool(XML::getChild(m_element, path), defaultVal);
+}
+
+int XMLObject::getXMLTextInt(std::string path, int defaultVal) {
+	return XML::getTextInt(XML::getChild(m_element, path), defaultVal);
+}
+
+unsigned int XMLObject::getXMLTextUInt(std::string path, unsigned int defaultVal) {
+	return XML::getTextUInt(XML::getChild(m_element, path), defaultVal);
+}
+
+float XMLObject::getXMLTextFloat(std::string path, float defaultVal) {
+	return XML::getTextFloat(XML::getChild(m_element, path), defaultVal);
+}
+
+double XMLObject::getXMLTextDouble(std::string path, double defaultVal) {
+	return XML::getTextDouble(XML::getChild(m_element, path), defaultVal);
+}
+
+std::string XMLObject::getXMLTextString(std::string path, std::string defaultVal) {
+	return XML::getTextString(XML::getChild(m_element, path), defaultVal);
+}
+
+bool XMLObject::getXMLAttrBool(std::string path, std::string name, bool defaultVal){
+	return XML::getAttrBool(XML::getChild(m_element, path), name, defaultVal);
+}
+
+int XMLObject::getXMLAttrInt(std::string path, std::string name, int defaultVal) {
+	return XML::getAttrInt(XML::getChild(m_element, path), name, defaultVal);
+}
+
+unsigned int XMLObject::getXMLAttrUInt(std::string path, std::string name, unsigned int defaultVal) {
+	return XML::getAttrUInt(XML::getChild(m_element, path), name, defaultVal);
+}
+
+float XMLObject::getXMLAttrFloat(std::string path, std::string name, float defaultVal) {
+	return XML::getAttrFloat(XML::getChild(m_element, path), name, defaultVal);
+}
+
+double XMLObject::getXMLAttrDouble(std::string path, std::string name, double defaultVal) {
+	return XML::getAttrDouble(XML::getChild(m_element, path), name, defaultVal);
+}
+
+std::string XMLObject::getXMLAttrString(std::string path, std::string name, std::string defaultVal) {
+	return XML::getAttrString(XML::getChild(m_element, path), name, defaultVal);
+}
+
+XMLElement* XMLObject::getXMLChild(std::string path, int index) {
+	return XML::getChild(m_element, path, index);
+}
+
+unsigned int XMLObject::getNumXMLChildren(std::string path, std::string name) {
+	return XML::getNumChildren(XML::getChild(m_element, path), name);
+}
+
+void XMLObject::setXMLTextBool(std::string path, bool b) {
+	XML::setTextBool(XML::obtainChild(m_element, path), b);
+}
+
+void XMLObject::setXMLTextInt(std::string path, int i) {
+	XML::setTextInt(XML::obtainChild(m_element, path), i);
+}
+
+void XMLObject::setXMLTextUInt(std::string path, unsigned int i) {
+	XML::setTextUInt(XML::obtainChild(m_element, path), i);
+}
+
+void XMLObject::setXMLTextFloat(std::string path, float f) {
+	XML::setTextFloat(XML::obtainChild(m_element, path), f);
+}
+
+void XMLObject::setXMLTextDouble(std::string path, double d) {
+	XML::setTextDouble(XML::obtainChild(m_element, path), d);
+}
+
+void XMLObject::setXMLTextString(std::string path, std::string s) {
+	XML::setTextString(XML::obtainChild(m_element, path), s);
+}
+
+void XMLObject::setXMLAttrBool(std::string path, std::string name, bool b) {
+	XML::setAttrBool(XML::obtainChild(m_element, path), name, b);
+}
+
+void XMLObject::setXMLAttrInt(std::string path, std::string name, int i) {
+	XML::setAttrInt(XML::obtainChild(m_element, path), name, i);
+}
+
+void XMLObject::setXMLAttrUInt(std::string path, std::string name, unsigned int i) {
+	XML::setAttrUInt(XML::obtainChild(m_element, path), name, i);
+}
+
+void XMLObject::setXMLAttrFloat(std::string path, std::string name, float f) {
+	XML::setAttrFloat(XML::obtainChild(m_element, path), name, f);
+}
+
+void XMLObject::setXMLAttrDouble(std::string path, std::string name, double d) {
+	XML::setAttrDouble(XML::obtainChild(m_element, path), name, d);
+}
+
+void XMLObject::setXMLAttrString(std::string path, std::string name, std::string s) {
+	XML::setAttrString(XML::obtainChild(m_element, path), name, s);
+}
+
+XMLElement* XMLObject::addXMLChild(std::string path, int index) {
+	return XML::addChild(m_element, path, index);
+}
+
+XMLElement* XMLObject::obtainXMLChild(std::string path, int index) {
+	return XML::obtainChild(m_element, path, index);
+}
+
+void XMLObject::addXMLComment(std::string path, std::string comment) {
+	XML::addComment(XML::obtainChild(m_element, path), comment);
+}
+
+// UTIL
+
 bool XMLObject::isXMLDocumentLoaded() {
 	return m_docLoaded;
 }

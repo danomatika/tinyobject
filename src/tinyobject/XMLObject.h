@@ -46,6 +46,12 @@ class XMLObject {
 		XMLObject(std::string elementName="");
 		virtual ~XMLObject();
 
+		/// initialize an empty xml document with a root element matching this
+		/// object's element name,
+		/// only needed when setting data externally before saving if you're not
+		/// subclassing and/or implementing the writeXML callback
+		void initXML();
+
 		/// \section Load
 
 		/// load from an xml element, checks if the element name is correct
@@ -99,6 +105,75 @@ class XMLObject {
 	
 		/// unsubscribe from automatically loading an attribute
 		bool unsubscribeXMLAttribute(std::string name, std::string elementName);
+	
+		/// \section Data Access
+		/// these member functions only work within the readXML/writeXML functions when the current element is set
+	
+		/// element text access by type,
+		/// returns value on success or defaultVal if wrong type
+		bool getXMLTextBool(std::string path, bool defaultVal=false);
+		int getXMLTextInt(std::string path, int defaultVal=0);
+		unsigned int getXMLTextUInt(std::string path, unsigned int defaultVal=0);
+		float getXMLTextFloat(std::string path, float defaultVal=0.0f);
+		double getXMLTextDouble(std::string path, double defaultVal=0.0);
+		std::string getXMLTextString(std::string path, std::string defaultVal="");
+	
+		/// element attribute access by type
+		/// returns value on success or defaultVal if attribute not found or wrong type
+		bool getXMLAttrBool(std::string path, std::string name, bool defaultVal=false);
+		int getXMLAttrInt(std::string path, std::string name, int defaultVal=0);
+		unsigned int getXMLAttrUInt(std::string path, std::string name, unsigned int defaultVal=0);
+		float getXMLAttrFloat(std::string path, std::string name, float defaultVal=0.0f);
+		double getXMLAttrDouble(std::string path, std::string name, double defaultVal=0.0);
+		std::string getXMLAttrString(std::string path, std::string name, std::string defaultVal="");
+	
+		/// find child element by path and index (if in a list), returns NULL if element not found
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "/sub/element/test" or "/sub/1/element/2/test"
+		/// if an index is given for the final element in the path along with an index argument, the greater of
+		/// the two is used
+		XMLElement* getXMLChild(std::string path, int index=0);
+	
+		/// get the number of child elements with the given name,
+		/// if name is empty "", returns total number of child elements
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		unsigned int getNumXMLChildren(std::string path, std::string name="");
+	
+		/// set the element text
+		void setXMLTextBool(std::string path, bool b);
+		void setXMLTextInt(std::string path, int i);
+		void setXMLTextUInt(std::string path, unsigned int i);
+		void setXMLTextFloat(std::string path, float f);
+		void setXMLTextDouble(std::string path, double d);
+		void setXMLTextString(std::string path, std::string s);
+	
+		/// set element attributes by type
+		void setXMLAttrBool(std::string path, std::string name, bool b);
+		void setXMLAttrInt(std::string path, std::string name, int i);
+		void setXMLAttrUInt(std::string path, std::string name, unsigned int i);
+		void setXMLAttrFloat(std::string path, std::string name, float f);
+		void setXMLAttrDouble(std::string path, std::string name, double d);
+		void setXMLAttrString(std::string path, std::string name, std::string s);
+	
+		/// adds a child element at a specific index in a list of same elements (0 for first),
+		/// adds to end if index is invalid
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		/// if an index is given for the final element in the path along with an index argument, the greater of
+		/// the two is used
+		XMLElement* addXMLChild(std::string path, int index=0);
+	
+		/// finds child element at specific index in a list of same elements (0 for first),
+		/// creates and adds to end if not found
+		/// path can also be a / separated string to denote multiple levels of depth below the given
+		/// element aka "sub/element/test" or "/sub/1/element/2/test"
+		/// if an index is given for the final element in the path along with an index argument, the greater of
+		/// the two is used
+		XMLElement* obtainXMLChild(std::string path, int index=0);
+
+		/// adds a comment as a child of the given element, creates elements not found in the path
+		void addXMLComment(std::string path, std::string comment);
 
 		/// \section Util
 
@@ -172,7 +247,8 @@ class XMLObject {
 
 		bool m_docLoaded; //< is the doc loaded?
 		std::string m_filename; //< current filename
-		XMLDocument *m_xmlDoc; //< the xml document
+		XMLDocument *m_xmlDoc; //< xml document, NULL when not loaded
+		XMLElement *m_element; //< element for this object, NULL when not loaded
 
 		std::string m_elementName; //< name of the root element
 		std::vector<_Element*> m_elementList; //< attached elements/attributes
