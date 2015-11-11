@@ -83,6 +83,7 @@ class SubObject : public XMLObject {
 			// subscribe to load attribute data, empty element name "" to
 			// load from root element name of this object: "subobject"
 			subscribeXMLAttribute("", "name", XML_TYPE_STRING, &name);
+			subscribeXMLAttribute("subelement/test/text", "type", XML_TYPE_STRING, &textType);
 			
 			// subscribe to load element text data
 			subscribeXMLElement("baz", XML_TYPE_FLOAT, &baz);
@@ -100,7 +101,8 @@ class SubObject : public XMLObject {
 			cout << "SUBOBJECT: " << name << endl
 			     << "    baz: " << baz << endl
 			     << "    ka: " << ka << endl
-				 << "    num test subelements: " << getNumXMLChildren("subelement/test") << endl
+			     << "    num test subelements: " << getNumXMLChildren("subelement/test") << endl
+			     << "    subelement/test/text type: " << textType << endl
 			     << "    subelement/test/text: " << text << endl
 			     << "    subelement/test/number: " << number << endl;
 			
@@ -117,6 +119,7 @@ class SubObject : public XMLObject {
 		string ka;
 	
 		string text;
+		string textType;
 		float number;
 };
 

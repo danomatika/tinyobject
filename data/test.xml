@@ -23,7 +23,7 @@
 			<ka>the answer is 42</ka>
 			<subelement>
 				<test>
-					<text>take my wife ... please</text>
+					<text type="joke">take my wife ... please</text>
 					<number>-1000</number>
 				</test>
 			</subelement>

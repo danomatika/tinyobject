@@ -380,23 +380,24 @@ bool XMLObject::subscribeXMLElement(std::string path, XMLType type, void *var, b
 	if(path == "") {
 		path = m_elementName;
 	}
-
-	// bail if element already exists
-	_Element *element;
-	if((element = findElement(path)) != NULL) {
-		LOG_WARN << "XML \"" << m_elementName << "\": cannot add element \"" << path
-		         << "\", element already exists" << std::endl;
-		return false;
+	_Element *element = NULL;
+	if((element = findElement(path)) != NULL) { // already exists
+		if(element->var != NULL) {
+			LOG_WARN << "XML \"" << m_elementName << "\": element \"" << path
+			  		 << "\" already subscribed, resubscribing with new variable pointer" << std::endl;
+		}
+		element->type = type;
+		element->var = var;
+		element->readOnly = readOnly;
 	}
-
-	// add
-	element = new _Element;
-	element->path = path;
-	element->type = type;
-	element->var = var;
-	element->readOnly = readOnly;
-	m_elements.push_back(element);
-
+	else { // add
+		element = new _Element;
+		element->path = path;
+		element->type = type;
+		element->var = var;
+		element->readOnly = readOnly;
+		m_elements.push_back(element);
+	}
 	return true;
 }
 
@@ -421,6 +422,7 @@ void XMLObject::unsubscribeAllXMLElements() {
 			_Attribute *attr = e->attributes.at(j);
 			delete attr;
 		}
+		e->attributes.clear();
 		delete e;
 	}
 	m_elements.clear();
@@ -429,15 +431,15 @@ void XMLObject::unsubscribeAllXMLElements() {
 // ATTRIBUTES
 
 bool XMLObject::subscribeXMLAttribute(std::string path, std::string name, XMLType type, void *var, bool readOnly) {
-	if(name == "") {// || elementName == "") {
-		LOG_WARN << "XML \"" << m_elementName << "\": cannot add attribute \"" << name
-		          << "\" to element \"" << path << "\", name and/or element path are empty"
+	if(name == "") {
+		LOG_WARN << "XML \"" << m_elementName << "\": cannot add attribute to element \""
+		          << path << "\", name is empty"
 		          << std::endl;
 		return false;
 	}
 	if(var == NULL) {
 		LOG_WARN << "XML \"" << m_elementName << "\": attribute \"" << name
-		         << "\" variable is NULL" << std::endl;
+		         << "\" variable pointer is NULL" << std::endl;
 		return false;
 	}
 	
@@ -452,14 +454,32 @@ bool XMLObject::subscribeXMLAttribute(std::string path, std::string name, XMLTyp
 		subscribeXMLElement(path, XML_TYPE_UNDEF, NULL, readOnly);
 		e = m_elements.back();
 	}
-
-	_Attribute *attribute = new _Attribute;
-	attribute->name = name;
-	attribute->type = type;
-	attribute->var = var;
-	attribute->readOnly = readOnly;
-
-	e->attributes.push_back(attribute);
+	
+	// check is the requested attribute exists
+	_Attribute *attribute = NULL;
+	for(int i = 0; i < e->attributes.size(); ++i) {
+		if(e->attributes[i]->name == name) {
+			attribute = e->attributes[i];
+			break;
+		}
+	}
+	if(attribute != NULL) { // already exists
+		LOG_WARN << "XML \"" << m_elementName << "\": attribute \"" << name
+				 << "\" at element \"" << path << "\" already subscribed, "
+				 << "resubscribing with new variable pointer" << std::endl;
+		attribute->name = name;
+		attribute->type = type;
+		attribute->var = var;
+		attribute->readOnly = readOnly;
+	}
+	else { // add
+		attribute = new _Attribute;
+		attribute->name = name;
+		attribute->type = type;
+		attribute->var = var;
+		attribute->readOnly = readOnly;
+		e->attributes.push_back(attribute);
+	}
 
 	return true;
 }
