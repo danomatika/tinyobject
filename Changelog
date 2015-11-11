@@ -1,3 +1,12 @@
+2015-11-11 Dan Wilcox <danomatika@gmail.com>
+
+	0.4.2
+
+	* XMLObject: swapped subscribe/unsubscribeXMLAttr path & name ars to match overall api
+	* XMLObject: fixed bug where only first attribute was being unsubscribed
+	* XMLObject: allow subscribing to existing elements & attributes
+	* XMLObject: added ubsubscribeAllXMLAttributes
+
 2015-11-10 Dan Wilcox <danomatika@gmail.com>
 
 	0.4.1
