@@ -189,15 +189,17 @@ class XMLObject {
 		/// returns true if this object is currently loaded or saving
 		bool isXMLDocumentLoaded();
 	
-		/// get the currently loaded xml document when this object is loading/saving
-		/// returns NULL if the document has not been initialized or the object has a parent
-		/// object doing the loading/saving
+		/// get the currently loaded xml document
+		/// returns NULL if the document has not been initialized
 		XMLDocument* getXMLDocument();
 	
 		/// get the root element of the currently loaded XML document
-		/// returns NULL if the document has not been initialized or the object has a parent
-		/// object doing the loading/saving
+		/// returns NULL if the document has not been initialized
 		XMLElement* getXMLRootElement();
+	
+		/// get the xml element for this object (aka the e argument in readXML/writeXML)
+		/// returns NULL if the document has not been initialized or loaded
+		XMLElement* getXMLElement();
 
 	protected:
 
@@ -218,7 +220,6 @@ class XMLObject {
 
 		/// subscribed attribute to load
 		struct _Attribute {
-			//_Attribute() : type(XML_TYPE_UNDEF) {}
 			std::string name; //< attribute name
 			XMLType type; //< attribute type
 			void *var; //< pointer to subscribed variable

@@ -606,16 +606,25 @@ bool XMLObject::isXMLDocumentLoaded() {
 }
 
 XMLDocument* XMLObject::getXMLDocument() {
-	return m_xmlDoc;
-}
-
-XMLElement* XMLObject::getXMLRootElement() {
-	if(m_docLoaded) {
-		return m_xmlDoc->RootElement();
+	if(m_element) {
+		return m_element->GetDocument();
 	}
 	else {
 		return NULL;
 	}
+}
+
+XMLElement* XMLObject::getXMLRootElement() {
+	if(m_element) {
+		return m_element->GetDocument()->RootElement();
+	}
+	else {
+		return NULL;
+	}
+}
+
+XMLElement* XMLObject::getXMLElement() {
+	return m_element;
 }
 
 } // namespace
