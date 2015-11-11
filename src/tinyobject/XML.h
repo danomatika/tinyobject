@@ -46,7 +46,7 @@ class XML {
 
 	public:
 
-		/// \section Read
+	/// \section Read
 
 		/// element text access by type,
 		/// returns value on success or defaultVal if wrong type
@@ -88,7 +88,7 @@ class XML {
 		/// element aka "sub/element/test" or "/sub/1/element/2/test"
 		static unsigned int getNumChildren(XMLElement *element, std::string path="", std::string name="");
 
-		/// \section Write
+	/// \section Write
 
 		/// set the element text
 		static void setTextBool(XMLElement *element, bool b);
@@ -131,7 +131,7 @@ class XML {
 		/// adds a comment as a child of the given element
 		static void addComment(XMLElement *element, std::string comment);
 
-		/// \section Util
+	/// \section Util
 
 		/// returns the current error as a string
 		static std::string getErrorString(const XMLDocument *xmlDoc);

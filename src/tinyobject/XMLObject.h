@@ -52,7 +52,7 @@ class XMLObject {
 		/// subclassing and/or implementing the writeXML callback
 		void initXML();
 
-		/// \section Load
+	/// \section Load
 
 		/// load from an xml element, checks if the element name is correct
 		bool loadXML(XMLElement *e);
@@ -61,7 +61,7 @@ class XMLObject {
 		/// if already loaded/set
 		bool loadXMLFile(std::string filename="");
 
-		/// \section Save
+	/// \section Save
 
 		/// save to an xml element, checks if the element name is correct
 		bool saveXML(XMLElement *e);
@@ -72,7 +72,7 @@ class XMLObject {
 		/// close the current file (does not save, call load to open again)
 		void closeXMLFile();
 
-		/// \section Objects
+	/// \section Objects
 
 		/// attach/remove an XmlObject to this one,
 		/// attached object readXML & writeXML functions are called when this
@@ -80,34 +80,45 @@ class XMLObject {
 		void addXMLObject(XMLObject *object);
 		void removeXMLObject(XMLObject *object);
 
-		/// \section Elements
+	/// \section Elements
 
-		/// add an element at the current level, element names are singular
-		/// name can also be a / separated string to denote multiple levels of depth below the given
+		/// subscribe to automatically load/save an element at a path relative
+		/// to the current level
+		/// path can also be a / separated string to denote multiple levels of depth below the given
 		/// element aka "sub/element/test"
-		bool subscribeXMLElement(std::string name, XMLType type, void *var, bool readOnly=false);
+		/// returns true on success
+		bool subscribeXMLElement(std::string path, XMLType type, void *var, bool readOnly=false);
 	
-		/// remove an element at the current level, also removes attached attributes
-		bool unsubscribeXMLElement(std::string name);
+		/// unsubscribe a subscribed element at a path relative to the current level,
+		/// also removes attached attributes to this element
+		/// returns true on success
+		bool unsubscribeXMLElement(std::string path);
 	
-		/// remove all currently
-		void unsubscribeAllXMLElements();   //< also removes subscribed attributes
+		/// unsubscribe all subscribed elements, also removes subscribed attributes
+		void unsubscribeAllXMLElements();
 
-		/// \section Attributes
+	/// \section Attributes
 		
-		/// subscribe to automatically load an attribute, element names are singular
+		/// subscribe to automatically load/save an attribute in an element at a path
+		///
 		/// if element does not exist, it will be created
 		/// if it exists, attribute will be attached to it
-		/// if element name is the same as the object name, the attribute will be added to the root tag
-		/// element name can also be a / separated string to denote multiple levels of depth below the given
+		/// if path is the same as the object name, the attribute will be added to the root tag
+		/// path can also be a / separated string to denote multiple levels of depth below the given
 		/// element aka "sub/element/test"
-		bool subscribeXMLAttribute(std::string name, std::string elementName, XMLType type, void *var, bool readOnly=false);
+		/// returns true on success
+		bool subscribeXMLAttribute(std::string path, std::string name, XMLType type, void *var, bool readOnly=false);
 	
-		/// unsubscribe from automatically loading an attribute
-		bool unsubscribeXMLAttribute(std::string name, std::string elementName);
+		/// unsubscribe a subscribed attribute in an element at a path relative to the current level
+		/// returns true on success
+		bool unsubscribeXMLAttribute(std::string path, std::string name);
 	
-		/// \section Data Access
-		/// these member functions only work within the readXML/writeXML functions when the current element is set
+		/// unsubscribe all attributes, also removes elements that were not *explicityl* subscribed
+		/// to via subscribeXMLElement()
+		void unsubscribeAllXMLAttributes();
+	
+	/// \section Data Access
+	/// these member functions only work when the current element is set via loadXML/initXML
 	
 		/// element text access by type,
 		/// returns value on success or defaultVal if wrong type
@@ -175,7 +186,7 @@ class XMLObject {
 		/// adds a comment as a child of the given element, creates elements not found in the path
 		void addXMLComment(std::string path, std::string comment);
 
-		/// \section Util
+	/// \section Util
 
 		/// get/set the filename
 		inline std::string& getXMLFilename() {return m_filename;}
@@ -203,7 +214,7 @@ class XMLObject {
 
 	protected:
 
-		/// \section
+	/// \section Object Callbacks
 	
 		/// derive these callbacks for direct access to loading/saving
 		/// these are called after attached elements, then objects are processed
@@ -218,7 +229,7 @@ class XMLObject {
 
 	private:
 
-		/// subscribed attribute to load
+		/// subscribed attribute to load/save
 		struct _Attribute {
 			std::string name; //< attribute name
 			XMLType type; //< attribute type
@@ -226,20 +237,20 @@ class XMLObject {
 			bool readOnly; //< should this value be written when saving?
 		};
 	
-		/// subscribed element to load
+		/// subscribed element to load/save
 		struct _Element {
-			std::string name; //< element name
+			std::string path; //< element path (or name)
 			XMLType type; //< element text type
 			void *var; //< pointer to subscribed variable
 			bool readOnly; //< should this value be written when saving?
-			std::vector<_Attribute*> attributeList; //< subscribed attributes
+			std::vector<_Attribute*> attributes; //< subscribed attributes
 		};
 
-		/// find an element in the list by its name, returns NULL if not found
-		_Element* findElement(std::string name) {
+		/// find an element in the list by its path, returns NULL if not found
+		_Element* findElement(std::string path) {
 			std::vector<_Element*>::iterator iter;
-			for(iter = m_elementList.begin(); iter != m_elementList.end(); ++iter) {
-				if((*iter)->name == name) {
+			for(iter = m_elements.begin(); iter != m_elements.end(); ++iter) {
+				if((*iter)->path == path) {
 					return (*iter);
 				}
 			}
@@ -252,8 +263,8 @@ class XMLObject {
 		XMLElement *m_element; //< element for this object, NULL when not loaded
 
 		std::string m_elementName; //< name of the root element
-		std::vector<_Element*> m_elementList; //< attached elements/attributes
-		std::vector<XMLObject*> m_objectList; //< attached xml objects to process
+		std::vector<_Element*> m_elements; //< attached elements/attributes
+		std::vector<XMLObject*> m_objects; //< attached xml objects to process
 };
 
 } // namespace

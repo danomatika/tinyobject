@@ -82,7 +82,7 @@ class SubObject : public XMLObject {
 		
 			// subscribe to load attribute data, empty element name "" to
 			// load from root element name of this object: "subobject"
-			subscribeXMLAttribute("name", "", XML_TYPE_STRING, &name);
+			subscribeXMLAttribute("", "name", XML_TYPE_STRING, &name);
 			
 			// subscribe to load element text data
 			subscribeXMLElement("baz", XML_TYPE_FLOAT, &baz);
