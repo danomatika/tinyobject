@@ -1,5 +1,11 @@
 2015-11-10 Dan Wilcox <danomatika@gmail.com>
 
+	0.4.1
+
+	* forgot to update version in configure.ac
+
+2015-11-10 Dan Wilcox <danomatika@gmail.com>
+
 	0.4.0
 
 	* XMLObject: added local element data access convenience functions
