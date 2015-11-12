@@ -16284,7 +16284,7 @@ subdirs="$subdirs "
 
 ac_config_headers="$ac_config_headers src/config.h"
 
-ac_config_files="$ac_config_files Makefile src/Makefile src/tinyobject/Makefile src/totest/Makefile"
+ac_config_files="$ac_config_files Makefile data/Makefile src/Makefile src/tinyobject/Makefile src/totest/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17400,6 +17400,7 @@ do
     "libtool") CONFIG_COMMANDS="$CONFIG_COMMANDS libtool" ;;
     "src/config.h") CONFIG_HEADERS="$CONFIG_HEADERS src/config.h" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+    "data/Makefile") CONFIG_FILES="$CONFIG_FILES data/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/tinyobject/Makefile") CONFIG_FILES="$CONFIG_FILES src/tinyobject/Makefile" ;;
     "src/totest/Makefile") CONFIG_FILES="$CONFIG_FILES src/totest/Makefile" ;;

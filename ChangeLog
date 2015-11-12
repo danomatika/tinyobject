@@ -1,3 +1,12 @@
+2015-11-12 Dan Wilcox <danomatika@gmail.com>
+
+	0.4.3
+
+	* XML: fixed static initilization warnings
+	* added README.md & data/test.xml to automake dist
+	* renamed ChangeLog to standard naming for automake dist
+	* moved premake obj dir to prj/obj 
+
 2015-11-11 Dan Wilcox <danomatika@gmail.com>
 
 	0.4.2

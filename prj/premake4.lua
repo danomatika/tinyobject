@@ -9,7 +9,7 @@ http://bitbucket.org/anders/lightweight/src/tip/premake4.lua
 ]]
 solution "tinyobject"
 	configurations { "Debug", "Release" }
-	objdir "../obj"
+	objdir "obj"
  
 -- tinyobject library
 project "tinyobject"

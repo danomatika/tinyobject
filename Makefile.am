@@ -6,4 +6,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = -I m4
 
 # dirs to delve into
-SUBDIRS = src
+SUBDIRS = data src
+
+# dist files not covered by automake rules
+EXTRA_DIST = README.md

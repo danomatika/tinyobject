@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55893ECB159710E4786B3E61 /* XML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07BA72D26C88793854756EB7 /* XML.cpp */; };
-		1FBB326B15B546301A8B4DA5 /* XMLObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B677B047BBE12431EAF1744 /* XMLObject.cpp */; };
+		3EC23CB74A9908B60153242C /* XML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CEC64F40234344A74523AAB /* XML.cpp */; };
+		79EC017A7C812E67138E6E92 /* XMLObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C553C9A3D653C241E87674B /* XMLObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A65390C6B6B686E269D468F /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
-		07BA72D26C88793854756EB7 /* XML.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XML.cpp"; path = "XML.cpp"; sourceTree = "<group>"; };
-		6EEA4D57194661067D1378DA /* XML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XML.h"; path = "XML.h"; sourceTree = "<group>"; };
-		5B677B047BBE12431EAF1744 /* XMLObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XMLObject.cpp"; path = "XMLObject.cpp"; sourceTree = "<group>"; };
-		2D7105471C5F252130095783 /* XMLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XMLObject.h"; path = "XMLObject.h"; sourceTree = "<group>"; };
-		5B8C5E506D8C419735747B62 /* tinyobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinyobject.h"; path = "tinyobject.h"; sourceTree = "<group>"; };
-		714C57E51E225DD4355D73B3 /* libtinyobject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libtinyobject.a"; path = "libtinyobject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F4E0B1F523753AA49043942 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Log.h"; path = "Log.h"; sourceTree = "<group>"; };
+		3CEC64F40234344A74523AAB /* XML.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XML.cpp"; path = "XML.cpp"; sourceTree = "<group>"; };
+		74F134E54BA7708B5DD15BB6 /* XML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XML.h"; path = "XML.h"; sourceTree = "<group>"; };
+		2C553C9A3D653C241E87674B /* XMLObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "XMLObject.cpp"; path = "XMLObject.cpp"; sourceTree = "<group>"; };
+		6DCB5A44555D00C91A37474B /* XMLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XMLObject.h"; path = "XMLObject.h"; sourceTree = "<group>"; };
+		275E1D4A225C5FFE292556F3 /* tinyobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tinyobject.h"; path = "tinyobject.h"; sourceTree = "<group>"; };
+		334841506D3631D319A001C7 /* libtinyobject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libtinyobject.a"; path = "libtinyobject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		346C21F23F746DBB2488142A /* Frameworks */ = {
+		1E4436EB3DFD5C082A006C78 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,42 +32,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7E465F656DBE73C144E4148C /* tinyobject */ = {
+		1F064DD23D0B502E0C194249 /* tinyobject */ = {
 			isa = PBXGroup;
 			children = (
-				755F702864027B3C46CD7493 /* src */,
-				1BF50F9708410A520E8D72C3 /* Products */,
+				7F0A24EE27393B8A79480196 /* src */,
+				23B160FD21B97C393CA6644F /* Products */,
 			);
 			name = "tinyobject";
 			sourceTree = "<group>";
 		};
-		755F702864027B3C46CD7493 /* src */ = {
+		7F0A24EE27393B8A79480196 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				0D7252B109533B3E1A55429D /* tinyobject */,
+				3B7D2DE940B33D4068FD4700 /* tinyobject */,
 			);
 			name = "src";
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		0D7252B109533B3E1A55429D /* tinyobject */ = {
+		3B7D2DE940B33D4068FD4700 /* tinyobject */ = {
 			isa = PBXGroup;
 			children = (
-				7A65390C6B6B686E269D468F /* Log.h */,
-				07BA72D26C88793854756EB7 /* XML.cpp */,
-				6EEA4D57194661067D1378DA /* XML.h */,
-				5B677B047BBE12431EAF1744 /* XMLObject.cpp */,
-				2D7105471C5F252130095783 /* XMLObject.h */,
-				5B8C5E506D8C419735747B62 /* tinyobject.h */,
+				7F4E0B1F523753AA49043942 /* Log.h */,
+				3CEC64F40234344A74523AAB /* XML.cpp */,
+				74F134E54BA7708B5DD15BB6 /* XML.h */,
+				2C553C9A3D653C241E87674B /* XMLObject.cpp */,
+				6DCB5A44555D00C91A37474B /* XMLObject.h */,
+				275E1D4A225C5FFE292556F3 /* tinyobject.h */,
 			);
 			name = "tinyobject";
 			path = tinyobject;
 			sourceTree = "<group>";
 		};
-		1BF50F9708410A520E8D72C3 /* Products */ = {
+		23B160FD21B97C393CA6644F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				714C57E51E225DD4355D73B3 /* libtinyobject.a */,
+				334841506D3631D319A001C7 /* libtinyobject.a */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
@@ -75,13 +75,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		082A0CDF126533FC7A4E3F63 /* tinyobject */ = {
+		624D2EF7147E75A81008133A /* tinyobject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 771E69217ACD56AD1AAA1BD5 /* Build configuration list for PBXNativeTarget "tinyobject" */;
+			buildConfigurationList = 28895FA008984073490C6050 /* Build configuration list for PBXNativeTarget "tinyobject" */;
 			buildPhases = (
-				787557CD651E3283706F1110 /* Resources */,
-				6EB87A2115EF15071F672A31 /* Sources */,
-				346C21F23F746DBB2488142A /* Frameworks */,
+				31A572E273F234C129194F52 /* Resources */,
+				2DB766D552CE5EC301491A89 /* Sources */,
+				1E4436EB3DFD5C082A006C78 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -89,7 +89,7 @@
 			);
 			name = "tinyobject";
 			productName = "tinyobject";
-			productReference = 714C57E51E225DD4355D73B3 /* libtinyobject.a */;
+			productReference = 334841506D3631D319A001C7 /* libtinyobject.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -100,17 +100,17 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "tinyobject" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 7E465F656DBE73C144E4148C /* tinyobject */;
+			mainGroup = 1F064DD23D0B502E0C194249 /* tinyobject */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				082A0CDF126533FC7A4E3F63 /* libtinyobject.a */,
+				624D2EF7147E75A81008133A /* libtinyobject.a */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		787557CD651E3283706F1110 /* Resources */ = {
+		31A572E273F234C129194F52 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -120,12 +120,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6EB87A2115EF15071F672A31 /* Sources */ = {
+		2DB766D552CE5EC301491A89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55893ECB159710E4786B3E61 /* XML.cpp in Sources */,
-				1FBB326B15B546301A8B4DA5 /* XMLObject.cpp in Sources */,
+				3EC23CB74A9908B60153242C /* XML.cpp in Sources */,
+				79EC017A7C812E67138E6E92 /* XMLObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +135,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		28D7788C61504DA1107B3AD8 /* Debug */ = {
+		417F1647309A0105283343F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -147,7 +147,7 @@
 			};
 			name = "Debug";
 		};
-		4C6238EC2AC6309E7C4674BF /* Release */ = {
+		1CB06D0852374E6C1DD92EAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -160,7 +160,7 @@
 			};
 			name = "Release";
 		};
-		413E7BC0090F52FC51C8230B /* Debug */ = {
+		463548144E622803184458B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -183,7 +183,7 @@
 					"/usr/local/lib",
 					"/opt/local/lib",
 				);
-				OBJROOT = "../obj/Debug/tinyobject";
+				OBJROOT = "obj/Debug/tinyobject";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-fvisibility=default",
@@ -193,7 +193,7 @@
 			};
 			name = "Debug";
 		};
-		514B1B2728670DF437411B38 /* Release */ = {
+		2E0F68AC1A161CAD347059A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -214,7 +214,7 @@
 					"/usr/local/lib",
 					"/opt/local/lib",
 				);
-				OBJROOT = "../obj/Release/tinyobject";
+				OBJROOT = "obj/Release/tinyobject";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-fvisibility=default",
@@ -227,11 +227,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		771E69217ACD56AD1AAA1BD5 /* Build configuration list for PBXNativeTarget "libtinyobject.a" */ = {
+		28895FA008984073490C6050 /* Build configuration list for PBXNativeTarget "libtinyobject.a" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28D7788C61504DA1107B3AD8 /* Debug */,
-				4C6238EC2AC6309E7C4674BF /* Release */,
+				417F1647309A0105283343F9 /* Debug */,
+				1CB06D0852374E6C1DD92EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
@@ -239,8 +239,8 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "tinyobject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				413E7BC0090F52FC51C8230B /* Debug */,
-				514B1B2728670DF437411B38 /* Release */,
+				463548144E622803184458B0 /* Debug */,
+				2E0F68AC1A161CAD347059A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
