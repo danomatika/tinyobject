@@ -7,93 +7,93 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6532448B2B164F084CDA392C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16633EF646FA6CF552784B34 /* main.cpp */; };
-		6DC737696D4F669022283137 /* libtinyobject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B6409E5C2F366A09EA11E1 /* libtinyobject.a */; };
+		74C741F75D0512945123596C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69691DCB214A419F386C4F91 /* main.cpp */; };
+		784660C12CC41A3D42A573EC /* libtinyobject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F249E705C631B421456F77 /* libtinyobject.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4164460653307D3B565376FF /* PBXContainerItemProxy */ = {
+		18C4728F29606015401613C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 461075E47F3D351D30A47D08 /* tinyobject.xcodeproj */;
+			containerPortal = 4F0D734D479E5929487A59E8 /* tinyobject.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 714C57E51E225DD4355D73B3;
+			remoteGlobalIDString = 334841506D3631D319A001C7;
 			remoteInfo = "libtinyobject.a";
 		};
-		75161BE83E2045BA405C0856 /* PBXContainerItemProxy */ = {
+		15A675C37DD270442EAE3D48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 461075E47F3D351D30A47D08 /* tinyobject.xcodeproj */;
+			containerPortal = 4F0D734D479E5929487A59E8 /* tinyobject.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 082A0CDF126533FC7A4E3F63;
+			remoteGlobalIDString = 624D2EF7147E75A81008133A;
 			remoteInfo = "libtinyobject.a";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16633EF646FA6CF552784B34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "main.cpp"; sourceTree = "<group>"; };
-		2C2E032A787F134F465F156C /* totest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "totest"; path = "totest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		461075E47F3D351D30A47D08 /* tinyobject.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "tinyobject.xcodeproj"; path = "tinyobject.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		69691DCB214A419F386C4F91 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "main.cpp"; sourceTree = "<group>"; };
+		4A1C753D1383131F01FF3A78 /* totest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "totest"; path = "totest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F0D734D479E5929487A59E8 /* tinyobject.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "tinyobject.xcodeproj"; path = "tinyobject.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		43457A6A70551DED6AF679A7 /* Frameworks */ = {
+		08D027A63FC80A8E20351C20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DC737696D4F669022283137 /* libtinyobject.a in Frameworks */,
+				784660C12CC41A3D42A573EC /* libtinyobject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		480B56267C8B0BD016352E51 /* totest */ = {
+		28545F4813C116790B531621 /* totest */ = {
 			isa = PBXGroup;
 			children = (
-				526B102E4AF961734BD26A33 /* src */,
-				143524764FFD07E1048E34BF /* Products */,
-				6F8D4AE733FE003E0C7B636B /* Projects */,
+				572761A728D433CD00381DBF /* src */,
+				527F30600F5721510CB61784 /* Products */,
+				14B85C023E4957C74E2C5C20 /* Projects */,
 			);
 			name = "totest";
 			sourceTree = "<group>";
 		};
-		526B102E4AF961734BD26A33 /* src */ = {
+		572761A728D433CD00381DBF /* src */ = {
 			isa = PBXGroup;
 			children = (
-				6FCF2B9023FA02FD3F083C28 /* totest */,
+				148005192E853FC732F518AE /* totest */,
 			);
 			name = "src";
 			path = ../src;
 			sourceTree = "<group>";
 		};
-		6FCF2B9023FA02FD3F083C28 /* totest */ = {
+		148005192E853FC732F518AE /* totest */ = {
 			isa = PBXGroup;
 			children = (
-				16633EF646FA6CF552784B34 /* main.cpp */,
+				69691DCB214A419F386C4F91 /* main.cpp */,
 			);
 			name = "totest";
 			path = totest;
 			sourceTree = "<group>";
 		};
-		143524764FFD07E1048E34BF /* Products */ = {
+		527F30600F5721510CB61784 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C2E032A787F134F465F156C /* totest */,
+				4A1C753D1383131F01FF3A78 /* totest */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
 		};
-		6F8D4AE733FE003E0C7B636B /* Projects */ = {
+		14B85C023E4957C74E2C5C20 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				461075E47F3D351D30A47D08 /* tinyobject.xcodeproj */,
+				4F0D734D479E5929487A59E8 /* tinyobject.xcodeproj */,
 			);
 			name = "Projects";
 			sourceTree = "<group>";
 		};
-		30114DBF438957F2673359FE /* Products */ = {
+		7F8D12050C4659C5422D21CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35B6409E5C2F366A09EA11E1 /* libtinyobject.a */,
+				35F249E705C631B421456F77 /* libtinyobject.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,23 +101,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		060F7D5D237760292DDE64A5 /* totest */ = {
+		3820703623B95F0342711ED7 /* totest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D3D1FBC00FB137A535F26BC /* Build configuration list for PBXNativeTarget "totest" */;
+			buildConfigurationList = 0C5F388B41DF48993E670BA5 /* Build configuration list for PBXNativeTarget "totest" */;
 			buildPhases = (
-				347A395D47FA6ED6651E4CD8 /* Resources */,
-				1BDA3B5703351AA625B657AD /* Sources */,
-				43457A6A70551DED6AF679A7 /* Frameworks */,
+				054C6AD413AD45E9747A0643 /* Resources */,
+				45D5340D572F5B271A9411DC /* Sources */,
+				08D027A63FC80A8E20351C20 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				53E65E527B37188D6D8071E0 /* PBXTargetDependency */,
+				661511A62A406FCB1C8B16F6 /* PBXTargetDependency */,
 			);
 			name = "totest";
 			productInstallPath = "$(HOME)/bin";
 			productName = "totest";
-			productReference = 2C2E032A787F134F465F156C /* totest */;
+			productReference = 4A1C753D1383131F01FF3A78 /* totest */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -128,33 +128,33 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "totest" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 480B56267C8B0BD016352E51 /* totest */;
+			mainGroup = 28545F4813C116790B531621 /* totest */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 30114DBF438957F2673359FE /* Products */;
-					ProjectRef = 461075E47F3D351D30A47D08 /* tinyobject.xcodeproj */;
+					ProductGroup = 7F8D12050C4659C5422D21CC /* Products */;
+					ProjectRef = 4F0D734D479E5929487A59E8 /* tinyobject.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				060F7D5D237760292DDE64A5 /* totest */,
+				3820703623B95F0342711ED7 /* totest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		35B6409E5C2F366A09EA11E1 /* libtinyobject.a */ = {
+		35F249E705C631B421456F77 /* libtinyobject.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "../src/tinyobject/libtinyobject.a";
-			remoteRef = 4164460653307D3B565376FF /* PBXContainerItemProxy */;
+			remoteRef = 18C4728F29606015401613C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		347A395D47FA6ED6651E4CD8 /* Resources */ = {
+		054C6AD413AD45E9747A0643 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -164,11 +164,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1BDA3B5703351AA625B657AD /* Sources */ = {
+		45D5340D572F5B271A9411DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6532448B2B164F084CDA392C /* main.cpp in Sources */,
+				74C741F75D0512945123596C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,15 +178,15 @@
 /* End PBXVariantGroup section */
 
 /* Begin PBXTargetDependency section */
-		53E65E527B37188D6D8071E0 /* PBXTargetDependency */ = {
+		661511A62A406FCB1C8B16F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "libtinyobject.a";
-			targetProxy = 75161BE83E2045BA405C0856 /* PBXContainerItemProxy */;
+			targetProxy = 15A675C37DD270442EAE3D48 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		553F31516366614440362819 /* Debug */ = {
+		5CA773F22D2D7CC17A246034 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -198,7 +198,7 @@
 			};
 			name = "Debug";
 		};
-		548925821598362B7E774ABA /* Release */ = {
+		3C0307C266F15C4826D03DC2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -211,7 +211,7 @@
 			};
 			name = "Release";
 		};
-		2FCC22BC785B570325C960EC /* Debug */ = {
+		2D466431607A05377C573529 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -235,7 +235,7 @@
 					"/usr/local/lib",
 					"/opt/local/lib",
 				);
-				OBJROOT = "../obj/Debug/totest";
+				OBJROOT = "obj/Debug/totest";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-fvisibility=default",
@@ -248,7 +248,7 @@
 			};
 			name = "Debug";
 		};
-		0948008945B63CF91FD623EB /* Release */ = {
+		28C20CE6558E145A514F45B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -270,7 +270,7 @@
 					"/usr/local/lib",
 					"/opt/local/lib",
 				);
-				OBJROOT = "../obj/Release/totest";
+				OBJROOT = "obj/Release/totest";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-fvisibility=default",
@@ -286,11 +286,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D3D1FBC00FB137A535F26BC /* Build configuration list for PBXNativeTarget "totest" */ = {
+		0C5F388B41DF48993E670BA5 /* Build configuration list for PBXNativeTarget "totest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				553F31516366614440362819 /* Debug */,
-				548925821598362B7E774ABA /* Release */,
+				5CA773F22D2D7CC17A246034 /* Debug */,
+				3C0307C266F15C4826D03DC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
@@ -298,8 +298,8 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "totest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2FCC22BC785B570325C960EC /* Debug */,
-				0948008945B63CF91FD623EB /* Release */,
+				2D466431607A05377C573529 /* Debug */,
+				28C20CE6558E145A514F45B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
