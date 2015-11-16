@@ -7,7 +7,7 @@ noinst_PROGRAMS = totest
 totest_SOURCES = main.cpp
 
 # include paths
-totest_CPPFLAGS = $(CXXFLAGS) $(TINYXML2_CFLAGS) -I$(top_srcdir)/src
+totest_CPPFLAGS = $(TINYXML2_CFLAGS) -I$(top_srcdir)/src
 
 # libs to link, set static to statically link local libtool lib
 totest_LDFLAGS = $(TINYXML2_LIBS) -static
@@ -19,3 +19,4 @@ totest_LDADD = $(top_builddir)/src/tinyobject/libtinyobject.la
 clean-local:
 	rm -rf testupdate.xml
 	rm -rf testsave.xml
+
