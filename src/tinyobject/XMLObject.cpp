@@ -384,7 +384,7 @@ bool XMLObject::subscribeXMLElement(std::string path, XMLType type, void *var, b
 	if((element = findElement(path)) != NULL) { // already exists
 		if(element->var != NULL) {
 			LOG_WARN << "XML \"" << m_elementName << "\": element \"" << path
-			  		 << "\" already subscribed, resubscribing with new variable pointer" << std::endl;
+			         << "\" already subscribed, resubscribing with new variable pointer" << std::endl;
 		}
 		element->type = type;
 		element->var = var;
@@ -465,8 +465,8 @@ bool XMLObject::subscribeXMLAttribute(std::string path, std::string name, XMLTyp
 	}
 	if(attribute != NULL) { // already exists
 		LOG_WARN << "XML \"" << m_elementName << "\": attribute \"" << name
-				 << "\" at element \"" << path << "\" already subscribed, "
-				 << "resubscribing with new variable pointer" << std::endl;
+		         << "\" at element \"" << path << "\" already subscribed, "
+		         << "resubscribing with new variable pointer" << std::endl;
 		attribute->name = name;
 		attribute->type = type;
 		attribute->var = var;

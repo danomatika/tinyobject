@@ -49,7 +49,7 @@ class Object : public XMLObject {
 			cout << "OBJECT: " << name << endl
 			     << "    foo: " << foo << endl
 			     << "    bar: " << bar << endl
-				 << "    num test subelements: " << getNumXMLChildren("subelement/test") << endl
+			     << "    num test subelements: " << getNumXMLChildren("subelement/test") << endl
 			     << "    subelement/test/text: " << text << endl
 			     << "    subelement/test/number: " << number << endl;
 			return true;
@@ -155,26 +155,26 @@ class Processor : public XMLObject {
 			
 			cout << "ARGUMENT TEST" << endl;
 			cout << "bool 1: " << getXMLAttrBool("argtest", "bool1", false) << endl
-				 << "bool 0: " << getXMLAttrBool("argtest", "bool0", true) << endl
-				 << "bool true:  " << getXMLAttrBool("argtest", "boolT", false) << endl
-				 << "bool false: " << getXMLAttrBool("argtest", "boolF", true) << endl
-				 << "int:    " << getXMLAttrInt("argtest", "int") << endl
-				 << "uint:   " << getXMLAttrUInt("argtest", "uint") << endl
-				 << "float:  " << getXMLAttrFloat("argtest", "float") << endl
-				 << "double: " << getXMLAttrDouble("argtest", "double") << endl
-				 << "string: " << getXMLAttrString("argtest", "string") << endl;
+			     << "bool 0: " << getXMLAttrBool("argtest", "bool0", true) << endl
+			     << "bool true:  " << getXMLAttrBool("argtest", "boolT", false) << endl
+			     << "bool false: " << getXMLAttrBool("argtest", "boolF", true) << endl
+			     << "int:    " << getXMLAttrInt("argtest", "int") << endl
+			     << "uint:   " << getXMLAttrUInt("argtest", "uint") << endl
+			     << "float:  " << getXMLAttrFloat("argtest", "float") << endl
+			     << "double: " << getXMLAttrDouble("argtest", "double") << endl
+			     << "string: " << getXMLAttrString("argtest", "string") << endl;
 			cout << "DONE" << endl << endl;
 			
 			cout << "ELEMENT TEST: " << getNumXMLChildren("elementtest") << endl;
 			cout << "bool 1: " << getXMLTextBool("elementtest/bool1", false) << endl
-				 << "bool 0: " << getXMLTextBool("elementtest/bool0", true) << endl
-				 << "bool true:  " << getXMLTextBool("elementtest/boolT", false) << endl
-				 << "bool false: " << getXMLTextBool("elementtest/boolF", true) << endl
-				 << "int:    " << getXMLTextInt("elementtest/int") << endl
-				 << "uint:   " << getXMLTextUInt("elementtest/uint") << endl
-				 << "float:  " << getXMLTextFloat("elementtest/float") << endl
-				 << "double: " << getXMLTextDouble("elementtest/double") << endl
-				 << "string: " << getXMLTextString("elementtest/string") << endl;
+			     << "bool 0: " << getXMLTextBool("elementtest/bool0", true) << endl
+			     << "bool true:  " << getXMLTextBool("elementtest/boolT", false) << endl
+			     << "bool false: " << getXMLTextBool("elementtest/boolF", true) << endl
+			     << "int:    " << getXMLTextInt("elementtest/int") << endl
+			     << "uint:   " << getXMLTextUInt("elementtest/uint") << endl
+			     << "float:  " << getXMLTextFloat("elementtest/float") << endl
+			     << "double: " << getXMLTextDouble("elementtest/double") << endl
+			     << "string: " << getXMLTextString("elementtest/string") << endl;
 			cout << "DONE" << endl << endl;
 			
 			// grab elements using XMLElement directly
