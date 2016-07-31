@@ -20,12 +20,12 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ==============================================================================*/
-#include "XmlObject.h"
+#include "XMLObject.h"
 
 #include <map>
 #include <algorithm>
 #include "Log.h"
-#include "Xml.h"
+#include "XML.h"
 
 //#define DEBUG_XML_OBJECT
 
