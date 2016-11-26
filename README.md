@@ -1,7 +1,7 @@
 tinyobject
 ==========
 
-object base class and convenience static class for TinyXML-2 
+object base class and convenience static class for TinyXML-2
 
 Copyright (c) [Dan Wilcox](http://danomatika.com) 2009, 2015
 
@@ -17,6 +17,8 @@ See the headers in `src/tinyobject` and the [example](https://github.com/danomat
 
 Building & Installing
 ---------------------
+
+Download a release tarball from <http://docs.danomatika.com/releases/tinyobject/>. Otherwise, if cloning this repo, you will need to run `autogen.sh` to create the configure script.
 
 You will need tinyxml2 installed before building. On Mac OSX, you can use [Homebrew](http://brew.sh) with:
 
