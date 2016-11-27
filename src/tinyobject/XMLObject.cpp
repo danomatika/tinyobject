@@ -457,7 +457,7 @@ bool XMLObject::subscribeXMLAttribute(std::string path, std::string name, XMLTyp
 	
 	// check is the requested attribute exists
 	_Attribute *attribute = NULL;
-	for(int i = 0; i < e->attributes.size(); ++i) {
+	for(unsigned int i = 0; i < e->attributes.size(); ++i) {
 		if(e->attributes[i]->name == name) {
 			attribute = e->attributes[i];
 			break;

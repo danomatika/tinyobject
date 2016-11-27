@@ -376,7 +376,7 @@ XMLElement* XML::getChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *e = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	for(int n = 0; n < nodes.size(); ++n) {
+	for(unsigned int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		e = e->FirstChildElement(node.name.c_str());
 		if(e == NULL) {
@@ -615,7 +615,7 @@ XMLElement* XML::addChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *child = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	for(int n = 0; n < nodes.size(); ++n) {
+	for(unsigned int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		if(n < nodes.size()-1) { // preceeding nodes
 			child = XML::obtainChild(child, node.name, node.index);
@@ -642,7 +642,7 @@ XMLElement* XML::obtainChild(XMLElement *element, std::string path, int index) {
 	}
 	XMLElement *child = element;
 	std::vector<PathNode> nodes = parsePath(path);
-	for(int n = 0; n < nodes.size(); ++n) {
+	for(unsigned int n = 0; n < nodes.size(); ++n) {
 		PathNode &node = nodes[n];
 		XMLElement *e = child->FirstChildElement(node.name.c_str());
 		if(e == NULL) {

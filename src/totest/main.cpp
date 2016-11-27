@@ -222,21 +222,21 @@ int main(int argc, char *argv[]) {
 	// element names
 	cout << "foo/bar/baz" << endl;
 	vector<XML::PathNode> nodes = XML::parsePath("foo/bar/baz");
-	for(int i = 0; i < nodes.size(); ++i) {
+	for(unsigned int i = 0; i < nodes.size(); ++i) {
 		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
 	}
 	
 	// element names and indices
 	cout << "foo/1/bar/2/baz/3" << endl;
 	nodes = XML::parsePath("foo/1/bar/2/baz/3");
-	for(int i = 0; i < nodes.size(); ++i) {
+	for(unsigned int i = 0; i < nodes.size(); ++i) {
 		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
 	}
 	
 	// should throw error since index comes before element name
 	cout << "1/foo/bar" << endl;
 	nodes = XML::parsePath("1/foo/bar");
-	for(int i = 0; i < nodes.size(); ++i) {
+	for(unsigned int i = 0; i < nodes.size(); ++i) {
 		cout << "    " << nodes[i].name << " " << nodes[i].index << endl;
 	}
 	cout << "DONE" << endl << endl;
