@@ -1,16 +1,15 @@
 #########################################
 ##### Prelude #####
 
-AC_INIT([tinyobject], [0.4.3], [danomatika@gmail.com])
+AC_INIT([tinyobject], [0.4.4], [danomatika@gmail.com])
 AC_CONFIG_SRCDIR([src/tinyobject/tinyobject.h])
 AC_CONFIG_AUX_DIR([./config])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([foreign])
 
 #########################################
-##### Build Options #####
+##### Build settings #####
 
-DEBUG_CPPFLAGS="-g -Wall -Werror -Wno-uninitialized -O0"
-RELEASE_CPPFLAGS="-g -O2"
+DEBUG_CXXFLAGS="-O0 -Wall -Werror -Wno-uninitialized"
 
 #########################################
 ##### Check for programs/libs #####
@@ -35,7 +34,7 @@ PKG_CHECK_MODULES(TINYXML2, tinyxml2, [],
 	AC_MSG_ERROR([tinyxml2 library >= 2.0.0 not found]))
 
 #########################################
-##### Options #####
+##### Build options #####
 
 # debug build switch
 # from http://www.bioinf.uni-freiburg.de/~mmann/HowTo/automake.html#debug
@@ -49,17 +48,10 @@ AC_MSG_RESULT([$enable_debug])
 
 if test x"$enable_debug" = x"yes"; then
 	AC_DEFINE([DEBUG], [], [Debug Mode])
-	CPPFLAGS="$DEBUG_CPPFLAGS $CPPFLAGS"
+	CXXFLAGS="$CXXFLAGS $DEBUG_CXXFLAGS"
 else
-	AC_DEFINE([NDEBUG],[], [Release Mode])
-	CPPFLAGS="$RELEASE_CPPFLAGS $CPPFLAGS"
+	AC_DEFINE([NDEBUG], [], [Release Mode])
 fi
-
-#########################################
-##### Externals #####
-
-# externals with configure scripts
-AC_CONFIG_SUBDIRS([])
 
 #########################################
 ##### Output files #####
@@ -83,9 +75,8 @@ AC_MSG_RESULT([
 
 	Source directory:     $srcdir
 	Installation prefix:  $prefix
-	C++ compiler:         $CXX $CPPFLAGS $LDFLAGS
+	C++ compiler:         $CXX $CXXFLAGS $LDFLAGS
 	Static lib:           $enable_static
 	Shared lib:           $enable_shared
 	Debug build:          $enable_debug
 ])
-

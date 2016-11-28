@@ -11,7 +11,7 @@ otherinclude_HEADERS = tinyobject.h XML.h XMLObject.h
 libtinyobject_la_SOURCES = Log.h XML.cpp XMLObject.cpp
 
 # include paths
-AM_CPPFLAGS = $(TINYXML2_CFLAGS)
+AM_CXXFLAGS = $(TINYXML2_CFLAGS)
 
 # libs to link
 AM_LDFLAGS = $(TINYXML2_LIBS)
