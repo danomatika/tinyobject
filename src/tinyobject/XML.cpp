@@ -684,11 +684,8 @@ std::string XML::getErrorString(const XMLDocument *xmlDoc) {
 	if(xmlDoc->Error()) {
 		error << xmlDoc->ErrorName();
 	}
-	if(xmlDoc->GetErrorStr1()) {
-		error << " " << xmlDoc->GetErrorStr1();
-	}
-	if(xmlDoc->GetErrorStr2()) {
-		error << " " << xmlDoc->GetErrorStr2();
+	if(xmlDoc->ErrorStr()) {
+		error << " " << xmlDoc->ErrorStr();
 	}
 	return error.str();
 }
