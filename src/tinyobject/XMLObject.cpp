@@ -32,7 +32,8 @@
 namespace tinyxml2 {
 
 XMLObject::XMLObject(std::string elementName) :
-	m_docLoaded(false), m_xmlDoc(NULL), m_element(NULL), m_elementName(elementName) {}
+	m_docLoaded(false), m_xmlDoc(NULL), m_element(NULL),
+	m_elementName(elementName) {}
 
 XMLObject::~XMLObject() {
 	unsubscribeAllXMLElements();
@@ -116,7 +117,7 @@ bool XMLObject::loadXML(XMLElement *e) {
 	std::map<std::string, int> elementMap;
 
 	// load attached objects
-	std::vector<XMLObject*>::iterator objectIter;
+	std::vector<XMLObject *>::iterator objectIter;
 	for(objectIter = m_objects.begin(); objectIter != m_objects.end();) {
 
 		// remove this object if it dosent exist anymore

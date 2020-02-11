@@ -140,8 +140,8 @@ class XML {
 		/// "foo/bar/baz", "foo/1/bar/2/baz/3", etc
 		struct PathNode {
 			
-			std::string name; //< element name
-			int index; //< index if in a list, 0 for first element
+			std::string name; ///< element name
+			int index; ///< index if in a list, 0 for first element
 			
 			/// constructor to set default values
 			PathNode() {

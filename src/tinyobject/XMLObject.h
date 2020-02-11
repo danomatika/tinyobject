@@ -231,19 +231,19 @@ class XMLObject {
 
 		/// subscribed attribute to load/save
 		struct _Attribute {
-			std::string name; //< attribute name
-			XMLType type; //< attribute type
-			void *var; //< pointer to subscribed variable
-			bool readOnly; //< should this value be written when saving?
+			std::string name; ///< attribute name
+			XMLType type; ///< attribute type
+			void *var; ///< pointer to subscribed variable
+			bool readOnly; ///< should this value be written when saving?
 		};
 	
 		/// subscribed element to load/save
 		struct _Element {
-			std::string path; //< element path (or name)
-			XMLType type; //< element text type
-			void *var; //< pointer to subscribed variable
-			bool readOnly; //< should this value be written when saving?
-			std::vector<_Attribute*> attributes; //< subscribed attributes
+			std::string path; ///< element path (or name)
+			XMLType type; ///< element text type
+			void *var; ///< pointer to subscribed variable
+			bool readOnly; ///< should this value be written when saving?
+			std::vector<_Attribute*> attributes; ///< subscribed attributes
 		};
 
 		/// find an element in the list by its path, returns NULL if not found
@@ -257,14 +257,14 @@ class XMLObject {
 			return NULL;
 		}
 
-		bool m_docLoaded; //< is the doc loaded?
-		std::string m_filename; //< current filename
-		XMLDocument *m_xmlDoc; //< xml document, NULL when not loaded
-		XMLElement *m_element; //< element for this object, NULL when not loaded
+		bool m_docLoaded; ///< is the doc loaded?
+		std::string m_filename; ///< current filename
+		XMLDocument *m_xmlDoc; ///< xml document, NULL when not loaded
+		XMLElement *m_element; ///< element for this object, NULL when not loaded
 
-		std::string m_elementName; //< name of the root element
-		std::vector<_Element*> m_elements; //< attached elements/attributes
-		std::vector<XMLObject*> m_objects; //< attached xml objects to process
+		std::string m_elementName; ///< name of the root element
+		std::vector<_Element *> m_elements; ///< attached elements/attributes
+		std::vector<XMLObject *> m_objects; ///< attached xml objects to process
 };
 
 } // namespace

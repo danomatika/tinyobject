@@ -1,7 +1,7 @@
 #########################################
 ##### Prelude #####
 
-AC_INIT([tinyobject], [0.4.5], [danomatika@gmail.com])
+AC_INIT([tinyobject], [0.4.6], [danomatika@gmail.com])
 AC_CONFIG_SRCDIR([src/tinyobject/tinyobject.h])
 AC_CONFIG_AUX_DIR([./config])
 AM_INIT_AUTOMAKE([foreign])

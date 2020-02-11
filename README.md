@@ -3,7 +3,7 @@ tinyobject
 
 object base class and convenience static class for TinyXML-2
 
-Copyright (c) [Dan Wilcox](http://danomatika.com) 2009, 2015
+Copyright (c) [Dan Wilcox](http://danomatika.com) 2009, 2015, 2020
 
 Description
 -----------
@@ -33,6 +33,14 @@ You will need tinyxml2 installed before building. On macOS, you can use [Homebre
 On Ubuntu/Debian, you would do the following:
 
     sudo apt-get install libtinyxml2-dev
+
+On Windows, it is recommended to use [Msys2](https://www.msys2.org). Install the build tool chain (make, gcc or clang, pkgconfig, autconf, automake, libtool) and the tinyxml2 package:
+
+    # 32 bit
+    pacman -S mingw-w64-i686-tinyxml2
+    
+    # 64 bit
+    pacman -S mingw-w64-x86_64-tinyxml2
 
 This is an automake project, so build the lib & test with:
 
