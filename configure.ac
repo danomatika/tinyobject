@@ -1,9 +1,9 @@
 #########################################
 ##### Prelude #####
 
-AC_INIT([tinyobject], [0.4.6], [danomatika@gmail.com])
+AC_INIT([tinyobject], [0.4.7], [danomatika@gmail.com])
 AC_CONFIG_SRCDIR([src/tinyobject/tinyobject.h])
-AC_CONFIG_AUX_DIR([./config])
+AC_CONFIG_AUX_DIR([config])
 AM_INIT_AUTOMAKE([foreign])
 
 #########################################
@@ -24,10 +24,10 @@ LT_INIT
 AC_SUBST([LIBTOOL_DEPS])
 
 # using c++ compiler and linker
-AC_LANG_CPLUSPLUS
+AC_LANG([C++])
 
 # check for headers
-AC_HEADER_STDC
+AC_CHECK_INCLUDES_DEFAULT
 
 # check for headers & libs
 PKG_CHECK_MODULES([TINYXML2], [tinyxml2 >= 6], [],
